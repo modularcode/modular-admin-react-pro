@@ -65,9 +65,8 @@ const Sidebar = (props: SidebarProps) => {
         </Typography>
       </div>
       <Divider />
-      <div>
-        <SidebarNav />
-      </div>
+
+      <SidebarNav />
     </Drawer>
   )
 }
