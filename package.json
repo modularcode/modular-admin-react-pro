@@ -13,6 +13,7 @@
     "@types/recharts": "^1.1.17",
     "eslint-config-react": "^1.1.7",
     "node-sass": "^4.12.0",
+    "opencollective": "^1.0.3",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1",
@@ -24,7 +25,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "postinstall": "opencollective postinstall"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -46,5 +48,10 @@
     "eslint-plugin-prettier": "^3.1.0",
     "eslint-plugin-react": "^7.14.2",
     "prettier": "^1.18.2"
+  },
+  "collective": {
+    "type": "opencollective",
+    "url": "https://opencollective.com/modular-admin",
+    "logo": "https://opencollective.com/opencollective/logo.txt"
   }
 }

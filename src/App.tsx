@@ -1,17 +1,22 @@
 import React from 'react'
+import { ThemeProvider } from '@material-ui/styles'
 import { BrowserRouter, Route } from 'react-router-dom'
+import CssBaseline from '@material-ui/core/CssBaseline'
 
-import './App.scss'
+import theme from './_theme/index'
 import Auth from './Auth/Auth'
 import Dashboard from './Dashboard/Dashboard'
 
 const App = () => {
   return (
     <div className="App">
-      <BrowserRouter>
-        <Route path="/" component={Dashboard} />
-        <Route path="/auth" component={Auth} />
-      </BrowserRouter>
+      <CssBaseline />
+      <ThemeProvider theme={theme}>
+        <BrowserRouter>
+          <Route path="/" component={Dashboard} />
+          <Route path="/auth" component={Auth} />
+        </BrowserRouter>
+      </ThemeProvider>
     </div>
   )
 }
