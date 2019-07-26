@@ -51,7 +51,7 @@ export default function Dashboard({ match }: DashboardProps) {
     if (isMobile) {
       setIsSidebarOpenMobile(!isSidebarOpenMobile)
     } else {
-      setIsSidebarOpenDesktop(!setIsSidebarOpenDesktop)
+      setIsSidebarOpenDesktop(!isSidebarOpenDesktop)
     }
   }
 
@@ -143,10 +143,16 @@ const useStyles = makeStyles(theme => ({
     width: `calc(100% - ${theme.spacing(7)}px)`,
   },
   sidebarContainer: {
+    position: 'relative',
     [theme.breakpoints.up('sm')]: {
       width: drawerWidth,
       flexShrink: 0,
     },
+    transition: theme.transitions.create('width', {
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
+    }),
+    width: theme.spacing(7),
   },
   sidebarContainerDesktop: {},
   sidebarContainerDesktopDrawerClosed: {
@@ -154,39 +160,42 @@ const useStyles = makeStyles(theme => ({
       width: theme.spacing(7),
     },
   },
-  drawer: {
+  drawer: {},
+  drawerMobile: {
     width: drawerWidth,
   },
-  drawerMobile: {},
-  drawerDesktop: {},
+  drawerDesktop: {
+    width: '100%',
+    position: 'absolute',
+  },
   drawerDesktopClosed: {
     overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
+    // transition: theme.transitions.create('width', {
+    //   easing: theme.transitions.easing.sharp,
+    //   duration: theme.transitions.duration.leavingScreen,
+    // }),
+    // width: theme.spacing(7),
   },
-  drawerPaper: {
-    position: 'relative',
-    whiteSpace: 'nowrap',
-    width: drawerWidth,
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.enteringScreen,
-    }),
-  },
-  drawerPaperClose: {
-    overflowX: 'hidden',
-    transition: theme.transitions.create('width', {
-      easing: theme.transitions.easing.sharp,
-      duration: theme.transitions.duration.leavingScreen,
-    }),
-    width: theme.spacing(7),
-    [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(9),
-    },
-  },
+  // drawerPaper: {
+  //   position: 'relative',
+  //   whiteSpace: 'nowrap',
+  //   width: drawerWidth,
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.enteringScreen,
+  //   }),
+  // },
+  // drawerPaperClose: {
+  //   overflowX: 'hidden',
+  //   transition: theme.transitions.create('width', {
+  //     easing: theme.transitions.easing.sharp,
+  //     duration: theme.transitions.duration.leavingScreen,
+  //   }),
+  //   width: theme.spacing(7),
+  //   [theme.breakpoints.up('sm')]: {
+  //     width: theme.spacing(9),
+  //   },
+  // },
   headerSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
