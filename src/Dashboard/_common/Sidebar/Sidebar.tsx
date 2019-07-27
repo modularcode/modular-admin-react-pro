@@ -9,6 +9,10 @@ import SidebarNav from './SidebarNav'
 
 interface SidebarProps {
   onToggleClick?: (event: React.MouseEvent<HTMLButtonElement>) => void
+  isDesktop: boolean
+  isMobile: boolean
+  isSidebarCollapsedDesktop: boolean
+  isSidebarOpenMobile: boolean
 }
 
 const useStyles = makeStyles(theme => ({

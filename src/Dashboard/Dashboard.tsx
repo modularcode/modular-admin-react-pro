@@ -4,7 +4,6 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import AppBar from '@material-ui/core/AppBar'
 import Container from '@material-ui/core/Container'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
@@ -16,23 +15,10 @@ import Sidebar from './_common/Sidebar/Sidebar'
 import Footer from './_common/Footer/Footer'
 import Main from './Main/Main'
 
-// const drawerWidth = 240
-
 export interface DashboardProps extends RouteComponentProps {}
 
-/*
-const [open, setOpen] = React.useState(true)
-  const handleDrawerOpen = () => {
-    setOpen(true)
-  }
-  const handleDrawerClose = () => {
-    setOpen(false)
-  }
-
-   // const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight)
-*/
-
 const drawerWidth = 240
+// const drawerWidthCollapsed =
 
 export default function Dashboard({ match }: DashboardProps) {
   const classes = useStyles()
@@ -41,17 +27,20 @@ export default function Dashboard({ match }: DashboardProps) {
   const isMobile = !isDesktop
 
   const [isSidebarOpenMobile, setIsSidebarOpenMobile] = React.useState(false)
-  const [isSidebarOpenDesktop, setIsSidebarOpenDesktop] = React.useState(true)
+  const [isSidebarCollapsedDesktop, setIsSidebarCollapsedDesktop] = React.useState(false)
 
   function handleSidebarMobileToggle() {
     setIsSidebarOpenMobile(!isSidebarOpenMobile)
   }
 
   function handleSidebarToggle() {
+    // Open/close on mobile
     if (isMobile) {
       setIsSidebarOpenMobile(!isSidebarOpenMobile)
-    } else {
-      setIsSidebarOpenDesktop(!isSidebarOpenDesktop)
+    }
+    // Collapse/uncollapse on desktop
+    else {
+      setIsSidebarCollapsedDesktop(!isSidebarCollapsedDesktop)
     }
   }
 
@@ -61,7 +50,7 @@ export default function Dashboard({ match }: DashboardProps) {
         className={clsx(
           classes.headerContainer,
           isDesktop && classes.headerContainerDesktop,
-          isDesktop && !isSidebarOpenDesktop && classes.headerContainerDesktopDrawerClosed,
+          isDesktop && isSidebarCollapsedDesktop && classes.headerContainerDesktopDrawerCollapsed,
         )}
       >
         <Header onToggle={handleSidebarToggle} />
@@ -70,7 +59,7 @@ export default function Dashboard({ match }: DashboardProps) {
         className={clsx(
           classes.sidebarContainer,
           isDesktop && classes.sidebarContainerDesktop,
-          isDesktop && !isSidebarOpenDesktop && classes.sidebarContainerDesktopDrawerClosed,
+          isDesktop && isSidebarCollapsedDesktop && classes.sidebarContainerDesktopDrawerCollapsed,
         )}
       >
         <Hidden smUp implementation="css">
@@ -86,18 +75,31 @@ export default function Dashboard({ match }: DashboardProps) {
               keepMounted: true, // Better open performance on mobile.
             }}
           >
-            <Sidebar />
+            <Sidebar
+              isDesktop={isDesktop}
+              isMobile={isMobile}
+              isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
+              isSidebarOpenMobile={isSidebarOpenMobile}
+            />
           </Drawer>
         </Hidden>
         <Hidden xsDown implementation="css">
           <Drawer
             classes={{
-              paper: clsx(classes.drawer, classes.drawerDesktop, !isSidebarOpenDesktop && classes.drawerDesktopClosed),
+              paper: clsx(
+                classes.drawer,
+                classes.drawerDesktop,
+                isSidebarCollapsedDesktop && classes.drawerDesktopCollapsed,
+              ),
             }}
             variant="permanent"
-            open={isSidebarOpenDesktop}
           >
-            <Sidebar />
+            <Sidebar
+              isDesktop={isDesktop}
+              isMobile={isMobile}
+              isSidebarCollapsedDesktop={isSidebarCollapsedDesktop}
+              isSidebarOpenMobile={isSidebarOpenMobile}
+            />
           </Drawer>
         </Hidden>
       </div>
@@ -121,15 +123,11 @@ const useStyles = makeStyles(theme => ({
     left: 0,
     right: 0,
     position: 'absolute',
-    // marginLeft: drawerWidth,
     zIndex: theme.zIndex.drawer + 1,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    [theme.breakpoints.up('sm')]: {
-      width: `calc(100% - ${drawerWidth}px)`,
-    },
   },
   headerContainerDesktop: {
     left: 'auto',
@@ -139,7 +137,7 @@ const useStyles = makeStyles(theme => ({
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
-  headerContainerDesktopDrawerClosed: {
+  headerContainerDesktopDrawerCollapsed: {
     width: `calc(100% - ${theme.spacing(7)}px)`,
   },
   sidebarContainer: {
@@ -155,7 +153,7 @@ const useStyles = makeStyles(theme => ({
     width: theme.spacing(7),
   },
   sidebarContainerDesktop: {},
-  sidebarContainerDesktopDrawerClosed: {
+  sidebarContainerDesktopDrawerCollapsed: {
     [theme.breakpoints.up('sm')]: {
       width: theme.spacing(7),
     },
@@ -168,7 +166,7 @@ const useStyles = makeStyles(theme => ({
     width: '100%',
     position: 'absolute',
   },
-  drawerDesktopClosed: {
+  drawerDesktopCollapsed: {
     overflowX: 'hidden',
     // transition: theme.transitions.create('width', {
     //   easing: theme.transitions.easing.sharp,
