@@ -13,7 +13,7 @@ import Divider from '@material-ui/core/Divider'
 import Collapse from '@material-ui/core/Collapse'
 import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
-import LibraryBooks from '@material-ui/icons/LibraryBooks'
+import Tooltip from '@material-ui/core/Tooltip'
 
 import IconDashboard from '@material-ui/icons/Dashboard'
 import IconShoppingCart from '@material-ui/icons/ShoppingCart'
@@ -34,20 +34,17 @@ interface SidebarNavProps {
   isCollapsed: boolean
 }
 
-interface SidebarNavItem {
+interface SidebarNavListItem {
   name: string
   link: string
-  icon?: Component
+  icon?: React.ElementType<any>
 }
 
-interface SidebarNavListCreatorParams {
-  items: SidebarNavItem[]
-  withTooltips: boolean
+interface SidebarNavListProps {
+  items: SidebarNavListItem[]
+  isNested?: boolean
+  isCollapsed?: boolean
 }
-
-// interface SidebarNavListCreator {
-//   (options: SidebarNavListCreatorParams): Fragment
-// }
 
 interface ListItemLinkProps extends NavLinkProps {}
 
@@ -57,28 +54,59 @@ const ListItemLink = forwardRef((props: ListItemLinkProps, ref: React.Ref<HTMLAn
 
 ListItemLink.displayName = 'ForwardNavLink'
 
-// const sidebarNavLinksMain = [
-//   {
-//     name: 'Dashboard',
-//     link: '/',
-//     icon: IconDashboard,
-//   },
-//   {
-//     name: 'Orders',
-//     link: '/orders',
-//     icon: IconShoppingCart,
-//   },
-//   {
-//     name: 'Customers',
-//     link: '/customers',
-//     icon: IconPeople,
-//   },
-//   {
-//     name: 'Reports',
-//     link: '/reports',
-//     icon: IconBarChart,
-//   },
-// ]
+const sidebarNavListItemsMain = [
+  {
+    name: 'Dashboard',
+    link: '/',
+    icon: IconDashboard,
+  },
+  {
+    name: 'Orders',
+    link: '/orders',
+    icon: IconShoppingCart,
+  },
+  {
+    name: 'Customers',
+    link: '/customers',
+    icon: IconPeople,
+  },
+  {
+    name: 'Reports',
+    link: '/reports',
+    icon: IconBarChart,
+  },
+]
+
+const sidebarNavListItemsMainPages = [
+  {
+    name: 'Account',
+    link: '/account',
+  },
+  {
+    name: 'Profile',
+    link: '/profile',
+  },
+  {
+    name: 'Login',
+    link: '/auth/login',
+  },
+  {
+    name: 'Signup',
+    link: '/auth/signup',
+  },
+  {
+    name: 'Recover',
+    link: '/auth/recover',
+  },
+  {
+    name: 'Recover',
+    link: '/auth/reset',
+  },
+  {
+    name: 'Recover',
+    link: '/auth/search',
+  },
+]
 // const sidebarNavLinksUI = []
 // const sidebarNavLinksMisc = []
 
@@ -96,6 +124,53 @@ ListItemLink.displayName = 'ForwardNavLink'
 //     </>
 //   )
 // }
+
+const SidebarNavListItems = (props: SidebarNavListProps) => {
+  const { items = [], isCollapsed = false, isNested = false } = props
+  const classes = useStyles()
+
+  return (
+    <>
+      {items.map(item => {
+        const SidebarNavListItem = (
+          <ListItem
+            button
+            component={ListItemLink}
+            className={clsx(
+              classes.navItem,
+              isCollapsed && classes.navItemCollapsed,
+              isNested && !isCollapsed && classes.nested,
+            )}
+            to={item.link}
+            key={item.link || item.name}
+          >
+            {isNested && isCollapsed && (
+              <ListItemIcon>
+                <IconSpacer className={classes.iconSpacer} />
+              </ListItemIcon>
+            )}
+            {item.icon && (
+              <ListItemIcon>
+                <item.icon />
+              </ListItemIcon>
+            )}
+            <ListItemText primary={item.name} />
+          </ListItem>
+        )
+
+        if (isCollapsed) {
+          return (
+            <Tooltip title={item.name} placement="right">
+              {SidebarNavListItem}
+            </Tooltip>
+          )
+        }
+
+        return SidebarNavListItem
+      })}
+    </>
+  )
+}
 
 const SidebarNav = (props: SidebarNavProps) => {
   console.log('rerendered SidebarNav')
@@ -117,33 +192,12 @@ const SidebarNav = (props: SidebarNavProps) => {
             Main Modules
           </ListSubheader>
         )}
-        <ListItem button component={ListItemLink} className={classes.navItem} to="/">
-          <ListItemIcon>
-            <IconDashboard />
-          </ListItemIcon>
-          <ListItemText primary="Dashboard" />
-        </ListItem>
-        <ListItem button component={ListItemLink} className={classes.navItem} to="/orders">
-          <ListItemIcon>
-            <IconShoppingCart />
-          </ListItemIcon>
-          <ListItemText primary="Orders" />
-        </ListItem>
-        <ListItem button component={ListItemLink} className={classes.navItem} to="/customers">
-          <ListItemIcon>
-            <IconPeople />
-          </ListItemIcon>
-          <ListItemText primary="Customers" />
-        </ListItem>
-        <ListItem button component={ListItemLink} className={classes.navItem} to="/reports">
-          <ListItemIcon>
-            <IconBarChart />
-          </ListItemIcon>
-          <ListItemText primary="Reports" />
-        </ListItem>
+
+        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMain} />
+
         <ListItem button onClick={handleClick} className={classes.navItem}>
           <ListItemIcon>
-            <LibraryBooks />
+            <IconLibraryBooks />
           </ListItemIcon>
           <ListItemText primary="Other Pages" />
           {open ? <ExpandLess /> : <ExpandMore />}
@@ -151,97 +205,7 @@ const SidebarNav = (props: SidebarNavProps) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Divider />
           <List component="div" disablePadding>
-            <ListItem
-              to="/account"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer className={classes.iconSpacer} />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Account" />
-            </ListItem>
-            <ListItem
-              to="/profile"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Profile" />
-            </ListItem>
-            <ListItem
-              to="/auth/login"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Login" />
-            </ListItem>
-            <ListItem
-              to="/auth/signup"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Signup" />
-            </ListItem>
-            <ListItem
-              to="/auth/recover"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Recover" />
-            </ListItem>
-            <ListItem
-              to="/auth/reset"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Reset" />
-            </ListItem>
-            <ListItem
-              to="/auth/search"
-              component={ListItemLink}
-              button
-              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
-            >
-              {isCollapsed && (
-                <ListItemIcon>
-                  <IconSpacer fontSize="small" />
-                </ListItemIcon>
-              )}
-              <ListItemText primary="Search" />
-            </ListItem>
+            <SidebarNavListItems isCollapsed={isCollapsed} isNested={true} items={sidebarNavListItemsMainPages} />
           </List>
         </Collapse>
       </List>
@@ -321,9 +285,14 @@ const useStyles = makeStyles((theme: Theme) =>
         },
       },
     },
+    navItemCollapsed: {
+      whiteSpace: 'nowrap',
+      flexWrap: 'nowrap',
+      width: theme.sidebar.widthCollapsed,
+    },
     iconSpacer: {
-      fontSize: 15,
-      marginLeft: 5,
+      fontSize: 13,
+      marginLeft: 6,
     },
     iconFeatures: {
       color: '#95de3c',
