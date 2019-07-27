@@ -4,7 +4,6 @@ import { Route, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
-import Container from '@material-ui/core/Container'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 
@@ -103,9 +102,7 @@ export default function Dashboard({ match }: DashboardProps) {
       </div>
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Route path={`${match.url}/`} component={Main} />
-        </Container>
+        <Route path={`${match.url}/`} component={Main} />
         <Footer />
       </main>
     </div>
@@ -177,10 +174,6 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: '100vh',
     overflow: 'auto',
   },
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
   paper: {
     padding: theme.spacing(2),
     display: 'flex',
@@ -191,15 +184,3 @@ const useStyles = makeStyles((theme: Theme) => ({
     height: 240,
   },
 }))
-
-// interface DashboardProps extends RouteComponentProps {}
-
-// const Dashboard = ({ match }: DashboardProps) => {
-//   return (
-//     <div className={styles.Dashboard}>
-//       <Route path={`${match.url}/`} component={Main} />
-//     </div>
-//   )
-// }
-
-// export default Dashboard

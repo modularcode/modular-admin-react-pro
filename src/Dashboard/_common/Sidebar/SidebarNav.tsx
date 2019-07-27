@@ -1,7 +1,9 @@
 import React, { ReactNode } from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
-import { makeStyles, createStyles, styled } from '@material-ui/core/styles'
+import { makeStyles, createStyles } from '@material-ui/core/styles'
+
+import { NavLink } from 'react-router-dom'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import ListItem from '@material-ui/core/ListItem'
@@ -20,6 +22,8 @@ import IconBarChart from '@material-ui/icons/BarChart'
 import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconThumbUp from '@material-ui/icons/ThumbUp'
+import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
+import IconBallot from '@material-ui/icons/Ballot'
 import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
 
@@ -51,25 +55,25 @@ const SidebarNav = () => {
         <ListSubheader inset disableSticky={true} className={classes.navItem}>
           Main Modules
         </ListSubheader>
-        <ListItem button className={classes.navItem}>
+        <ListItem component={props => <NavLink exact {...props} to="/" />} button className={classes.navItem}>
           <ListItemIcon>
             <IconDashboard />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem button className={classes.navItem}>
+        <ListItem component={props => <NavLink {...props} to="/orders" />} button className={classes.navItem}>
           <ListItemIcon>
             <IconShoppingCart />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
-        <ListItem button className={classes.navItem}>
+        <ListItem component={props => <NavLink {...props} to="/customers" />} button className={classes.navItem}>
           <ListItemIcon>
             <IconPeople />
           </ListItemIcon>
           <ListItemText primary="Customers" />
         </ListItem>
-        <ListItem button className={classes.navItem}>
+        <ListItem component={props => <NavLink {...props} to="/reports" />} button className={classes.navItem}>
           <ListItemIcon>
             <IconBarChart />
           </ListItemIcon>
@@ -85,22 +89,53 @@ const SidebarNav = () => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Divider />
           <List component="div" disablePadding>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/account" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Account" />
             </ListItem>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/profile" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
+              <ListItemText primary="Profile" />
+            </ListItem>
+            <ListItem
+              component={props => <NavLink {...props} to="/auth/login" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Login" />
             </ListItem>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/auth/signup" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Signup" />
             </ListItem>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/auth/recover" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Recover" />
             </ListItem>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/auth/reset" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Reset" />
             </ListItem>
-            <ListItem button className={clsx(classes.navItem, classes.nested)}>
+            <ListItem
+              component={props => <NavLink {...props} to="/auth/search" />}
+              button
+              className={clsx(classes.navItem, classes.nested)}
+            >
               <ListItemText primary="Search" />
             </ListItem>
           </List>
@@ -111,7 +146,7 @@ const SidebarNav = () => {
         <ListSubheader inset disableSticky={true} className={classes.navItem}>
           UI & Utils
         </ListSubheader>
-        <ListItem button className={classes.navItem}>
+        <ListItem component={props => <NavLink {...props} to="/demo/components" />} button className={classes.navItem}>
           <ListItemIcon>
             <IconPersonalVideo />
           </ListItemIcon>
@@ -123,22 +158,29 @@ const SidebarNav = () => {
         <ListSubheader inset disableSticky={true}>
           Misc
         </ListSubheader>
-        <ListItem button>
+        <ListItem component={props => <NavLink {...props} to="/demo/features" />} button className={classes.navItem}>
           <ListItemIcon className={classes.iconFeatures}>
             <IconNewReleases />
           </ListItemIcon>
           <ListItemText primary="Why Modular?" />
         </ListItem>
-        <ListItem button>
+        <ListItem component={props => <NavLink {...props} to="/demo/docs" />} button className={classes.navItem}>
           <ListItemIcon className={classes.iconDocs}>
             <IconLibraryBooks />
           </ListItemIcon>
           <ListItemText primary="Docs" />
         </ListItem>
 
-        <ListItem button>
+        <ListItem component={props => <NavLink {...props} to="/demo/supporters" />} button className={classes.navItem}>
+          <ListItemIcon className={classes.iconSponsors}>
+            <IconStars />
+          </ListItemIcon>
+          <ListItemText primary="Supporters" />
+        </ListItem>
+
+        <ListItem component={props => <NavLink {...props} to="/demo/roadmap" />} button className={classes.navItem}>
           <ListItemIcon className={classes.iconSupport}>
-            <IconThumbUp />
+            <IconBallot />
           </ListItemIcon>
           <ListItemText primary="Project Roadmap" />
         </ListItem>
@@ -149,11 +191,12 @@ const SidebarNav = () => {
           </ListItemIcon>
           <ListItemText primary="Support Me" />
         </ListItem> */}
-        <ListItem button>
-          <ListItemIcon className={classes.iconSponsors}>
-            <IconStars />
+
+        <ListItem component={props => <NavLink {...props} to="/demo/discuss" />} button className={classes.navItem}>
+          <ListItemIcon className={classes.iconDiscuss}>
+            <IconQuestionAnswer />
           </ListItemIcon>
-          <ListItemText primary="Supporters" />
+          <ListItemText primary="Discuss" />
         </ListItem>
       </List>
     </div>
@@ -169,7 +212,15 @@ const useStyles = makeStyles((theme: Theme) =>
       width: theme.sidebar.width,
     },
     navItem: {
-      width: theme.sidebar.width,
+      '&.active': {
+        // color: theme.palette.primary.main,
+        background: 'rgba(0, 0, 0, 0.08)',
+        '& .MuiListItemIcon-root': {
+          // display: 'none',
+          color: '#fff',
+          // color: theme.palette.primary.main,
+        },
+      },
     },
     iconFeatures: {
       color: '#95de3c',
@@ -182,6 +233,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     iconSponsors: {
       color: '#e3b546',
+    },
+    iconDiscuss: {
+      color: '#ccc',
     },
   }),
 )
