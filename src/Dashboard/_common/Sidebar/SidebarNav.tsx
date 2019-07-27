@@ -46,7 +46,9 @@ const SidebarNav = () => {
   return (
     <div>
       <List>
-        <ListSubheader inset>Main Modules</ListSubheader>
+        <ListSubheader inset disableSticky={true}>
+          Main Modules
+        </ListSubheader>
         <ListItem button>
           <ListItemIcon>
             <IconDashboard />
@@ -79,6 +81,7 @@ const SidebarNav = () => {
           {open ? <ExpandLess /> : <ExpandMore />}
         </ListItem>
         <Collapse in={open} timeout="auto" unmountOnExit>
+          <Divider />
           <List component="div" disablePadding>
             <ListItem button className={classes.nested}>
               <ListItemText primary="Account" />
@@ -101,21 +104,36 @@ const SidebarNav = () => {
           </List>
         </Collapse>
       </List>
-      <Divider />
+      {/* <Divider /> */}
       <List>
-        <ListSubheader inset>Misc</ListSubheader>
-        <ListItem button>
-          <ListItemIcon>
-            <IconLibraryBooks />
-          </ListItemIcon>
-          <ListItemText primary="Docs" />
-        </ListItem>
+        <ListSubheader inset disableSticky={true}>
+          UI & Utils
+        </ListSubheader>
         <ListItem button>
           <ListItemIcon>
             <IconPersonalVideo />
           </ListItemIcon>
           <ListItemText primary="UI Components" />
         </ListItem>
+      </List>
+      <Divider />
+      <List>
+        <ListSubheader inset disableSticky={true}>
+          Misc
+        </ListSubheader>
+        <ListItem button>
+          <ListItemIcon>
+            <IconLibraryBooks />
+          </ListItemIcon>
+          <ListItemText primary="Why Modular?" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <IconLibraryBooks />
+          </ListItemIcon>
+          <ListItemText primary="Docs" />
+        </ListItem>
+
         <ListItem button>
           <ListItemIcon>
             <IconThumbUp />
