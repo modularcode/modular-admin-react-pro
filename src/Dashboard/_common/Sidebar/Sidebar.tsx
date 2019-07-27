@@ -1,10 +1,11 @@
 import React from 'react'
-import { makeStyles } from '@material-ui/core/styles'
+import { Theme, makeStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
 
 import Divider from '@material-ui/core/Divider'
 
+import Logo from '_common/Logo/Logo'
 import SidebarNav from './SidebarNav'
 
 interface SidebarProps {
@@ -15,28 +16,16 @@ interface SidebarProps {
   isSidebarOpenMobile: boolean
 }
 
-const useStyles = makeStyles(theme => ({
-  sidebar: {},
-  title: {
-    fontSize: '20px',
-  },
-  sidebarHeader: {
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    padding: '0 8px',
-    ...theme.mixins.toolbar,
-  },
-}))
-
 const Sidebar = (props: SidebarProps) => {
-  const classes = useStyles()
+  const classes = useStyles(props)
 
   return (
     <aside className={classes.sidebar}>
       <div className={classes.sidebarHeader}>
+        <Logo size={30} />
         <Typography component="h2" variant="h6" color="inherit" noWrap className={classes.title}>
-          Modular Material
+          <span className={classes.name}>ModularAdmin</span>
+          <span className={classes.tagline}>ReactJS + MaterialUI</span>
         </Typography>
       </div>
       <Divider />
@@ -45,5 +34,39 @@ const Sidebar = (props: SidebarProps) => {
     </aside>
   )
 }
+
+const useStyles = makeStyles((theme: Theme) => ({
+  sidebar: {},
+  sidebarHeader: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    whiteSpace: 'nowrap',
+    padding: '0 8px',
+    ...theme.mixins.toolbar,
+  },
+  logo: {},
+  title: (props: SidebarProps) => ({
+    fontSize: '20px',
+    position: 'relative',
+    overflow: 'visible',
+    marginLeft: '5px',
+    display: props.isDesktop && props.isSidebarCollapsedDesktop ? 'none' : 'block',
+  }),
+  name: {},
+  tagline: {
+    opacity: 0.7,
+    fontSize: 8,
+    fontWeight: 'bold',
+    position: 'absolute',
+    top: '100%',
+    marginTop: -5,
+    background: theme.palette.primary.main,
+    color: '#fff',
+    borderRadius: 2,
+    padding: '1px 3px',
+    right: 0,
+  },
+}))
 
 export default Sidebar
