@@ -37,10 +37,6 @@ const Sidebar = (props: SidebarProps) => {
 
 const useStyles = makeStyles((theme: Theme) => ({
   sidebar: {
-    backgroundSize: 'cover',
-    backgroundPosition: 'fixed',
-    backgroundImage: 'url(https://modular-admin-html.modularcode.io/sidebar-bg-1.jpg)',
-    color: '#fff',
     position: 'absolute',
     top: 0,
     bottom: 0,

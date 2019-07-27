@@ -65,8 +65,9 @@ const Header = ({ onToggle }: HeaderProps) => {
 const useStyles = makeStyles(theme => ({
   header: {
     // background: 'linear-gradient(50deg, #2196F3 30%, #8bc34a 0%)',
-    background: '#fff',
+    background: 'inherit',
     color: theme.palette.primary.main,
+    boxShadow: 'none',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed

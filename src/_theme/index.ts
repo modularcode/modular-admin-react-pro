@@ -4,10 +4,10 @@ import { blue, indigo } from '@material-ui/core/colors'
 const theme = createMuiTheme({
   palette: {
     secondary: {
-      main: blue[900],
+      main: indigo[600],
     },
     primary: {
-      main: indigo[700],
+      main: blue[600], //'#619f30',
     },
   },
   typography: {
