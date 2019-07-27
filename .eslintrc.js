@@ -28,6 +28,9 @@ module.exports = {
     '@typescript-eslint/explicit-function-return-type': [0],
     '@typescript-eslint/no-use-before-define': [0],
     '@typescript-eslint/no-empty-interface': [0],
+    '@typescript-eslint/explicit-member-accessibility': [0],
+    'no-explicit-any': [0],
+    'react/display-name': [0],
     'no-console': [0],
   },
   settings: {

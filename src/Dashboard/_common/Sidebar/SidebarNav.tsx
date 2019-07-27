@@ -1,9 +1,9 @@
-import React, { ReactNode } from 'react'
+import React, { forwardRef, ReactNode, Component, Fragment } from 'react'
 import clsx from 'clsx'
 import PropTypes from 'prop-types'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 
-import { NavLink } from 'react-router-dom'
+import { NavLink, NavLinkProps } from 'react-router-dom'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 import ListItem from '@material-ui/core/ListItem'
@@ -26,22 +26,82 @@ import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import IconBallot from '@material-ui/icons/Ballot'
 import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
+import IconSpacer from '@material-ui/icons/FiberManualRecord'
 
 import { Theme } from '_theme'
 
-// const ListItemStyled = ({ children }: { children: ReactNode }) => {
-//   const classes = useStyles()
+interface SidebarNavProps {
+  isCollapsed: boolean
+}
 
+interface SidebarNavItem {
+  name: string
+  link: string
+  icon?: Component
+}
+
+interface SidebarNavListCreatorParams {
+  items: SidebarNavItem[]
+  withTooltips: boolean
+}
+
+// interface SidebarNavListCreator {
+//   (options: SidebarNavListCreatorParams): Fragment
+// }
+
+interface ListItemLinkProps extends NavLinkProps {}
+
+const ListItemLink = forwardRef((props: ListItemLinkProps, ref: React.Ref<HTMLAnchorElement>) => (
+  <NavLink exact {...props} innerRef={ref} />
+))
+
+ListItemLink.displayName = 'ForwardNavLink'
+
+// const sidebarNavLinksMain = [
+//   {
+//     name: 'Dashboard',
+//     link: '/',
+//     icon: IconDashboard,
+//   },
+//   {
+//     name: 'Orders',
+//     link: '/orders',
+//     icon: IconShoppingCart,
+//   },
+//   {
+//     name: 'Customers',
+//     link: '/customers',
+//     icon: IconPeople,
+//   },
+//   {
+//     name: 'Reports',
+//     link: '/reports',
+//     icon: IconBarChart,
+//   },
+// ]
+// const sidebarNavLinksUI = []
+// const sidebarNavLinksMisc = []
+
+// const createSidebarNavList: SidebarNavListCreator = ({ items, withTooltips }) => {
 //   return (
-//     <ListItem button className={classes.listItem}>
-//       {children}
-//     </ListItem>
+//     <>
+//       {items.map(item => (
+//         <ListItem button component={ListItemLink} className={classes.navItem} to="/">
+//           <ListItemIcon>
+//             <IconDashboard />
+//           </ListItemIcon>
+//           <ListItemText primary="Dashboard" />
+//         </ListItem>
+//       ))}
+//     </>
 //   )
 // }
 
-// ListItemStyled.propTypes = { children: PropTypes.node.isRequired }
+const SidebarNav = (props: SidebarNavProps) => {
+  console.log('rerendered SidebarNav')
 
-const SidebarNav = () => {
+  const { isCollapsed } = props
+
   const classes = useStyles()
   const [open, setOpen] = React.useState(false)
 
@@ -52,28 +112,30 @@ const SidebarNav = () => {
   return (
     <div>
       <List className={classes.navList}>
-        <ListSubheader inset disableSticky={true} className={classes.navItem}>
-          Main Modules
-        </ListSubheader>
-        <ListItem component={props => <NavLink exact {...props} to="/" />} button className={classes.navItem}>
+        {!isCollapsed && (
+          <ListSubheader inset disableSticky={true} className={classes.navItem}>
+            Main Modules
+          </ListSubheader>
+        )}
+        <ListItem button component={ListItemLink} className={classes.navItem} to="/">
           <ListItemIcon>
             <IconDashboard />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
-        <ListItem component={props => <NavLink {...props} to="/orders" />} button className={classes.navItem}>
+        <ListItem button component={ListItemLink} className={classes.navItem} to="/orders">
           <ListItemIcon>
             <IconShoppingCart />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
-        <ListItem component={props => <NavLink {...props} to="/customers" />} button className={classes.navItem}>
+        <ListItem button component={ListItemLink} className={classes.navItem} to="/customers">
           <ListItemIcon>
             <IconPeople />
           </ListItemIcon>
           <ListItemText primary="Customers" />
         </ListItem>
-        <ListItem component={props => <NavLink {...props} to="/reports" />} button className={classes.navItem}>
+        <ListItem button component={ListItemLink} className={classes.navItem} to="/reports">
           <ListItemIcon>
             <IconBarChart />
           </ListItemIcon>
@@ -90,109 +152,146 @@ const SidebarNav = () => {
           <Divider />
           <List component="div" disablePadding>
             <ListItem
-              component={props => <NavLink {...props} to="/account" />}
+              to="/account"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer className={classes.iconSpacer} />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Account" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/profile" />}
+              to="/profile"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Profile" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/auth/login" />}
+              to="/auth/login"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Login" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/auth/signup" />}
+              to="/auth/signup"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Signup" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/auth/recover" />}
+              to="/auth/recover"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Recover" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/auth/reset" />}
+              to="/auth/reset"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Reset" />
             </ListItem>
             <ListItem
-              component={props => <NavLink {...props} to="/auth/search" />}
+              to="/auth/search"
+              component={ListItemLink}
               button
-              className={clsx(classes.navItem, classes.nested)}
+              className={clsx(classes.navItem, !isCollapsed && classes.nested)}
             >
+              {isCollapsed && (
+                <ListItemIcon>
+                  <IconSpacer fontSize="small" />
+                </ListItemIcon>
+              )}
               <ListItemText primary="Search" />
             </ListItem>
           </List>
         </Collapse>
       </List>
-      {/* <Divider /> */}
       <List className={classes.navList}>
-        <ListSubheader inset disableSticky={true} className={classes.navItem}>
-          UI & Utils
-        </ListSubheader>
-        <ListItem component={props => <NavLink {...props} to="/demo/components" />} button className={classes.navItem}>
+        {!isCollapsed && (
+          <ListSubheader inset disableSticky={true} className={classes.navItem}>
+            UI & Utils
+          </ListSubheader>
+        )}
+        <ListItem component={ListItemLink} button to="/demo/components" className={classes.navItem}>
           <ListItemIcon>
             <IconPersonalVideo />
           </ListItemIcon>
           <ListItemText primary="UI Components" />
         </ListItem>
       </List>
-
       <List className={classes.navList}>
-        <ListSubheader inset disableSticky={true}>
-          Misc
-        </ListSubheader>
-        <ListItem component={props => <NavLink {...props} to="/demo/features" />} button className={classes.navItem}>
+        {!isCollapsed && (
+          <ListSubheader inset disableSticky={true}>
+            Misc
+          </ListSubheader>
+        )}
+        <ListItem component={ListItemLink} to="/demo/features" button className={classes.navItem}>
           <ListItemIcon className={classes.iconFeatures}>
             <IconNewReleases />
           </ListItemIcon>
           <ListItemText primary="Why Modular?" />
         </ListItem>
-        <ListItem component={props => <NavLink {...props} to="/demo/docs" />} button className={classes.navItem}>
+        <ListItem component={ListItemLink} to="/demo/docs" button className={classes.navItem}>
           <ListItemIcon className={classes.iconDocs}>
             <IconLibraryBooks />
           </ListItemIcon>
           <ListItemText primary="Docs" />
         </ListItem>
 
-        <ListItem component={props => <NavLink {...props} to="/demo/supporters" />} button className={classes.navItem}>
+        <ListItem component={ListItemLink} to="/demo/supporters" button className={classes.navItem}>
           <ListItemIcon className={classes.iconSponsors}>
             <IconStars />
           </ListItemIcon>
           <ListItemText primary="Supporters" />
         </ListItem>
 
-        <ListItem component={props => <NavLink {...props} to="/demo/roadmap" />} button className={classes.navItem}>
+        {/* <ListItem component={ListItemLink} to="/demo/roadmap" button className={classes.navItem}>
           <ListItemIcon className={classes.iconSupport}>
             <IconBallot />
           </ListItemIcon>
           <ListItemText primary="Project Roadmap" />
-        </ListItem>
-
-        {/* <ListItem button>
-          <ListItemIcon className={classes.iconSupport}>
-            <IconThumbUp />
-          </ListItemIcon>
-          <ListItemText primary="Support Me" />
         </ListItem> */}
 
-        <ListItem component={props => <NavLink {...props} to="/demo/discuss" />} button className={classes.navItem}>
+        <ListItem component={ListItemLink} to="/demo/discuss" button className={classes.navItem}>
           <ListItemIcon className={classes.iconDiscuss}>
             <IconQuestionAnswer />
           </ListItemIcon>
@@ -221,6 +320,10 @@ const useStyles = makeStyles((theme: Theme) =>
           // color: theme.palette.primary.main,
         },
       },
+    },
+    iconSpacer: {
+      fontSize: 15,
+      marginLeft: 5,
     },
     iconFeatures: {
       color: '#95de3c',

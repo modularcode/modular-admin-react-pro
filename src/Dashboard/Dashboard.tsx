@@ -17,6 +17,8 @@ import Main from './Main/Main'
 export interface DashboardProps extends RouteComponentProps {}
 
 export default function Dashboard({ match }: DashboardProps) {
+  console.log('rerendered Dashboard')
+
   const classes = useStyles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'))

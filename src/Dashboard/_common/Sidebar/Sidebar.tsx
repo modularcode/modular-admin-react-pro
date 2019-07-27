@@ -17,6 +17,10 @@ interface SidebarProps {
 }
 
 const Sidebar = (props: SidebarProps) => {
+  console.log('rerendered Sidebar')
+
+  const { isDesktop, isMobile, isSidebarCollapsedDesktop } = props
+
   const classes = useStyles(props)
 
   return (
@@ -28,7 +32,7 @@ const Sidebar = (props: SidebarProps) => {
           <span className={classes.tagline}>ReactJS + MaterialUI</span>
         </Typography>
       </div>
-      <SidebarNav />
+      <SidebarNav isCollapsed={isDesktop && isSidebarCollapsedDesktop} />
     </aside>
   )
 }
@@ -63,7 +67,6 @@ const useStyles = makeStyles((theme: Theme) => ({
   }),
   name: {},
   tagline: {
-    opacity: 0.7,
     fontSize: 8,
     fontWeight: 'bold',
     position: 'absolute',

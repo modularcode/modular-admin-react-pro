@@ -8,6 +8,8 @@ import Auth from './Auth/Auth'
 import Dashboard from './Dashboard/Dashboard'
 
 const App = () => {
+  console.log('rerendered app')
+
   return (
     <div className="App">
       <CssBaseline />
