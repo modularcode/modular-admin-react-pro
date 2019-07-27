@@ -25,7 +25,7 @@ const Header = ({ onToggle }: HeaderProps) => {
   const classes = useStyles()
 
   return (
-    <AppBar position="absolute">
+    <AppBar position="absolute" className={classes.header}>
       <Toolbar className={classes.toolbar}>
         <IconButton
           edge="start"
@@ -63,6 +63,11 @@ const Header = ({ onToggle }: HeaderProps) => {
 }
 
 const useStyles = makeStyles(theme => ({
+  header: {
+    // background: 'linear-gradient(50deg, #2196F3 30%, #8bc34a 0%)',
+    background: '#fff',
+    color: theme.palette.primary.main,
+  },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
   },

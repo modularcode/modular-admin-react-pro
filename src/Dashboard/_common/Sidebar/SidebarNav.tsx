@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles, Theme, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
+import ListSubheader from '@material-ui/core/ListSubheader'
 import ListItem from '@material-ui/core/ListItem'
 import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
@@ -10,11 +11,16 @@ import ExpandLess from '@material-ui/icons/ExpandLess'
 import ExpandMore from '@material-ui/icons/ExpandMore'
 import LibraryBooks from '@material-ui/icons/LibraryBooks'
 
-import DashboardIcon from '@material-ui/icons/Dashboard'
-import ShoppingCartIcon from '@material-ui/icons/ShoppingCart'
-import PeopleIcon from '@material-ui/icons/People'
-import BarChartIcon from '@material-ui/icons/BarChart'
-import PersonalVideo from '@material-ui/icons/PersonalVideo'
+import IconDashboard from '@material-ui/icons/Dashboard'
+import IconShoppingCart from '@material-ui/icons/ShoppingCart'
+import IconPeople from '@material-ui/icons/People'
+import IconBarChart from '@material-ui/icons/BarChart'
+import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
+import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
+import IconPoll from '@material-ui/icons/Poll'
+import IconThumbUp from '@material-ui/icons/ThumbUp'
+import IconStars from '@material-ui/icons/Stars'
+import IconMood from '@material-ui/icons/Mood'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -40,27 +46,28 @@ const SidebarNav = () => {
   return (
     <div>
       <List>
+        <ListSubheader inset>Main Modules</ListSubheader>
         <ListItem button>
           <ListItemIcon>
-            <DashboardIcon />
+            <IconDashboard />
           </ListItemIcon>
           <ListItemText primary="Dashboard" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <ShoppingCartIcon />
+            <IconShoppingCart />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <PeopleIcon />
+            <IconPeople />
           </ListItemIcon>
           <ListItemText primary="Customers" />
         </ListItem>
         <ListItem button>
           <ListItemIcon>
-            <BarChartIcon />
+            <IconBarChart />
           </ListItemIcon>
           <ListItemText primary="Reports" />
         </ListItem>
@@ -96,11 +103,30 @@ const SidebarNav = () => {
       </List>
       <Divider />
       <List>
+        <ListSubheader inset>Misc</ListSubheader>
         <ListItem button>
           <ListItemIcon>
-            <PersonalVideo />
+            <IconLibraryBooks />
+          </ListItemIcon>
+          <ListItemText primary="Docs" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <IconPersonalVideo />
           </ListItemIcon>
           <ListItemText primary="UI Components" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <IconThumbUp />
+          </ListItemIcon>
+          <ListItemText primary="Support Us" />
+        </ListItem>
+        <ListItem button>
+          <ListItemIcon>
+            <IconStars />
+          </ListItemIcon>
+          <ListItemText primary="Sponsors" />
         </ListItem>
       </List>
     </div>
