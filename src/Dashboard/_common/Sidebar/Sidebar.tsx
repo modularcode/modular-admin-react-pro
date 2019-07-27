@@ -1,10 +1,10 @@
 import React from 'react'
-import { Theme, makeStyles } from '@material-ui/core/styles'
+import { makeStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
-
 import Divider from '@material-ui/core/Divider'
 
+import { Theme } from '_theme'
 import Logo from '_common/Logo/Logo'
 import SidebarNav from './SidebarNav'
 
@@ -28,8 +28,6 @@ const Sidebar = (props: SidebarProps) => {
           <span className={classes.tagline}>ReactJS + MaterialUI</span>
         </Typography>
       </div>
-      <Divider />
-
       <SidebarNav />
     </aside>
   )
@@ -42,6 +40,10 @@ const useStyles = makeStyles((theme: Theme) => ({
     bottom: 0,
     width: '100%',
     height: '100%',
+    color: theme.sidebar.color,
+    background: theme.sidebar.background,
+    overflowX: 'hidden',
+    overflowY: 'auto',
   },
   sidebarHeader: {
     display: 'flex',

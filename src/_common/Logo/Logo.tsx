@@ -39,10 +39,10 @@ const useStyles = makeStyles(theme => ({
     transition: 'all .3s ease',
   },
   outline: {
-    fill: '#619f30',
+    fill: theme.palette.primary.main,
   },
   letter: {
-    fill: '#619f30',
+    fill: theme.palette.primary.main,
   },
 }))
 

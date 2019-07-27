@@ -9,16 +9,13 @@ import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 
 // import PropTypes from 'prop-types'
-
+import { Theme } from '_theme'
 import Header from './_common/Header/Header'
 import Sidebar from './_common/Sidebar/Sidebar'
 import Footer from './_common/Footer/Footer'
 import Main from './Main/Main'
 
 export interface DashboardProps extends RouteComponentProps {}
-
-const drawerWidth = 240
-// const drawerWidthCollapsed =
 
 export default function Dashboard({ match }: DashboardProps) {
   const classes = useStyles()
@@ -58,6 +55,7 @@ export default function Dashboard({ match }: DashboardProps) {
       <div
         className={clsx(
           classes.sidebarContainer,
+          isMobile && classes.sidebarContainerMobile,
           isDesktop && classes.sidebarContainerDesktop,
           isDesktop && isSidebarCollapsedDesktop && classes.sidebarContainerDesktopDrawerCollapsed,
         )}
@@ -114,7 +112,7 @@ export default function Dashboard({ match }: DashboardProps) {
   )
 }
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: Theme) => ({
   dashboardContainer: {
     display: 'flex',
   },
@@ -131,36 +129,40 @@ const useStyles = makeStyles(theme => ({
   },
   headerContainerDesktop: {
     left: 'auto',
-    width: `calc(100% - ${drawerWidth}px)`,
+    width: `calc(100% - ${theme.sidebar.width}px)`,
     transition: theme.transitions.create(['width', 'margin'], {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.enteringScreen,
     }),
   },
   headerContainerDesktopDrawerCollapsed: {
-    width: `calc(100% - ${theme.spacing(7)}px)`,
+    width: `calc(100% - ${theme.sidebar.widthCollapsed}px)`,
   },
   sidebarContainer: {
     position: 'relative',
     [theme.breakpoints.up('sm')]: {
-      width: drawerWidth,
+      width: theme.sidebar.width,
       flexShrink: 0,
     },
     transition: theme.transitions.create('width', {
       easing: theme.transitions.easing.sharp,
       duration: theme.transitions.duration.leavingScreen,
     }),
-    width: theme.spacing(7),
   },
-  sidebarContainerDesktop: {},
+  sidebarContainerMobile: {
+    width: 0,
+  },
+  sidebarContainerDesktop: {
+    width: theme.sidebar.width,
+  },
   sidebarContainerDesktopDrawerCollapsed: {
     [theme.breakpoints.up('sm')]: {
-      width: theme.spacing(7),
+      width: theme.sidebar.widthCollapsed,
     },
   },
   drawer: {},
   drawerMobile: {
-    width: drawerWidth,
+    width: theme.sidebar.width,
   },
   drawerDesktop: {
     width: '100%',
@@ -168,32 +170,7 @@ const useStyles = makeStyles(theme => ({
   },
   drawerDesktopCollapsed: {
     overflowX: 'hidden',
-    // transition: theme.transitions.create('width', {
-    //   easing: theme.transitions.easing.sharp,
-    //   duration: theme.transitions.duration.leavingScreen,
-    // }),
-    // width: theme.spacing(7),
   },
-  // drawerPaper: {
-  //   position: 'relative',
-  //   whiteSpace: 'nowrap',
-  //   width: drawerWidth,
-  //   transition: theme.transitions.create('width', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.enteringScreen,
-  //   }),
-  // },
-  // drawerPaperClose: {
-  //   overflowX: 'hidden',
-  //   transition: theme.transitions.create('width', {
-  //     easing: theme.transitions.easing.sharp,
-  //     duration: theme.transitions.duration.leavingScreen,
-  //   }),
-  //   width: theme.spacing(7),
-  //   [theme.breakpoints.up('sm')]: {
-  //     width: theme.spacing(9),
-  //   },
-  // },
   headerSpacer: theme.mixins.toolbar,
   content: {
     flexGrow: 1,

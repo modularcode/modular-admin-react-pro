@@ -5,7 +5,6 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Avatar from '@material-ui/core/Avatar'
 import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import Badge from '@material-ui/core/Badge'
 // import Menu from '@material-ui/core/Menu'
@@ -36,27 +35,26 @@ const Header = ({ onToggle }: HeaderProps) => {
         >
           <IconMenu />
         </IconButton>
-        <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
-          Dashboard
-        </Typography>
-        <IconButton edge="start" color="inherit" aria-label="Search" className={classes.searchButton}>
-          <IconSearch />
-        </IconButton>
-        {/* <HeaderSearch /> */}
-        <IconButton edge="start" color="inherit" aria-label="Search" className={classes.notificationsButton}>
-          <Badge badgeContent={4} color="secondary">
-            <NotificationsIcon />
-          </Badge>
-        </IconButton>
-        <IconButton edge="start" color="inherit" aria-label="Search" className={classes.profileButton}>
-          <Avatar
-            className={classes.profileAvatar}
-            alt="John Doe"
-            src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=40"
-          />
-          <span className={classes.profileName}>John Doe</span>
-          <IconArrowDropDown />
-        </IconButton>
+        <div className={classes.actions}>
+          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.searchButton}>
+            <IconSearch />
+          </IconButton>
+          {/* <HeaderSearch /> */}
+          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.notificationsButton}>
+            <Badge badgeContent={4} color="secondary">
+              <NotificationsIcon />
+            </Badge>
+          </IconButton>
+          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.profileButton}>
+            <Avatar
+              className={classes.profileAvatar}
+              alt="John Doe"
+              src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=40"
+            />
+            <span className={classes.profileName}>John Doe</span>
+            <IconArrowDropDown />
+          </IconButton>
+        </div>
       </Toolbar>
     </AppBar>
   )
@@ -64,13 +62,15 @@ const Header = ({ onToggle }: HeaderProps) => {
 
 const useStyles = makeStyles(theme => ({
   header: {
-    // background: 'linear-gradient(50deg, #2196F3 30%, #8bc34a 0%)',
-    background: 'inherit',
+    background: '#fff',
     color: theme.palette.primary.main,
     boxShadow: 'none',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
+  },
+  actions: {
+    marginLeft: 'auto',
   },
   menuButton: {
     marginRight: 15,
