@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Route, RouteComponentProps } from 'react-router-dom'
+import { Switch, Route, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -9,10 +9,19 @@ import Hidden from '@material-ui/core/Hidden'
 
 // import PropTypes from 'prop-types'
 import { Theme } from '_theme'
-import Header from './_common/Header/Header'
-import Sidebar from './_common/Sidebar/Sidebar'
-import Footer from './_common/Footer/Footer'
-import Main from './Main/Main'
+import Header from './_common/TheHeader/Header'
+import Sidebar from './_common/TheSidebar/Sidebar'
+import Footer from './_common/TheFooter/Footer'
+import Home from './Home/Home'
+
+// Demo Components
+import Components from './Demo/Components/Components'
+import Features from './Demo/Features/Features'
+import Docs from './Demo/Docs/Docs'
+import Supporters from './Demo/Supporters/Supporters'
+import Discuss from './Demo/Discuss/Discuss'
+
+import NotFound from './NotFound'
 
 export interface DashboardProps extends RouteComponentProps {}
 
@@ -104,7 +113,17 @@ export default function Dashboard({ match }: DashboardProps) {
       </div>
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
-        <Route path={`${match.url}/`} component={Main} />
+        <Switch>
+          <Route path={`${match.url}/`} component={Home} />
+          {/* Demo Pages */}
+          <Route path={`${match.url}demo/components/`} component={Components} />
+          <Route path={`${match.url}demo/features/`} component={Features} />
+          <Route path={`${match.url}demo/docs/`} component={Docs} />
+          <Route path={`${match.url}demo/supporters/`} component={Supporters} />
+          <Route path={`${match.url}demo/discuss/`} component={Discuss} />
+          {/* Not Found */}
+          <Route component={NotFound} />
+        </Switch>
         <Footer />
       </main>
     </div>
@@ -175,6 +194,8 @@ const useStyles = makeStyles((theme: Theme) => ({
     flexGrow: 1,
     height: '100vh',
     overflow: 'auto',
+    flexDirection: 'column',
+    display: 'flex',
   },
   paper: {
     padding: theme.spacing(2),

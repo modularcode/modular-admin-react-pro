@@ -2,7 +2,8 @@ import React from 'react'
 // import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
-import Container from '@material-ui/core/Container'
+import PageContainer from '../_common/BasePageContainer'
+
 // import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
@@ -12,15 +13,10 @@ export default function Customers() {
   const classes = useStyles()
 
   return (
-    <Container maxWidth="lg" className={classes.container}>
+    <PageContainer>
       <Paper>Customers</Paper>
-    </Container>
+    </PageContainer>
   )
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-}))
+const useStyles = makeStyles((theme: Theme) => ({}))
