@@ -28,7 +28,7 @@ const Sidebar = (props: SidebarProps) => {
       <div className={classes.sidebarHeader}>
         <Logo size={30} />
         <Typography component="h2" variant="h6" color="inherit" noWrap className={classes.title}>
-          <span className={classes.name}>ModularAdmin</span>
+          <span className={classes.name}>Material Admin</span>
           <span className={classes.tagline}>ReactJS + MaterialUI</span>
         </Typography>
       </div>
