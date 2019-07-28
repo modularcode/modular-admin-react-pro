@@ -11,7 +11,7 @@ const Logo = (props: LogoProps) => {
 
   return (
     <svg className={classes.Logo} data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 563.82 637.44">
-      <title>Modular Material Admin + React</title>
+      <title>Modular + Material Admin React</title>
       <g>
         <path
           className={clsx(classes.path, classes.outline)}
