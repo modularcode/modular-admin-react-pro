@@ -1,4 +1,12 @@
-# Modular Material Admin: Free MaterialUI Dashboard Theme <br> ReactJS version
+<h1 align="center">Modular Material Admin + React</h1>
+
+<div align="center">
+
+Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **TypeScript** + **Redux** 
+
+**(in development)**
+
+</div>
 
 [![demo](https://repository-images.githubusercontent.com/195131407/1e13e680-b0e9-11e9-816a-14e83befaafb)](http://modular-material-admin-react.modularcode.io/)
 
@@ -7,14 +15,6 @@
     <a href="http://modular-material-admin-react.modularcode.io/" target="_blank">View Demo</a>
   </strong>
 </p>
-
-## Project features
-
-- TypeScript
-- ReactJS
-- Redux
-- React-Router
-- MaterialUI
 
 ## Getting Started
 
