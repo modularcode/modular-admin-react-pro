@@ -1,4 +1,4 @@
-<h1 align="center">Modular + Material Admin React</h1>
+<h1 align="center">Modular Material Admin + React</h1>
 
 <div align="center">
 
