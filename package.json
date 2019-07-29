@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/modularcode/material-admin-react/issues"
   },
-  "homepage" : "http://material-admin-react.modularcode.io",
+  "homepage": "http://material-admin-react.modularcode.io",
   "dependencies": {
     "@material-ui/core": "^4.1.3",
     "@material-ui/icons": "^4.2.1",
@@ -31,6 +31,7 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "recharts": "^1.6.2",
+    "typeface-roboto": "0.0.75",
     "typescript": "3.5.2"
   },
   "scripts": {
