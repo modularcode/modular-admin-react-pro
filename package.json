@@ -21,6 +21,7 @@
     "@types/react-dom": "16.8.4",
     "@types/react-router-dom": "^4.3.4",
     "@types/recharts": "^1.1.17",
+    "cross-env": "^5.2.0",
     "disqus-react": "^1.0.6",
     "eslint-config-react": "^1.1.7",
     "gh-pages": "^2.0.1",
@@ -35,7 +36,7 @@
     "typescript": "3.5.2"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "cross-env TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

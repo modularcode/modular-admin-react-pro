@@ -26,7 +26,7 @@ const Sidebar = (props: SidebarProps) => {
         <Logo size={30} />
         <Typography
           component="h2"
-          variant="h6"
+          variant="h5"
           color="inherit"
           noWrap
           className={classes.title}
@@ -62,8 +62,8 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   logo: {},
   title: (props: SidebarProps) => ({
-    fontSize: '20px',
-    fontWeight: 400,
+    // fontSize: '20px',
+    // fontWeight: 400,
     position: 'relative',
     overflow: 'visible',
     marginLeft: '5px',
