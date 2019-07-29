@@ -23,8 +23,24 @@ const coreTheme = createMuiTheme({
     },
   },
   typography: {
-    // Use the system font instead of the default Roboto font.
-    // fontFamily: ['"Lato"', 'sans-serif'].join(','),
+    h1: {
+      fontSize: '2rem',
+    },
+    h2: {
+      fontSize: '1.8rem',
+    },
+    h3: {
+      fontSize: '1.6rem',
+    },
+    h4: {
+      fontSize: '1.4rem',
+    },
+    h5: {
+      fontSize: '1.2rem',
+    },
+    h6: {
+      fontSize: '1rem',
+    },
   },
 })
 

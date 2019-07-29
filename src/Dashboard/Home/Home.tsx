@@ -4,10 +4,13 @@ import React from 'react'
 
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
+import Typography from '@material-ui/core/Typography'
+import Button from '@material-ui/core/Button'
 
 // import { Theme } from '_theme'
 
 import PageContainer from '../_common/BasePageContainer'
+import PageToolbar from '../_common/BasePageToolbar'
 import Chart from './Chart'
 import Deposits from './Deposits'
 import Orders from './Orders'
@@ -15,8 +18,18 @@ import Orders from './Orders'
 export default function Home() {
   // const classes = useStyles()
 
+  const PageTitle = 'Dashboard'
+
+  const PageActions = (
+    <Button variant="contained" href="#contained-buttons">
+      Link
+    </Button>
+  )
+
   return (
     <PageContainer>
+      <PageToolbar title={PageTitle} actions={PageActions}></PageToolbar>
+
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>

@@ -78,16 +78,31 @@ const Header = ({ onToggle }: HeaderProps) => {
           </Button>
         </div>
         <div className={classes.actions}>
-          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.searchButton}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="Search"
+            className={classes.searchButton}
+          >
             <IconSearch />
           </IconButton>
           {/* <HeaderSearch /> */}
-          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.notificationsButton}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="Search"
+            className={classes.notificationsButton}
+          >
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon />
             </Badge>
           </IconButton>
-          <IconButton edge="start" color="inherit" aria-label="Search" className={classes.profileButton}>
+          <IconButton
+            edge="start"
+            color="inherit"
+            aria-label="Search"
+            className={classes.profileButton}
+          >
             <Avatar
               className={classes.profileAvatar}
               alt="John Doe"
