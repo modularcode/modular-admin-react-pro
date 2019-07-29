@@ -12,20 +12,19 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Collapse from '@material-ui/core/Collapse'
 import Divider from '@material-ui/core/Divider'
 
-import { SvgIconProps } from '@material-ui/core/SvgIcon'
+// import { SvgIconProps } from '@material-ui/core/SvgIcon'
 
 import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import IconSpacer from '@material-ui/icons/FiberManualRecord'
-import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 
 import { Theme } from '_theme'
 
-// Define recursive tree props
+// Runtime check props
 export const SidebarNavListItemPropTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string,
-  // icon: PropTypes.elementType,
+  Icon: PropTypes.elementType,
   isCollapsed: PropTypes.bool,
   isOpen: PropTypes.bool,
   isNested: PropTypes.bool,
@@ -39,13 +38,13 @@ export const SidebarNavListItemPropTypes = {
 export type SidebarNavListItemProps = PropTypes.InferProps<
   typeof SidebarNavListItemPropTypes
 > & {
-  Icon?: React.ComponentType<SvgIconProps>
+  // Icon?: React.ComponentType<SvgIconProps>
   items?: SidebarNavListItemProps[]
 }
 
 export interface ListItemLinkProps extends NavLinkProps {}
 
-export interface ListItemComponentProps extends React.HTMLAttributes<HTMLElement> {
+export interface ListItemComponentProps extends HTMLAttributes<HTMLElement> {
   link?: string | null
   children?: any
   isCollapsed?: boolean | null
@@ -104,11 +103,6 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
       onClick={handleClick}
     >
       {!!ListItemIconInner && <ListItemIcon>{ListItemIconInner}</ListItemIcon>}
-      {/* {!icon && isCollapsed && (
-        <ListItemIcon>
-          <IconSpacer className={classes.iconSpacer} />
-        </ListItemIcon>
-      )} */}
       <ListItemText primary={name} />
       {isExpandable && !isCollapsed && !open && <IconExpandMore />}
       {isExpandable && !isCollapsed && open && <IconExpandLess />}
@@ -160,21 +154,13 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(11),
     },
     navItem: {
-      // padding: 0,
       '&.active': {
-        // color: theme.palette.primary.main,
         background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
-          // display: 'none',
           color: '#fff',
-          // color: theme.palette.primary.main,
         },
       },
     },
-    // navItemLink: {
-    //   width: '100%',
-    //   padding: '8px, 12px',
-    // },
     navItemCollapsed: {
       whiteSpace: 'nowrap',
       flexWrap: 'nowrap',
