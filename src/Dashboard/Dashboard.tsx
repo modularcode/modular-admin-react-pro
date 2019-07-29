@@ -26,8 +26,6 @@ import NotFound from './NotFound'
 export interface DashboardProps extends RouteComponentProps {}
 
 export default function Dashboard({ match }: DashboardProps) {
-  console.log('rerendered Dashboard')
-
   const classes = useStyles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('sm'))
@@ -57,7 +55,9 @@ export default function Dashboard({ match }: DashboardProps) {
         className={clsx(
           classes.headerContainer,
           isDesktop && classes.headerContainerDesktop,
-          isDesktop && isSidebarCollapsedDesktop && classes.headerContainerDesktopDrawerCollapsed,
+          isDesktop &&
+            isSidebarCollapsedDesktop &&
+            classes.headerContainerDesktopDrawerCollapsed,
         )}
       >
         <Header onToggle={handleSidebarToggle} />
@@ -67,7 +67,9 @@ export default function Dashboard({ match }: DashboardProps) {
           classes.sidebarContainer,
           isMobile && classes.sidebarContainerMobile,
           isDesktop && classes.sidebarContainerDesktop,
-          isDesktop && isSidebarCollapsedDesktop && classes.sidebarContainerDesktopDrawerCollapsed,
+          isDesktop &&
+            isSidebarCollapsedDesktop &&
+            classes.sidebarContainerDesktopDrawerCollapsed,
         )}
       >
         <Hidden smUp implementation="css">

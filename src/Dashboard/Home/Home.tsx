@@ -1,11 +1,11 @@
 import React from 'react'
 // import clsx from 'clsx'
-import { makeStyles } from '@material-ui/core/styles'
+// import { makeStyles } from '@material-ui/core/styles'
 
 import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
-import { Theme } from '_theme'
+// import { Theme } from '_theme'
 
 import PageContainer from '../_common/BasePageContainer'
 import Chart from './Chart'
@@ -13,7 +13,7 @@ import Deposits from './Deposits'
 import Orders from './Orders'
 
 export default function Home() {
-  const classes = useStyles()
+  // const classes = useStyles()
 
   return (
     <PageContainer>
@@ -41,9 +41,9 @@ export default function Home() {
   )
 }
 
-const useStyles = makeStyles((theme: Theme) => ({
-  container: {
-    paddingTop: theme.spacing(4),
-    paddingBottom: theme.spacing(4),
-  },
-}))
+// const useStyles = makeStyles((theme: Theme) => ({
+//   container: {
+//     paddingTop: theme.spacing(4),
+//     paddingBottom: theme.spacing(4),
+//   },
+// }))

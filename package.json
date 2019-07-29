@@ -1,7 +1,7 @@
 {
   "name": "@modularcode/material-admin-react",
   "version": "0.1.0",
-  "description": "Modular Material Admin React: Free MaterialUI+ReactJS+TypeScript theme",
+  "description": "Modular Material Admin + React: Free MaterialUI, ReactJS, TypeScript theme",
   "repository": {
     "type": "git",
     "url": "https://github.com/modularcode/material-admin-react.git"

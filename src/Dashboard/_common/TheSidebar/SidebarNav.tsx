@@ -3,7 +3,6 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
-import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import IconDashboard from '@material-ui/icons/Dashboard'
 import IconShoppingCart from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
@@ -15,148 +14,107 @@ import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
 
 import { Theme } from '_theme'
-import SidebarNavListItem from './SidebarNavListItem'
+import SidebarNavListItems from './SidebarNavListItems'
 
-interface SidebarNavProps {
+export interface SidebarNavProps {
   isCollapsed: boolean
-}
-
-interface SidebarNavListItem {
-  name: string
-  link?: string
-  Icon?: React.ComponentType<SvgIconProps>
-  IconStyle?: object
-}
-
-interface SidebarNavListProps {
-  items: SidebarNavListItem[]
-  isNested?: boolean
-  isCollapsed?: boolean
-}
-
-const sidebarNavListItemsMain = [
-  {
-    name: 'Dashboard',
-    link: '/',
-    Icon: IconDashboard,
-  },
-  {
-    name: 'Orders',
-    link: '/orders',
-    Icon: IconShoppingCart,
-  },
-  {
-    name: 'Customers',
-    link: '/customers',
-    Icon: IconPeople,
-  },
-  {
-    name: 'Reports',
-    link: '/reports',
-    Icon: IconBarChart,
-  },
-  {
-    name: 'Other Pages',
-    Icon: IconLibraryBooks,
-    items: [
-      {
-        name: 'Account',
-        link: '/account',
-      },
-      {
-        name: 'Profile',
-        link: '/profile',
-      },
-      {
-        name: 'Login',
-        link: '/auth/login',
-      },
-      {
-        name: 'Signup',
-        link: '/auth/signup',
-      },
-      {
-        name: 'Recover',
-        link: '/auth/recover',
-      },
-      {
-        name: 'Reset',
-        link: '/auth/reset',
-      },
-      {
-        name: 'Search',
-        link: '/auth/search',
-      },
-    ],
-  },
-]
-
-const sidebarNavListItemsUI = [
-  {
-    name: 'Dashboard',
-    link: '/demo/components',
-    Icon: IconPersonalVideo,
-  },
-]
-
-const sidebarNavListItemsMisc = [
-  {
-    name: 'Why Modular?',
-    link: '/demo/features',
-    Icon: IconNewReleases,
-    IconStyle: {
-      color: '#95de3c',
-    },
-  },
-  {
-    name: 'Docs',
-    link: '/demo/docs',
-    Icon: IconLibraryBooks,
-    IconStyle: {
-      color: '#f8cda9',
-    },
-  },
-  {
-    name: 'Supporters',
-    link: '/demo/supporters',
-    Icon: IconStars,
-    IconStyle: {
-      color: '#e3b546',
-    },
-  },
-  {
-    name: 'Discuss',
-    link: '/demo/discuss',
-    Icon: IconQuestionAnswer,
-    IconStyle: {
-      color: '#ccc',
-    },
-  },
-]
-
-const SidebarNavListItems: React.FC<SidebarNavListProps> = (
-  props: SidebarNavListProps,
-) => {
-  const { items = [], isCollapsed = false, isNested = false } = props
-  // const classes = useStyles()
-
-  return (
-    <>
-      {items.map(item => (
-        <SidebarNavListItem
-          {...item}
-          isCollapsed={isCollapsed}
-          isNested={isNested}
-          key={item.name || item.link}
-        />
-      ))}
-    </>
-  )
 }
 
 const SidebarNav = (props: SidebarNavProps) => {
   const { isCollapsed } = props
   const classes = useStyles()
+
+  const sidebarNavListItemsMain = [
+    {
+      name: 'Dashboard',
+      link: '/',
+      Icon: IconDashboard,
+    },
+    {
+      name: 'Orders',
+      link: '/orders',
+      Icon: IconShoppingCart,
+    },
+    {
+      name: 'Customers',
+      link: '/customers',
+      Icon: IconPeople,
+    },
+    {
+      name: 'Reports',
+      link: '/reports',
+      Icon: IconBarChart,
+    },
+    {
+      name: 'Other Pages',
+      Icon: IconLibraryBooks,
+      items: [
+        {
+          name: 'Account',
+          link: '/account',
+        },
+        {
+          name: 'Profile',
+          link: '/profile',
+        },
+        {
+          name: 'Login',
+          link: '/auth/login',
+        },
+        {
+          name: 'Signup',
+          link: '/auth/signup',
+        },
+        {
+          name: 'Recover',
+          link: '/auth/recover',
+        },
+        {
+          name: 'Reset',
+          link: '/auth/reset',
+        },
+        {
+          name: 'Search',
+          link: '/auth/search',
+        },
+      ],
+    },
+  ]
+
+  const sidebarNavListItemsUI = [
+    {
+      name: 'Dashboard',
+      link: '/demo/components',
+      Icon: IconPersonalVideo,
+    },
+  ]
+
+  const sidebarNavListItemsMisc = [
+    {
+      name: 'Why Modular?',
+      link: '/demo/features',
+      Icon: IconNewReleases,
+      IconClassName: classes.iconFeatures,
+    },
+    {
+      name: 'Docs',
+      link: '/demo/docs',
+      Icon: IconLibraryBooks,
+      IconClassName: classes.iconDocs,
+    },
+    {
+      name: 'Supporters',
+      link: '/demo/supporters',
+      Icon: IconStars,
+      IconClassName: classes.iconSupporters,
+    },
+    {
+      name: 'Discuss',
+      link: '/demo/discuss',
+      Icon: IconQuestionAnswer,
+      IconClassName: classes.iconDiscuss,
+    },
+  ]
 
   return (
     <div>
@@ -196,6 +154,18 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     navList: {
       width: theme.sidebar.width,
+    },
+    iconFeatures: {
+      color: '#95de3c',
+    },
+    iconDocs: {
+      color: '#f8cda9',
+    },
+    iconSupporters: {
+      color: '#e3b546',
+    },
+    iconDiscuss: {
+      color: '#ccc',
     },
   }),
 )

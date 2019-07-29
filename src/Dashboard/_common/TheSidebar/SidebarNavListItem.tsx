@@ -1,5 +1,5 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
-import PropTypes, { any } from 'prop-types'
+import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -12,8 +12,7 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Collapse from '@material-ui/core/Collapse'
 import Divider from '@material-ui/core/Divider'
 
-// import { SvgIconProps } from '@material-ui/core/SvgIcon'
-
+import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import IconSpacer from '@material-ui/icons/FiberManualRecord'
@@ -25,6 +24,9 @@ export const SidebarNavListItemPropTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string,
   Icon: PropTypes.elementType,
+  IconStyles: PropTypes.object,
+  IconClassName: PropTypes.string,
+  IconClassNameActive: PropTypes.string,
   isCollapsed: PropTypes.bool,
   isOpen: PropTypes.bool,
   isNested: PropTypes.bool,
@@ -38,7 +40,9 @@ export const SidebarNavListItemPropTypes = {
 export type SidebarNavListItemProps = PropTypes.InferProps<
   typeof SidebarNavListItemPropTypes
 > & {
-  // Icon?: React.ComponentType<SvgIconProps>
+  Icon?: React.ComponentType<SvgIconProps>
+  IconStyles?: React.CSSProperties
+  IconClassName?: string
   items?: SidebarNavListItemProps[]
 }
 
@@ -62,20 +66,38 @@ export const ListItemLink: React.ExoticComponent<NavLinkProps> = forwardRef(
 export const ListItemComponent: React.ExoticComponent<
   ListItemComponentProps
 > = forwardRef((props: ListItemComponentProps, ref: React.Ref<HTMLDivElement>) => {
+  // Omit isCollapsed
+  const { isCollapsed, ...newProps } = props
+  const classes = useStyles()
+
   const component =
     typeof props.link === 'string' ? (
-      <ListItem {...props} button component={ListItemLink} to={props.link} />
+      <ListItem {...newProps} button component={ListItemLink} to={props.link} />
     ) : (
-      <ListItem {...props} button ref={ref} />
+      <ListItem {...newProps} button ref={ref} />
     )
 
-  return <div ref={ref}>{component}</div>
+  return (
+    <div ref={ref} className={clsx(isCollapsed && classes.navItemCollapsedWrapper)}>
+      {component}
+    </div>
+  )
 })
 
 const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   props: SidebarNavListItemProps,
 ) => {
-  const { name, link, Icon, isCollapsed, isNested, className, items = [] } = props
+  const {
+    name,
+    link,
+    Icon,
+    IconStyles = {},
+    IconClassName = '',
+    isCollapsed,
+    isNested,
+    className,
+    items = [],
+  } = props
   const isTooltipEnabeld = isCollapsed
   const classes = useStyles()
   const isExpandable = items && items.length > 0
@@ -102,10 +124,14 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
       isCollapsed={isCollapsed}
       onClick={handleClick}
     >
-      {!!ListItemIconInner && <ListItemIcon>{ListItemIconInner}</ListItemIcon>}
+      {!!ListItemIconInner && (
+        <ListItemIcon style={IconStyles} className={IconClassName}>
+          {ListItemIconInner}
+        </ListItemIcon>
+      )}
       <ListItemText primary={name} />
-      {isExpandable && !isCollapsed && !open && <IconExpandMore />}
-      {isExpandable && !isCollapsed && open && <IconExpandLess />}
+      {isExpandable && !open && <IconExpandMore className={classes.iconToggle} />}
+      {isExpandable && open && <IconExpandLess className={classes.iconToggle} />}
     </ListItemComponent>
   )
 
@@ -154,6 +180,7 @@ const useStyles = makeStyles((theme: Theme) =>
       paddingLeft: theme.spacing(11),
     },
     navItem: {
+      position: 'relative',
       '&.active': {
         background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
@@ -165,7 +192,18 @@ const useStyles = makeStyles((theme: Theme) =>
       whiteSpace: 'nowrap',
       flexWrap: 'nowrap',
       width: theme.sidebar.widthCollapsed,
+      '& $iconToggle': {
+        position: 'absolute',
+        bottom: -1,
+        fontSize: 14,
+        left: '50%',
+        marginLeft: '-0.5em',
+      },
     },
+    navItemCollapsedWrapper: {
+      width: theme.sidebar.widthCollapsed,
+    },
+    iconToggle: {},
     iconSpacer: {
       fontSize: 13,
       marginLeft: 6,

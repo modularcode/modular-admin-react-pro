@@ -2,7 +2,6 @@ import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
 import Typography from '@material-ui/core/Typography'
-import Divider from '@material-ui/core/Divider'
 
 import { Theme } from '_theme'
 import Logo from '_common/Logo/Logo'
@@ -17,9 +16,7 @@ interface SidebarProps {
 }
 
 const Sidebar = (props: SidebarProps) => {
-  console.log('rerendered Sidebar')
-
-  const { isDesktop, isMobile, isSidebarCollapsedDesktop } = props
+  const { isDesktop, isSidebarCollapsedDesktop } = props
 
   const classes = useStyles(props)
 
@@ -27,7 +24,13 @@ const Sidebar = (props: SidebarProps) => {
     <aside className={classes.sidebar}>
       <div className={classes.sidebarHeader}>
         <Logo size={30} />
-        <Typography component="h2" variant="h6" color="inherit" noWrap className={classes.title}>
+        <Typography
+          component="h2"
+          variant="h6"
+          color="inherit"
+          noWrap
+          className={classes.title}
+        >
           <span className={classes.name}>Material Admin</span>
           <span className={classes.tagline}>ReactJS + MaterialUI</span>
         </Typography>
