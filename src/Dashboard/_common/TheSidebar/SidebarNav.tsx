@@ -14,6 +14,7 @@ import Collapse from '@material-ui/core/Collapse'
 
 import Tooltip from '@material-ui/core/Tooltip'
 
+import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import IconDashboard from '@material-ui/icons/Dashboard'
 import IconShoppingCart from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
@@ -37,7 +38,7 @@ interface SidebarNavProps {
 interface SidebarNavListItem {
   name: string
   link?: string
-  icon?: React.ElementType<any>
+  Icon?: React.ComponentType<SvgIconProps>
 }
 
 interface SidebarNavListProps {
@@ -47,43 +48,33 @@ interface SidebarNavListProps {
 }
 
 const sidebarNavListItemsMain = [
-  // {
-  //   name: 'Dashboard',
-  //   link: '/',
-  //   icon: IconDashboard,
-  // },
-  // {
-  //   name: 'Orders',
-  //   link: '/orders',
-  //   icon: IconShoppingCart,
-  // },
-  // {
-  //   name: 'Customers',
-  //   link: '/customers',
-  //   icon: IconPeople,
-  // },
-  // {
-  //   name: 'Reports',
-  //   link: '/reports',
-  //   icon: IconBarChart,
-  // },
+  {
+    name: 'Dashboard',
+    link: '/',
+    Icon: IconDashboard,
+  },
+  {
+    name: 'Orders',
+    link: '/orders',
+    Icon: IconShoppingCart,
+  },
+  {
+    name: 'Customers',
+    link: '/customers',
+    Icon: IconPeople,
+  },
+  {
+    name: 'Reports',
+    link: '/reports',
+    Icon: IconBarChart,
+  },
   {
     name: 'Other Pages',
-    icon: IconLibraryBooks,
+    Icon: IconLibraryBooks,
     items: [
       {
         name: 'Account',
         link: '/account',
-        items: [
-          {
-            name: 'Level three',
-            link: '/profile',
-          },
-          {
-            name: 'Level Three',
-            link: '/auth/login',
-          },
-        ],
       },
       {
         name: 'Profile',
@@ -102,64 +93,47 @@ const sidebarNavListItemsMain = [
         link: '/auth/recover',
       },
       {
-        name: 'Recover',
+        name: 'Reset',
         link: '/auth/reset',
       },
       {
-        name: 'Recover',
+        name: 'Search',
         link: '/auth/search',
       },
     ],
   },
 ]
 
-const sidebarNavListItemsMainPages = [
+const sidebarNavListItemsUI = [
   {
-    name: 'Account',
-    link: '/account',
-  },
-  {
-    name: 'Profile',
-    link: '/profile',
-  },
-  {
-    name: 'Login',
-    link: '/auth/login',
-  },
-  {
-    name: 'Signup',
-    link: '/auth/signup',
-  },
-  {
-    name: 'Recover',
-    link: '/auth/recover',
-  },
-  {
-    name: 'Recover',
-    link: '/auth/reset',
-  },
-  {
-    name: 'Recover',
-    link: '/auth/search',
+    name: 'Dashboard',
+    link: '/demo/components',
+    Icon: IconPersonalVideo,
   },
 ]
-// const sidebarNavLinksUI = []
-// const sidebarNavLinksMisc = []
 
-// const createSidebarNavList: SidebarNavListCreator = ({ items, withTooltips }) => {
-//   return (
-//     <>
-//       {items.map(item => (
-//         <ListItem button component={ListItemLink} className={classes.navItem} to="/">
-//           <ListItemIcon>
-//             <IconDashboard />
-//           </ListItemIcon>
-//           <ListItemText primary="Dashboard" />
-//         </ListItem>
-//       ))}
-//     </>
-//   )
-// }
+const sidebarNavListItemsMisc = [
+  {
+    name: 'Why Modular?',
+    link: '/demo/features',
+    Icon: IconNewReleases,
+  },
+  {
+    name: 'Docs',
+    link: '/demo/docs',
+    Icon: IconLibraryBooks,
+  },
+  {
+    name: 'Supporters',
+    link: '/demo/supporters',
+    Icon: IconStars,
+  },
+  {
+    name: 'Discuss',
+    link: '/demo/discuss',
+    Icon: IconQuestionAnswer,
+  },
+]
 
 const SidebarNavListItems: React.FC<SidebarNavListProps> = (
   props: SidebarNavListProps,
@@ -203,18 +177,24 @@ const SidebarNav = (props: SidebarNavProps) => {
         )}
 
         <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMain} />
-
-        <Collapse in={open} timeout="auto" unmountOnExit>
-          <Divider />
-          <List component="div" disablePadding>
-            <SidebarNavListItems
-              isCollapsed={isCollapsed}
-              isNested={true}
-              items={sidebarNavListItemsMainPages}
-            />
-          </List>
-        </Collapse>
       </List>
+      <List className={classes.navList}>
+        {!isCollapsed && (
+          <ListSubheader inset disableSticky={true} className={classes.navItem}>
+            UI & Utils
+          </ListSubheader>
+        )}
+        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsUI} />
+      </List>
+      <List className={classes.navList}>
+        {!isCollapsed && (
+          <ListSubheader inset disableSticky={true}>
+            Misc
+          </ListSubheader>
+        )}
+        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMisc} />
+      </List>
+
       {/* <List className={classes.navList}>
         {!isCollapsed && (
           <ListSubheader inset disableSticky={true} className={classes.navItem}>

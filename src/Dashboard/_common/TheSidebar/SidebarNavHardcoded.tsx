@@ -54,7 +54,9 @@ interface SidebarNavListProps {
 interface ListItemLinkProps extends NavLinkProps {}
 
 const ListItemLink: React.ExoticComponent<ListItemLinkProps> = forwardRef(
-  (props: ListItemLinkProps, ref: React.Ref<HTMLAnchorElement>) => <NavLink exact {...props} innerRef={ref} />,
+  (props: ListItemLinkProps, ref: React.Ref<HTMLAnchorElement>) => (
+    <NavLink exact {...props} innerRef={ref} />
+  ),
 )
 
 const SidebarNav = (props: SidebarNavProps) => {
@@ -85,21 +87,36 @@ const SidebarNav = (props: SidebarNavProps) => {
           <ListItemText primary="Dashboard" />
         </ListItem>
 
-        <ListItem component={ListItemLink} button to="/orders" className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          button
+          to="/orders"
+          className={classes.navItem}
+        >
           <ListItemIcon>
             <IconShoppingCart />
           </ListItemIcon>
           <ListItemText primary="Orders" />
         </ListItem>
 
-        <ListItem component={ListItemLink} button to="/customers" className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          button
+          to="/customers"
+          className={classes.navItem}
+        >
           <ListItemIcon>
             <IconPeople />
           </ListItemIcon>
           <ListItemText primary="Customers" />
         </ListItem>
 
-        <ListItem component={ListItemLink} button to="/reports" className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          button
+          to="/reports"
+          className={classes.navItem}
+        >
           <ListItemIcon>
             <IconBarChart />
           </ListItemIcon>
@@ -116,7 +133,12 @@ const SidebarNav = (props: SidebarNavProps) => {
         <Collapse in={open} timeout="auto" unmountOnExit>
           <Divider />
           <List component="div" disablePadding>
-            <ListItem component={ListItemLink} button to="/account" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/account"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -125,7 +147,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Account" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/profile" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/profile"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -134,7 +161,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Profile" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/auth/login" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/auth/login"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -143,7 +175,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Login" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/auth/signup" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/auth/signup"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -152,7 +189,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Signup" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/auth/recover" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/auth/recover"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -161,7 +203,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Recover" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/auth/reset" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/auth/reset"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -170,7 +217,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Reset" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/search" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/search"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -179,7 +231,12 @@ const SidebarNav = (props: SidebarNavProps) => {
               <ListItemText primary="Search" />
             </ListItem>
 
-            <ListItem component={ListItemLink} button to="/not-found" className={classes.navItem}>
+            <ListItem
+              component={ListItemLink}
+              button
+              to="/not-found"
+              className={classes.navItem}
+            >
               {!isCollapsed && (
                 <ListItemIcon>
                   <IconSpacer />
@@ -196,7 +253,12 @@ const SidebarNav = (props: SidebarNavProps) => {
             UI & Utils
           </ListSubheader>
         )}
-        <ListItem component={ListItemLink} button to="/demo/components" className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          button
+          to="/demo/components"
+          className={classes.navItem}
+        >
           <ListItemIcon>
             <IconPersonalVideo />
           </ListItemIcon>
@@ -209,27 +271,47 @@ const SidebarNav = (props: SidebarNavProps) => {
             Misc
           </ListSubheader>
         )}
-        <ListItem component={ListItemLink} to="/demo/features" button className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          to="/demo/features"
+          button
+          className={classes.navItem}
+        >
           <ListItemIcon className={classes.iconFeatures}>
             <IconNewReleases />
           </ListItemIcon>
           <ListItemText primary="Why Modular?" />
         </ListItem>
-        <ListItem component={ListItemLink} to="/demo/docs" button className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          to="/demo/docs"
+          button
+          className={classes.navItem}
+        >
           <ListItemIcon className={classes.iconDocs}>
             <IconLibraryBooks />
           </ListItemIcon>
           <ListItemText primary="Docs" />
         </ListItem>
 
-        <ListItem component={ListItemLink} to="/demo/supporters" button className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          to="/demo/supporters"
+          button
+          className={classes.navItem}
+        >
           <ListItemIcon className={classes.iconSponsors}>
             <IconStars />
           </ListItemIcon>
           <ListItemText primary="Supporters" />
         </ListItem>
 
-        <ListItem component={ListItemLink} to="/demo/discuss" button className={classes.navItem}>
+        <ListItem
+          component={ListItemLink}
+          to="/demo/discuss"
+          button
+          className={classes.navItem}
+        >
           <ListItemIcon className={classes.iconDiscuss}>
             <IconQuestionAnswer />
           </ListItemIcon>

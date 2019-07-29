@@ -12,9 +12,12 @@ import Tooltip from '@material-ui/core/Tooltip'
 import Collapse from '@material-ui/core/Collapse'
 import Divider from '@material-ui/core/Divider'
 
+import { SvgIconProps } from '@material-ui/core/SvgIcon'
+
 import IconExpandLess from '@material-ui/icons/ExpandLess'
 import IconExpandMore from '@material-ui/icons/ExpandMore'
 import IconSpacer from '@material-ui/icons/FiberManualRecord'
+import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 
 import { Theme } from '_theme'
 
@@ -22,7 +25,7 @@ import { Theme } from '_theme'
 export const SidebarNavListItemPropTypes = {
   name: PropTypes.string.isRequired,
   link: PropTypes.string,
-  icon: PropTypes.node,
+  // icon: PropTypes.elementType,
   isCollapsed: PropTypes.bool,
   isOpen: PropTypes.bool,
   isNested: PropTypes.bool,
@@ -36,6 +39,7 @@ export const SidebarNavListItemPropTypes = {
 export type SidebarNavListItemProps = PropTypes.InferProps<
   typeof SidebarNavListItemPropTypes
 > & {
+  Icon?: React.ComponentType<SvgIconProps>
   items?: SidebarNavListItemProps[]
 }
 
@@ -44,14 +48,7 @@ export interface ListItemLinkProps extends NavLinkProps {}
 export interface ListItemComponentProps extends React.HTMLAttributes<HTMLElement> {
   link?: string | null
   children?: any
-}
-
-export interface ListItemElementProps {
-  children?: any
-}
-
-export interface ListItemRootProps {
-  children?: any
+  isCollapsed?: boolean | null
 }
 
 // ----------------------------------------------------------------------
@@ -63,61 +60,23 @@ export const ListItemLink: React.ExoticComponent<NavLinkProps> = forwardRef(
 )
 
 // Can be a link, or button
-export const ListItemComponent: React.FC<ListItemComponentProps> = props => {
-  if (typeof props.link === 'string') {
-    return <ListItem {...props} button component={ListItemLink} to={props.link} />
-  } else {
-    return <ListItem {...props} button />
-  }
-}
+export const ListItemComponent: React.ExoticComponent<
+  ListItemComponentProps
+> = forwardRef((props: ListItemComponentProps, ref: React.Ref<HTMLDivElement>) => {
+  const component =
+    typeof props.link === 'string' ? (
+      <ListItem {...props} button component={ListItemLink} to={props.link} />
+    ) : (
+      <ListItem {...props} button ref={ref} />
+    )
 
-const ListItemRoot: React.FC<SidebarNavListItemProps> = (
-  props: SidebarNavListItemProps,
-) => {
-  const classes = useStyles()
-  const {
-    name,
-    link,
-    isCollapsed,
-    isNested,
-    className,
-    items = [],
-    isOpen = false,
-  } = props
-  const isExpandable = items && items.length > 0
-  // Disable the tooltip if the item is not collapsed
-  // <Tooltip
-  //   disableFocusListener={!isTooltipEnabeld}
-  //   disableHoverListener={!isTooltipEnabeld}
-  //   disableTouchListener={!isTooltipEnabeld}
-  //   title={name}
-  //   placement="right"
-  // >
-  return (
-    <ListItemComponent
-      link={link}
-      className={clsx(
-        classes.navItem,
-        isCollapsed && classes.navItemCollapsed,
-        isNested && !isCollapsed && classes.nested,
-        className,
-      )}
-    >
-      <ListItemText primary={name} />
-
-      {isExpandable && !isOpen && <IconExpandMore />}
-      {isExpandable && isOpen && <IconExpandLess />}
-    </ListItemComponent>
-  )
-  // </Tooltip>
-}
-
-// const ListItemRootWithTooltip = null
+  return <div ref={ref}>{component}</div>
+})
 
 const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   props: SidebarNavListItemProps,
 ) => {
-  const { name, link, isCollapsed, isNested, className, items = [] } = props
+  const { name, link, Icon, isCollapsed, isNested, className, items = [] } = props
   const isTooltipEnabeld = isCollapsed
   const classes = useStyles()
   const isExpandable = items && items.length > 0
@@ -127,14 +86,12 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     setOpen(!open)
   }
 
-  const ListItemRoot = (
-    // <Tooltip
-    //   disableFocusListener={!isTooltipEnabeld}
-    //   disableHoverListener={!isTooltipEnabeld}
-    //   disableTouchListener={!isTooltipEnabeld}
-    //   title={name}
-    //   placement="right"
-    // >
+  const ListItemIconInner =
+    (!!Icon && <Icon />) ||
+    (isCollapsed && <IconSpacer className={classes.iconSpacer} />) ||
+    ''
+
+  const ListItemElement = (
     <ListItemComponent
       link={link}
       className={clsx(
@@ -143,14 +100,33 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
         isNested && !isCollapsed && classes.nested,
         className,
       )}
+      isCollapsed={isCollapsed}
       onClick={handleClick}
     >
+      {!!ListItemIconInner && <ListItemIcon>{ListItemIconInner}</ListItemIcon>}
+      {/* {!icon && isCollapsed && (
+        <ListItemIcon>
+          <IconSpacer className={classes.iconSpacer} />
+        </ListItemIcon>
+      )} */}
       <ListItemText primary={name} />
-
-      {isExpandable && !open && <IconExpandMore />}
-      {isExpandable && open && <IconExpandLess />}
+      {isExpandable && !isCollapsed && !open && <IconExpandMore />}
+      {isExpandable && !isCollapsed && open && <IconExpandLess />}
     </ListItemComponent>
-    // </Tooltip>
+  )
+
+  const ListItemRoot = isTooltipEnabeld ? (
+    <Tooltip
+      disableFocusListener={!isTooltipEnabeld}
+      disableHoverListener={!isTooltipEnabeld}
+      disableTouchListener={!isTooltipEnabeld}
+      title={name}
+      placement="right"
+    >
+      {ListItemElement}
+    </Tooltip>
+  ) : (
+    ListItemElement
   )
 
   const ListItemChildren = isExpandable ? (
