@@ -13,7 +13,7 @@ import Sidebar from './_common/TheSidebar/Sidebar'
 import Footer from './_common/TheFooter/Footer'
 
 // App pages
-import Home from './Home/Home'
+import Main from './Main/Main'
 import Orders from './Orders/Orders'
 import Customers from './Customers/Customers'
 import Reports from './Reports/Reports'
@@ -120,7 +120,7 @@ export default function Dashboard({ match }: DashboardProps) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         <Switch>
-          <Route path={`${match.url}/`} component={Home} />
+          <Route path={`${match.url}/`} component={Main} />
           <Route path={`${match.url}orders/`} component={Orders} />
           <Route path={`${match.url}customers/`} component={Customers} />
           <Route path={`${match.url}reports/`} component={Reports} />

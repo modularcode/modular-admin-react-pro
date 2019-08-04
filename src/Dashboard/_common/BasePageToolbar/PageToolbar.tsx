@@ -9,7 +9,9 @@ import { Theme } from '_theme'
 
 export interface PageToolbarProps {
   title?: React.ReactNode
-  actions?: React.ReactNode
+  titleComponent?: React.ComponentType<any>
+  actions?: React.ReactElement<any>
+  actionsComponent?: React.ComponentType<any>
   classes?: {
     container?: string
     titleContainer?: string
@@ -21,13 +23,15 @@ const PageToolbar: React.FC<PageToolbarProps> = (props: PageToolbarProps) => {
   const classes = useStyles()
   const userClasses = props.classes || {}
 
-  const Title = (
+  const Title = props.title ? (
     <Typography variant="h3" component="h1">
       {props.title}
     </Typography>
-  )
+  ) : null
+  const TitleComponent = props.titleComponent
 
   const Actions = props.actions
+  const ActionsComponent = props.actionsComponent
 
   return (
     <Grid
@@ -42,7 +46,8 @@ const PageToolbar: React.FC<PageToolbarProps> = (props: PageToolbarProps) => {
         container
         className={clsx(classes.titleContainer, userClasses.titleContainer)}
       >
-        {Title}
+        {Title && Title}
+        {TitleComponent && <TitleComponent />}
       </Grid>
       <Grid
         item
@@ -51,7 +56,8 @@ const PageToolbar: React.FC<PageToolbarProps> = (props: PageToolbarProps) => {
         container
         className={clsx(classes.actionsContainer, userClasses.titleContainer)}
       >
-        {Actions}
+        {Actions && Actions}
+        {ActionsComponent && <ActionsComponent />}
       </Grid>
     </Grid>
   )

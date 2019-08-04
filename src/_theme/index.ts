@@ -27,6 +27,47 @@ const coreTheme = createMuiTheme({
     MuiMenu: {
       elevation: 1,
     },
+    MuiCard: {
+      elevation: 0,
+    },
+  },
+  overrides: {
+    MuiButton: {
+      root: {
+        '&$focusVisible': {
+          boxShadow: 'none',
+        },
+      },
+      contained: {
+        boxShadow: 'none',
+        '&:active': {
+          boxShadow: 'none',
+        },
+        '&:focus': {
+          boxShadow: 'none',
+        },
+      },
+      containedSecondary: {
+        color: '#fff',
+        '&:hover': {
+          backgroundColor: 'rgb(118, 195, 21)',
+        },
+      },
+    },
+    MuiButtonGroup: {
+      root: {
+        boxShadow: 'none',
+      },
+      contained: {
+        boxShadow: 'none',
+        '&:active': {
+          boxShadow: 'none',
+        },
+        '&:focus': {
+          boxShadow: 'none',
+        },
+      },
+    },
   },
   palette: {
     secondary: {
