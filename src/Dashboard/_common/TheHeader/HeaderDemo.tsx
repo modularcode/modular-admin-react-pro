@@ -2,6 +2,8 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 
 import { makeStyles } from '@material-ui/core/styles'
+import useMediaQuery from '@material-ui/core/useMediaQuery'
+import Tooltip from '@material-ui/core/Tooltip'
 import Button from '@material-ui/core/Button'
 import IconCode from '@material-ui/icons/Code'
 import IconFavorite from '@material-ui/icons/Favorite'
@@ -11,42 +13,48 @@ import IconStar from '@material-ui/icons/Star'
 //   <Link innerRef={ref as any} {...props} />
 // ))
 
-const HeaderDemo = () => {
-  const classes = useStyles()
+const HeaderDemo: React.FC<any> = props => {
+  const classes = useStyles(props)
 
   return (
     <div className={classes.demo}>
-      <Button
-        size="small"
-        variant="outlined"
-        color="primary"
-        className={classes.button}
-        href="https://github.com/modularcode/material-admin-react"
-      >
-        <IconCode className={classes.demoIcon} />
-        View on GitHub
-      </Button>
-      <Button
-        component={Link}
-        size="small"
-        variant="outlined"
-        color="primary"
-        className={classes.button}
-        to="/demo/supporters"
-      >
-        <IconFavorite className={classes.demoIcon} />
-        Support Us
-      </Button>
-      <Button
-        size="small"
-        variant="outlined"
-        color="primary"
-        className={classes.button}
-        href="https://github.com/modularcode/material-admin-react/stargazers"
-      >
-        <IconStar className={classes.demoIcon} />
-        Rate Us
-      </Button>
+      <Tooltip title="View on GitHub">
+        <Button
+          size="small"
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+          href="https://github.com/modularcode/material-admin-react"
+        >
+          <IconCode className={classes.demoIcon} />
+          <span className={classes.demoName}>View on GitHub</span>
+        </Button>
+      </Tooltip>
+      <Tooltip title="Help the project!">
+        <Button
+          component={Link}
+          size="small"
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+          to="/demo/supporters"
+        >
+          <IconFavorite className={classes.demoIcon} />
+          <span className={classes.demoName}>Support Us</span>
+        </Button>
+      </Tooltip>
+      <Tooltip title="Star us on GitHub!">
+        <Button
+          size="small"
+          variant="outlined"
+          color="primary"
+          className={classes.button}
+          href="https://github.com/modularcode/material-admin-react/stargazers"
+        >
+          <IconStar className={classes.demoIcon} />
+          <span className={classes.demoName}>Rate Us</span>
+        </Button>
+      </Tooltip>
     </div>
   )
 }
@@ -58,11 +66,18 @@ const useStyles = makeStyles(theme => ({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  demoIcon: {
-    marginRight: theme.spacing(1),
+  demoIcon: {},
+  demoName: {
+    marginLeft: theme.spacing(1),
+    [theme.breakpoints.down('md')]: {
+      display: 'none',
+    },
   },
   button: {
     margin: theme.spacing(1),
+    [theme.breakpoints.down('md')]: {
+      margin: 3,
+    },
   },
 }))
 

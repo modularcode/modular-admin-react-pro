@@ -5,13 +5,13 @@ import { makeStyles } from '@material-ui/core/styles'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import IconButton from '@material-ui/core/IconButton'
-import Badge from '@material-ui/core/Badge'
+
 import IconMenu from '@material-ui/icons/Menu'
 
-import IconNotifications from '@material-ui/icons/Notifications'
+import HeaderDemo from './HeaderDemo'
 
 import HeaderSearch from './HeaderSearch'
-import HeaderDemo from './HeaderDemo'
+import HeaderNotifications from './HeaderNotifications'
 import HeaderProfile from './HeaderProfile'
 
 interface HeaderProps {
@@ -36,16 +36,7 @@ const Header = ({ onToggle }: HeaderProps) => {
         <HeaderDemo />
         <div className={classes.actions}>
           <HeaderSearch />
-          <IconButton
-            edge="start"
-            color="inherit"
-            aria-label="Search"
-            className={classes.notificationsButton}
-          >
-            <Badge badgeContent={4} color="secondary">
-              <IconNotifications />
-            </Badge>
-          </IconButton>
+          <HeaderNotifications />
           <HeaderProfile />
         </div>
       </Toolbar>
@@ -56,15 +47,11 @@ const Header = ({ onToggle }: HeaderProps) => {
 const useStyles = makeStyles(theme => ({
   header: {
     background: '#fff',
-    color: theme.palette.primary.main,
+    color: '#7b7b7b',
     boxShadow: 'none',
   },
-  toolbar: {
-    paddingRight: 24, // keep right padding when drawer closed
-  },
-  menuButton: {
-    marginRight: 15,
-  },
+  toolbar: {},
+  menuButton: {},
   actions: {
     marginLeft: 'auto',
     alignItems: 'center',

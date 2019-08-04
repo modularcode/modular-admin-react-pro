@@ -1,5 +1,4 @@
 import React, { forwardRef, HTMLAttributes } from 'react'
-import PropTypes from 'prop-types'
 import clsx from 'clsx'
 
 import { makeStyles, createStyles } from '@material-ui/core/styles'
@@ -19,31 +18,19 @@ import IconSpacer from '@material-ui/icons/FiberManualRecord'
 
 import { Theme } from '_theme'
 
-// Runtime check props
-export const SidebarNavListItemPropTypes = {
-  name: PropTypes.string.isRequired,
-  link: PropTypes.string,
-  Icon: PropTypes.elementType,
-  IconStyles: PropTypes.object,
-  IconClassName: PropTypes.string,
-  IconClassNameActive: PropTypes.string,
-  isCollapsed: PropTypes.bool,
-  isOpen: PropTypes.bool,
-  isNested: PropTypes.bool,
-  className: PropTypes.string,
-  items: PropTypes.array,
-}
-
-// Infer properties from runtime prop types
-// https://dev.to/busypeoples/notes-on-typescript-inferring-react-proptypes-1g88
-// Add recursion support
-export type SidebarNavListItemProps = PropTypes.InferProps<
-  typeof SidebarNavListItemPropTypes
-> & {
+export interface SidebarNavListItemProps {
+  name: string
+  link?: string
   Icon?: React.ComponentType<SvgIconProps>
   IconStyles?: React.CSSProperties
   IconClassName?: string
+  IconClassNameActive?: string
+  isCollapsed?: boolean
+  isOpen?: boolean
+  isNested?: boolean
+  className?: string
   items?: SidebarNavListItemProps[]
+  match?: object
 }
 
 export interface ListItemLinkProps extends NavLinkProps {}
@@ -100,8 +87,11 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   } = props
   const isTooltipEnabeld = isCollapsed
   const classes = useStyles()
-  const isExpandable = items && items.length > 0
-  const [open, setOpen] = React.useState(false)
+  const hasChildren = items && items.length > 0
+  const hasChildrenAndIsActive =
+    hasChildren && items.filter(item => item.link === window.location.pathname).length > 0
+  const isOpen = hasChildrenAndIsActive || false
+  const [open, setOpen] = React.useState(isOpen)
 
   function handleClick() {
     setOpen(!open)
@@ -119,6 +109,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
         classes.navItem,
         isCollapsed && classes.navItemCollapsed,
         isNested && !isCollapsed && classes.nested,
+        hasChildrenAndIsActive && 'active',
         className,
       )}
       isCollapsed={isCollapsed}
@@ -130,8 +121,8 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
         </ListItemIcon>
       )}
       <ListItemText primary={name} />
-      {isExpandable && !open && <IconExpandMore className={classes.iconToggle} />}
-      {isExpandable && open && <IconExpandLess className={classes.iconToggle} />}
+      {hasChildren && !open && <IconExpandMore className={classes.iconToggle} />}
+      {hasChildren && open && <IconExpandLess className={classes.iconToggle} />}
     </ListItemComponent>
   )
 
@@ -149,7 +140,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     ListItemElement
   )
 
-  const ListItemChildren = isExpandable ? (
+  const ListItemChildren = hasChildren ? (
     <Collapse in={open} timeout="auto" unmountOnExit>
       <Divider />
       <List component="div" disablePadding>

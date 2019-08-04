@@ -28,7 +28,7 @@ export interface DashboardProps extends RouteComponentProps {}
 export default function Dashboard({ match }: DashboardProps) {
   const classes = useStyles()
   const theme = useTheme()
-  const isDesktop = useMediaQuery(theme.breakpoints.up('sm'))
+  const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
   const isMobile = !isDesktop
 
   const [isSidebarOpenMobile, setIsSidebarOpenMobile] = React.useState(false)
@@ -72,7 +72,7 @@ export default function Dashboard({ match }: DashboardProps) {
             classes.sidebarContainerDesktopDrawerCollapsed,
         )}
       >
-        <Hidden smUp implementation="css">
+        <Hidden mdUp implementation="css">
           <Drawer
             variant="temporary"
             anchor={theme.direction === 'rtl' ? 'right' : 'left'}
@@ -93,7 +93,7 @@ export default function Dashboard({ match }: DashboardProps) {
             />
           </Drawer>
         </Hidden>
-        <Hidden xsDown implementation="css">
+        <Hidden smDown implementation="css">
           <Drawer
             classes={{
               paper: clsx(
@@ -161,7 +161,7 @@ const useStyles = makeStyles((theme: Theme) => ({
   },
   sidebarContainer: {
     position: 'relative',
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: theme.sidebar.width,
       flexShrink: 0,
     },
@@ -177,7 +177,7 @@ const useStyles = makeStyles((theme: Theme) => ({
     width: theme.sidebar.width,
   },
   sidebarContainerDesktopDrawerCollapsed: {
-    [theme.breakpoints.up('sm')]: {
+    [theme.breakpoints.up('md')]: {
       width: theme.sidebar.widthCollapsed,
     },
   },

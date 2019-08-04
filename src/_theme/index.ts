@@ -30,7 +30,7 @@ const coreTheme = createMuiTheme({
   },
   palette: {
     secondary: {
-      main: indigo[600],
+      main: '#8cd136', //indigo[600],
     },
     primary: {
       main: blue[600], //'#619f30',
@@ -66,7 +66,7 @@ const theme = {
   sidebar: {
     width: 240,
     widthCollapsed: coreTheme.spacing(7),
-    background: '#535454;',
+    background: '#4a4d5a;',
     color: '#fff',
   },
   sidebarWidth: 240,

@@ -103,7 +103,7 @@ const useStyles = makeStyles(theme => ({
     marginRight: 10,
   },
   profileName: {
-    fontWeight: 'bold',
+    fontWeight: 500,
     marginRight: 5,
     [theme.breakpoints.down('sm')]: {
       display: 'none',
