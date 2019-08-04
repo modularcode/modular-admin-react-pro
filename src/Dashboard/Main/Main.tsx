@@ -14,7 +14,8 @@ import PageToolbar from '../_common/BasePageToolbar'
 // Submodules
 import MainActions from './MainActions'
 import Deposits from './Deposits'
-import Orders from './Orders'
+import MainOrders from './MainOrders'
+import MainHistory from './MainHistory'
 
 export default function Overview() {
   // const classes = useStyles()
@@ -28,13 +29,7 @@ export default function Overview() {
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={8} lg={9}>
-          <Card>
-            <CardContent>
-              Im the mtf card
-              {/* <p className={classes.cardCategory}>Revenue</p> */}
-              {/* <h3 className={classes.cardTitle}>$34,245</h3> */}
-            </CardContent>
-          </Card>
+          <MainHistory />
         </Grid>
         {/* Recent Deposits */}
         <Grid item xs={12} md={4} lg={3}>
@@ -44,9 +39,7 @@ export default function Overview() {
         </Grid>
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <Paper>
-            <Orders />
-          </Paper>
+          <MainOrders />
         </Grid>
       </Grid>
     </PageContainer>

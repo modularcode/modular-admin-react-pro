@@ -4,7 +4,8 @@ import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
 import IconDashboard from '@material-ui/icons/Dashboard'
-import IconShoppingCart from '@material-ui/icons/ShoppingCart'
+import IconProducts from '@material-ui/icons/LocalMall'
+import IconOrders from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
 import IconBarChart from '@material-ui/icons/BarChart'
 import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
@@ -31,9 +32,14 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconDashboard,
     },
     {
+      name: 'Products',
+      link: '/products',
+      Icon: IconProducts,
+    },
+    {
       name: 'Orders',
       link: '/orders',
-      Icon: IconShoppingCart,
+      Icon: IconOrders,
     },
     {
       name: 'Customers',
