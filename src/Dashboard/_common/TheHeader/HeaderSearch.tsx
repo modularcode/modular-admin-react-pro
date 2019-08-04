@@ -45,6 +45,9 @@ const HeaderSearch = () => {
       >
         <DialogTitle id="dashboard-search">Search...</DialogTitle>
         <DialogContent>
+          <DialogContentText>
+            You may provide some extra search hints here
+          </DialogContentText>
           <TextField
             autoFocus
             margin="dense"
