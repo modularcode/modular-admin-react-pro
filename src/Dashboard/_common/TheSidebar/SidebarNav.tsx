@@ -83,7 +83,7 @@ const SidebarNav = (props: SidebarNavProps) => {
 
   const sidebarNavListItemsUI = [
     {
-      name: 'Dashboard',
+      name: 'UI Components',
       link: '/demo/components',
       Icon: IconPersonalVideo,
     },

@@ -1,5 +1,5 @@
 import { Theme as MuiTheme, createMuiTheme } from '@material-ui/core/styles'
-import { blue, indigo } from '@material-ui/core/colors'
+import { blue } from '@material-ui/core/colors'
 
 export interface Theme extends MuiTheme {
   sidebar: {

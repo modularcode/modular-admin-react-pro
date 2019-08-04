@@ -7,14 +7,18 @@ import useMediaQuery from '@material-ui/core/useMediaQuery'
 import Drawer from '@material-ui/core/Drawer'
 import Hidden from '@material-ui/core/Hidden'
 
-// import PropTypes from 'prop-types'
 import { Theme } from '_theme'
 import Header from './_common/TheHeader/Header'
 import Sidebar from './_common/TheSidebar/Sidebar'
 import Footer from './_common/TheFooter/Footer'
-import Home from './Home/Home'
 
-// Demo Components
+// App pages
+import Home from './Home/Home'
+import Orders from './Orders/Orders'
+import Customers from './Customers/Customers'
+import Reports from './Reports/Reports'
+
+// Demo pages
 import Components from './Demo/Components/Components'
 import Features from './Demo/Features/Features'
 import Docs from './Demo/Docs/Docs'
@@ -117,6 +121,9 @@ export default function Dashboard({ match }: DashboardProps) {
         <div className={classes.headerSpacer} />
         <Switch>
           <Route path={`${match.url}/`} component={Home} />
+          <Route path={`${match.url}orders/`} component={Orders} />
+          <Route path={`${match.url}customers/`} component={Customers} />
+          <Route path={`${match.url}reports/`} component={Reports} />
           {/* Demo Pages */}
           <Route path={`${match.url}demo/components/`} component={Components} />
           <Route path={`${match.url}demo/features/`} component={Features} />
