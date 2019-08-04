@@ -135,6 +135,7 @@ export default function Dashboard({ match }: DashboardProps) {
 const useStyles = makeStyles((theme: Theme) => ({
   dashboardContainer: {
     display: 'flex',
+    background: '#f5f5f5',
   },
   headerContainer: {
     top: 0,

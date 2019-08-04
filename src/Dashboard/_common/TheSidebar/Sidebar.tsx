@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
-import { Link, LinkProps } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
 import { Theme } from '_theme'
