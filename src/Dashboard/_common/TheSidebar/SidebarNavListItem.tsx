@@ -168,7 +168,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     nested: {
-      paddingLeft: theme.spacing(11),
+      paddingLeft: theme.spacing(10),
     },
     navItem: {
       position: 'relative',

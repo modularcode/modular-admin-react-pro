@@ -33,8 +33,25 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
     {
       name: 'Products',
-      link: '/products',
       Icon: IconProducts,
+      items: [
+        {
+          name: 'All Products',
+          link: '/products',
+        },
+        {
+          name: 'Add New',
+          link: '/products/new',
+        },
+        {
+          name: 'Categories',
+          link: '/products/categories',
+        },
+        {
+          name: 'Tags',
+          link: '/products/tags',
+        },
+      ],
     },
     {
       name: 'Orders',
@@ -155,9 +172,6 @@ const SidebarNav = (props: SidebarNavProps) => {
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    nested: {
-      paddingLeft: theme.spacing(11),
-    },
     navList: {
       width: theme.sidebar.width,
     },
