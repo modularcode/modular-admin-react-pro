@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { ReactSVGElement } from 'react'
 import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
 interface LogoProps {
+  className?: string
   size?: number
 }
 
@@ -11,7 +12,7 @@ const Logo = (props: LogoProps) => {
 
   return (
     <svg
-      className={classes.Logo}
+      className={clsx(classes.Logo, props.className)}
       data-name="Layer 1"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 563.82 637.44"
@@ -44,10 +45,10 @@ const useStyles = makeStyles(theme => ({
     transition: 'all .3s ease',
   },
   outline: {
-    fill: theme.palette.primary.main,
+    fill: 'currentColor',
   },
   letter: {
-    fill: theme.palette.primary.main,
+    fill: 'currentColor',
   },
 }))
 

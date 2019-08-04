@@ -2,7 +2,7 @@
 
 <div align="center">
 
-Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **TypeScript** + **Redux** 
+Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **TypeScript** + **Redux**
 
 **(in development)**
 
@@ -51,7 +51,16 @@ You can learn more in the [Create React App documentation](https://facebook.gith
 To learn React, check out the [React documentation](https://reactjs.org/).
 
 
-# Useful docs
+## Useful links
+
+#### Icons
+https://material.io/resources/icons/
+
+
+#### Adding polls
+https://github.com/isaacs/github/issues/1533
+
+#### TypeScript
 
 Infering React properties TypeScript definition from React runtime PropTypes
 https://dev.to/busypeoples/notes-on-typescript-inferring-react-proptypes-1g88

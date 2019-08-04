@@ -74,7 +74,7 @@ export const ListItemComponent: React.ExoticComponent<
     typeof props.link === 'string' ? (
       <ListItem {...newProps} button component={ListItemLink} to={props.link} />
     ) : (
-      <ListItem {...newProps} button ref={ref} />
+      <ListItem {...newProps} button />
     )
 
   return (

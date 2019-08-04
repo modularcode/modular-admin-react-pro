@@ -50,12 +50,12 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconLibraryBooks,
       items: [
         {
-          name: 'Account',
-          link: '/account',
-        },
-        {
           name: 'Profile',
           link: '/profile',
+        },
+        {
+          name: 'Settings',
+          link: '/settings',
         },
         {
           name: 'Login',
@@ -118,7 +118,7 @@ const SidebarNav = (props: SidebarNavProps) => {
 
   return (
     <div>
-      <List className={classes.navList}>
+      <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader inset disableSticky={true}>
             Main Modules
@@ -127,7 +127,7 @@ const SidebarNav = (props: SidebarNavProps) => {
 
         <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMain} />
       </List>
-      <List className={classes.navList}>
+      <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader inset disableSticky={true}>
             UI & Utils
@@ -135,7 +135,7 @@ const SidebarNav = (props: SidebarNavProps) => {
         )}
         <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsUI} />
       </List>
-      <List className={classes.navList}>
+      <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader inset disableSticky={true}>
             Misc

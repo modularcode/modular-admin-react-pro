@@ -14,6 +14,20 @@ export interface Theme extends MuiTheme {
 }
 
 const coreTheme = createMuiTheme({
+  props: {
+    MuiPaper: {
+      elevation: 0,
+    },
+    MuiAppBar: {
+      elevation: 1,
+    },
+    MuiButton: {
+      // elevation: 0,
+    },
+    MuiMenu: {
+      elevation: 1,
+    },
+  },
   palette: {
     secondary: {
       main: indigo[600],

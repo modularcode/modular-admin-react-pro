@@ -1,6 +1,7 @@
 import React from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 
+import { Link, LinkProps } from 'react-router-dom'
 import Typography from '@material-ui/core/Typography'
 
 import { Theme } from '_theme'
@@ -23,17 +24,19 @@ const Sidebar = (props: SidebarProps) => {
   return (
     <aside className={classes.sidebar}>
       <div className={classes.sidebarHeader}>
-        <Logo size={30} />
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          noWrap
-          className={classes.title}
-        >
-          <span className={classes.name}>Material Admin</span>
-          <span className={classes.tagline}>ReactJS + MaterialUI</span>
-        </Typography>
+        <Link to="/" className={classes.sidebarTitleLink}>
+          <Logo size={30} className={classes.logo} />
+          <Typography
+            component="h2"
+            variant="h5"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            <span className={classes.name}>Material Admin</span>
+            <span className={classes.tagline}>ReactJS + MaterialUI</span>
+          </Typography>
+        </Link>
       </div>
       <SidebarNav isCollapsed={isDesktop && isSidebarCollapsedDesktop} />
     </aside>
@@ -60,7 +63,19 @@ const useStyles = makeStyles((theme: Theme) => ({
     padding: '0 8px',
     ...theme.mixins.toolbar,
   },
-  logo: {},
+  sidebarTitleLink: {
+    textDecoration: 'none',
+    color: 'inherit',
+    display: 'flex',
+    // '&:hover': {
+    //   '& $logo': {
+    //     color: '#fff',
+    //   },
+    // },
+  },
+  logo: {
+    color: theme.palette.primary.main,
+  },
   title: (props: SidebarProps) => ({
     // fontSize: '20px',
     // fontWeight: 400,
