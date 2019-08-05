@@ -29,7 +29,7 @@ const HeaderDemo: React.FC<any> = props => {
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Help the project!">
+      <Tooltip title="Help to keep the project active!">
         <Button
           component={Link}
           size="small"
