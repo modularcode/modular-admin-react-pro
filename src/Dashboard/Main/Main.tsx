@@ -28,15 +28,15 @@ export default function Overview() {
 
       <Grid container spacing={3}>
         {/* Chart */}
-        <Grid item xs={12} md={8} lg={8}>
+        <Grid item xs={12} md={12} lg={12}>
           <MainHistory />
         </Grid>
         {/* Recent Deposits */}
-        <Grid item xs={12} md={4} lg={4}>
+        {/* <Grid item xs={12} md={4} lg={4}>
           <Paper>
             <Deposits />
           </Paper>
-        </Grid>
+        </Grid> */}
         {/* Recent Orders */}
         <Grid item xs={12}>
           <MainOrders />
