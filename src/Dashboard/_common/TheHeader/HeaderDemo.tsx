@@ -23,13 +23,13 @@ const HeaderDemo: React.FC<any> = props => {
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/material-admin-react"
+          href="https://github.com/modularcode/modular-material-admin-react"
         >
           <IconCode className={classes.demoIcon} />
           <span className={classes.demoName}>View on GitHub</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Help to keep the project active!">
+      <Tooltip title="Help me to keep the project active!">
         <Button
           component={Link}
           size="small"
@@ -39,19 +39,19 @@ const HeaderDemo: React.FC<any> = props => {
           to="/demo/supporters"
         >
           <IconFavorite className={classes.demoIcon} />
-          <span className={classes.demoName}>Support Us</span>
+          <span className={classes.demoName}>Support Me</span>
         </Button>
       </Tooltip>
-      <Tooltip title="Star us on GitHub!">
+      <Tooltip title="Star the project on GitHub!">
         <Button
           size="small"
           variant="outlined"
           color="primary"
           className={classes.button}
-          href="https://github.com/modularcode/material-admin-react/stargazers"
+          href="https://github.com/modularcode/modular-material-admin-react/stargazers"
         >
           <IconStar className={classes.demoIcon} />
-          <span className={classes.demoName}>Rate Us</span>
+          <span className={classes.demoName}>Rate</span>
         </Button>
       </Tooltip>
     </div>
