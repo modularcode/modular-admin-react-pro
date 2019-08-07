@@ -20,7 +20,7 @@ import MainHistory from './MainHistory'
 export default function Overview() {
   // const classes = useStyles()
 
-  const PageTitle = 'Dashboard'
+  const PageTitle = 'Sales Dashboard'
 
   return (
     <PageContainer>

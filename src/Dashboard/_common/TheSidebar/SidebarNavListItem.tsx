@@ -9,7 +9,7 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Tooltip from '@material-ui/core/Tooltip'
 import Collapse from '@material-ui/core/Collapse'
-import Divider from '@material-ui/core/Divider'
+// import Divider from '@material-ui/core/Divider'
 
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import IconExpandLess from '@material-ui/icons/ExpandLess'
@@ -92,8 +92,27 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   const isTooltipEnabeld = isCollapsed
   const classes = useStyles()
   const hasChildren = items && items.length > 0
+
+  // Flattened array of all children
+  function getItemsAll(items: SidebarNavListItemProps[]): SidebarNavListItemProps[] {
+    return items.reduce(
+      (allItems: SidebarNavListItemProps[], item: SidebarNavListItemProps) => {
+        // let res = allItems.concat([item])
+
+        if (item.items && item.items.length) {
+          return allItems.concat([item], getItemsAll(item.items))
+        } else {
+          return allItems.concat([item])
+        }
+      },
+      [],
+    )
+  }
+
+  const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
-    hasChildren && items.filter(item => item.link === window.location.pathname).length > 0
+    hasChildren &&
+    itemsAll.filter(item => item.link === window.location.pathname).length > 0
   const isOpen = hasChildrenAndIsActive || false
   const [open, setOpen] = React.useState(isOpen)
 
@@ -154,29 +173,36 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   )
 
   const ListItemChildren = hasChildren ? (
-    <Collapse in={open} timeout="auto" unmountOnExit>
-      <Divider />
-      <List component="div" disablePadding>
-        {items.map(item => (
-          <SidebarNavListItem
-            {...item}
-            isNested={true}
-            nestingLevel={nestingLevel + 1}
-            isCollapsed={isCollapsed}
-            key={item.name || item.link}
-            isOpen={open}
-            nestingOffset={nestingOffsetChildren}
-          />
-        ))}
-      </List>
-    </Collapse>
+    <div className={clsx(classes.navItemChildren)}>
+      <Collapse in={open} timeout="auto" unmountOnExit>
+        {/* <Divider /> */}
+        <List component="div" disablePadding>
+          {items.map(item => (
+            <SidebarNavListItem
+              {...item}
+              isNested={true}
+              nestingLevel={nestingLevel + 1}
+              isCollapsed={isCollapsed}
+              key={item.name || item.link}
+              isOpen={open}
+              nestingOffset={nestingOffsetChildren}
+            />
+          ))}
+        </List>
+      </Collapse>
+    </div>
   ) : null
 
   return (
-    <>
+    <div
+      className={clsx(
+        hasChildrenAndIsActive && classes.navItemWrapperActive,
+        hasChildrenAndIsActive && isCollapsed && classes.navItemWrapperActiveCollapsed,
+      )}
+    >
       {ListItemRoot}
       {ListItemChildren}
-    </>
+    </div>
   )
 }
 
@@ -185,14 +211,33 @@ const useStyles = makeStyles((theme: Theme) =>
     // nested: {
     //   paddingLeft: theme.spacing(10),
     // },
+    navItemWrapper: {
+      position: 'relative',
+    },
+    navItemWrapperActive: {
+      // background: 'rgba(0, 0, 0, 0.08)',
+    },
+    navItemWrapperActiveCollapsed: {
+      background: 'rgba(0, 0, 0, 0.08)',
+    },
     navItem: {
       position: 'relative',
+      transition: 'background .23s ease',
       '&.active': {
-        background: 'rgba(0, 0, 0, 0.08)',
+        color: theme.palette.secondary.main,
+        // background: 'rgba(0, 0, 0, 0.08)',
         '& .MuiListItemIcon-root': {
-          color: '#fff',
+          // color: '#fff',
+          color: theme.palette.secondary.main,
         },
       },
+    },
+    navItemChildren: {
+      transition: 'background .23s ease',
+      // position: 'absolute',
+    },
+    navItemChildrenActive: {
+      // background: 'rgba(0, 0, 0, 0.1)',
     },
     navItemCollapsed: {
       whiteSpace: 'nowrap',
@@ -204,6 +249,9 @@ const useStyles = makeStyles((theme: Theme) =>
         fontSize: 14,
         left: '50%',
         marginLeft: '-0.5em',
+      },
+      '&.active': {
+        background: 'rgba(0, 0, 0, 0.08)',
       },
     },
     navItemCollapsedWrapper: {

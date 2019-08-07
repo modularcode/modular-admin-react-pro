@@ -13,7 +13,7 @@ export interface Theme extends MuiTheme {
   }
 }
 
-const coreTheme = createMuiTheme({
+const baseTheme = createMuiTheme({
   props: {
     MuiPaper: {
       elevation: 0,
@@ -73,6 +73,11 @@ const coreTheme = createMuiTheme({
         },
       },
     },
+    MuiListItemIcon: {
+      root: {
+        minWidth: 40,
+      },
+    },
   },
   palette: {
     secondary: {
@@ -104,17 +109,21 @@ const coreTheme = createMuiTheme({
   },
 })
 
-const theme = {
-  ...coreTheme,
+const adminTheme = {
   header: {
     background: '#fff',
   },
   sidebar: {
-    width: 250,
-    widthCollapsed: coreTheme.spacing(7),
+    width: 255,
+    widthCollapsed: baseTheme.spacing(7),
     background: '#4a4d5a;',
     color: '#fff',
   },
+}
+
+const theme = {
+  ...baseTheme,
+  ...adminTheme,
 }
 
 export default theme

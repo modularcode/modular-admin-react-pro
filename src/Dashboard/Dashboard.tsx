@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Switch, Route, RouteComponentProps } from 'react-router-dom'
+import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -31,6 +31,8 @@ import Demo from './Demo'
 // import Docs from './Demo/Docs/Docs'
 // import Supporters from './Demo/Supporters/Supporters'
 // import Discuss from './Demo/Discuss/Discuss'
+
+const loggedIn = true
 
 export interface DashboardProps extends RouteComponentProps {}
 
@@ -125,12 +127,23 @@ export default function Dashboard({ match }: DashboardProps) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         <Switch>
-          <Route path={`${match.url}/account`} component={Account} />
-          <Route path={`${match.url}/profile`} component={Profile} />
-          <Route path={`${match.url}/sales`} component={Sales} />
-          <Route path={`${match.url}/content`} component={Content} />
-          <Route path={`${match.url}/admin`} component={Admin} />
-          <Route path={`${match.url}/demo`} component={Demo} />
+          <Route
+            exact
+            path="/"
+            render={() =>
+              loggedIn ? (
+                <Redirect to="/sales/dashboard" />
+              ) : (
+                <Redirect to="/auth/login" />
+              )
+            }
+          />
+          <Route path={`/sales`} component={Sales} />
+          <Route path={`/content`} component={Content} />
+          <Route path={`/admin`} component={Admin} />
+          <Route path={`/account`} component={Account} />
+          <Route path={`/profile`} component={Profile} />
+          <Route path={`/demo`} component={Demo} />
           <Route component={NotFound} />
 
           {/* <Route path={`${match.url}/`} component={Main} />

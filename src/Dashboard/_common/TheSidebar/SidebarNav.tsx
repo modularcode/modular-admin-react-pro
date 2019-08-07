@@ -7,7 +7,7 @@ import IconSales from '@material-ui/icons/MonetizationOn'
 import IconContent from '@material-ui/icons/ViewWeek'
 import IconProfile from '@material-ui/icons/AccountBox'
 import IconAccount from '@material-ui/icons/AccountBalance' //
-import IconAdmin from '@material-ui/icons/DeviceHub'
+import IconAdmin from '@material-ui/icons/VpnKey'
 import IconMisc from '@material-ui/icons/MoreHoriz'
 
 import IconDashboard from '@material-ui/icons/Dashboard'
@@ -35,10 +35,10 @@ const SidebarNav = (props: SidebarNavProps) => {
   const { isCollapsed } = props
   const classes = useStyles()
 
-  const sidebarNavListItemsSales = [
+  const itemsSales = [
     {
-      name: 'Dashboard',
-      link: '/',
+      name: 'Sales Dashboard',
+      link: '/sales/dashboard',
       Icon: IconDashboard,
     },
     {
@@ -47,31 +47,31 @@ const SidebarNav = (props: SidebarNavProps) => {
       items: [
         {
           name: 'All Products',
-          link: '/products',
+          link: '/sales/products',
         },
         {
           name: 'Add New',
-          link: '/products/new',
+          link: '/sales/products/new',
         },
         {
           name: 'Categories',
-          link: '/products/categories',
+          link: '/sales/products/categories',
         },
       ],
     },
     {
       name: 'Orders',
-      link: '/orders',
+      link: '/sales/orders',
       Icon: IconOrders,
     },
     {
       name: 'Customers',
-      link: '/customers',
+      link: '/sales/customers',
       Icon: IconPeople,
     },
   ]
 
-  const sidebarNavListItemsContent = [
+  const itemsContent = [
     {
       name: 'All Items',
       link: '/content/items',
@@ -87,7 +87,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsProfile = [
+  const itemsProfile = [
     {
       name: 'My Profile',
       link: '/profile',
@@ -100,7 +100,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsAccount = [
+  const itemsAccount = [
     {
       name: 'My Account',
       link: '/account',
@@ -118,7 +118,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsAuth = [
+  const itemsAuth = [
     {
       name: 'Login',
       link: '/auth/login',
@@ -137,7 +137,12 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsAdmin = [
+  const itemsAdmin = [
+    {
+      name: 'Admin Dashboard',
+      link: '/admin/dashboard',
+      Icon: IconDashboard,
+    },
     {
       name: 'Accounts',
       link: '/admin/accounts',
@@ -150,58 +155,59 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsMisc = [
+  const itemsMisc = [
     {
       name: 'Search',
       link: '/search',
-      // Icon: IconPersonalVideo,
     },
     {
       name: 'Not Found',
       link: '/notfound',
-      // Icon: IconPersonalVideo,
     },
   ]
 
-  const sidebarNavListItemsModules = [
+  const itemsAppModules = [
     {
       name: 'Sales & Ecommerce',
-      items: sidebarNavListItemsSales,
+      items: itemsSales,
       Icon: IconSales,
     },
     {
-      name: 'Items Manager',
-      items: sidebarNavListItemsContent,
+      name: 'Content Management',
+      items: itemsContent,
       Icon: IconContent,
     },
     {
+      name: 'Administration',
+      items: itemsAdmin,
+      Icon: IconAdmin,
+    },
+  ]
+
+  const itemsCoreModules = [
+    {
       name: 'Profile',
-      items: sidebarNavListItemsProfile,
+      items: itemsProfile,
       Icon: IconProfile,
     },
     {
       name: 'Account',
-      items: sidebarNavListItemsAccount,
+      items: itemsAccount,
       Icon: IconAccount,
     },
     {
-      name: 'Administration',
-      items: sidebarNavListItemsAdmin,
-      Icon: IconAdmin,
-    },
-    {
       name: 'Auth',
-      items: sidebarNavListItemsAuth,
+      items: itemsAuth,
       Icon: IconPreson,
     },
     {
       name: 'Misc Pages',
-      items: sidebarNavListItemsMisc,
+      items: itemsMisc,
       Icon: IconMisc,
     },
   ]
 
-  const sidebarNavListItemsUI = [
+  const itemsUI = [
     {
       name: 'UI Components',
       link: '/demo/components',
@@ -209,7 +215,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsTheme = [
+  const itemsTheme = [
     {
       name: 'Why Modular?',
       link: '/demo/features',
@@ -240,94 +246,21 @@ const SidebarNav = (props: SidebarNavProps) => {
     <div>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Core Modules
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
+            Applications
           </ListSubheader>
         )}
-        <SidebarNavListItems
-          isCollapsed={isCollapsed}
-          items={sidebarNavListItemsModules}
-        />
-      </List>
-
-      {/* <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Sales & Ecommerce
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsSales} />
+        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsAppModules} />
       </List>
 
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Content & Management
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
+            Basic Functionality
           </ListSubheader>
         )}
-
-        <SidebarNavListItems
-          isCollapsed={isCollapsed}
-          items={sidebarNavListItemsContent}
-        />
+        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsCoreModules} />
       </List>
-
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Profile
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems
-          isCollapsed={isCollapsed}
-          items={sidebarNavListItemsProfile}
-        />
-      </List>
-
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Account
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems
-          isCollapsed={isCollapsed}
-          items={sidebarNavListItemsAccount}
-        />
-      </List>
-
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Authentication
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsAuth} />
-      </List>
-
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Global Administration
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsAdmin} />
-      </List>
-
-      <List className={classes.navList} disablePadding>
-        {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Misc Pages
-          </ListSubheader>
-        )}
-
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMisc} />
-      </List> */}
 
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
@@ -335,15 +268,15 @@ const SidebarNav = (props: SidebarNavProps) => {
             UI & Utils
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsUI} />
+        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsUI} />
       </List>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
             Misc
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsTheme} />
+        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsTheme} />
       </List>
     </div>
   )
@@ -357,6 +290,9 @@ const useStyles = makeStyles((theme: Theme) =>
       fontWeight: 400,
       lineHeight: 1.5,
       letterSpacing: '0.00938em',
+    },
+    navListHeader: {
+      textAlign: 'center',
     },
     iconFeatures: {
       color: '#95de3c',
