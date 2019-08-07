@@ -10,22 +10,27 @@ import Hidden from '@material-ui/core/Hidden'
 import { Theme } from '_theme'
 import Header from './_common/TheHeader/Header'
 import Sidebar from './_common/TheSidebar/Sidebar'
-import Footer from './_common/TheFooter/Footer'
+import Footer from './_common/TheFooter'
 
-// App pages
-import Main from './Main/Main'
-import Orders from './Orders/Orders'
-import Customers from './Customers/Customers'
-import Reports from './Reports/Reports'
+// Import application core modules
+import Account from './Account'
+import Profile from './Profile'
+import Sales from './Sales'
+import Content from './Content'
+import Admin from './Admin'
+import NotFound from './NotFound'
+import Demo from './Demo'
+
+// import Orders from './Sales/Orders/Orders'
+// import Customers from './Sales/Customers/Customers'
+// import Reports from './Reports/Reports'
 
 // Demo pages
-import Components from './Demo/Components/Components'
-import Features from './Demo/Features/Features'
-import Docs from './Demo/Docs/Docs'
-import Supporters from './Demo/Supporters/Supporters'
-import Discuss from './Demo/Discuss/Discuss'
-
-import NotFound from './NotFound'
+// import Components from './Demo/Components/Components'
+// import Features from './Demo/Features/Features'
+// import Docs from './Demo/Docs/Docs'
+// import Supporters from './Demo/Supporters/Supporters'
+// import Discuss from './Demo/Discuss/Discuss'
 
 export interface DashboardProps extends RouteComponentProps {}
 
@@ -120,18 +125,22 @@ export default function Dashboard({ match }: DashboardProps) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         <Switch>
-          <Route path={`${match.url}/`} component={Main} />
+          <Route path={`${match.url}/account`} component={Account} />
+          <Route path={`${match.url}/profile`} component={Profile} />
+          <Route path={`${match.url}/sales`} component={Sales} />
+          <Route path={`${match.url}/content`} component={Content} />
+          <Route path={`${match.url}/admin`} component={Admin} />
+          <Route path={`${match.url}/demo`} component={Demo} />
+          <Route component={NotFound} />
+
+          {/* <Route path={`${match.url}/`} component={Main} />
           <Route path={`${match.url}orders/`} component={Orders} />
           <Route path={`${match.url}customers/`} component={Customers} />
-          <Route path={`${match.url}reports/`} component={Reports} />
-          {/* Demo Pages */}
           <Route path={`${match.url}demo/components/`} component={Components} />
           <Route path={`${match.url}demo/features/`} component={Features} />
           <Route path={`${match.url}demo/docs/`} component={Docs} />
           <Route path={`${match.url}demo/supporters/`} component={Supporters} />
-          <Route path={`${match.url}demo/discuss/`} component={Discuss} />
-          {/* Not Found */}
-          <Route component={NotFound} />
+          <Route path={`${match.url}demo/discuss/`} component={Discuss} /> */}
         </Switch>
         <Footer />
       </main>

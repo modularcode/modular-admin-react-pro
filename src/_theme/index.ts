@@ -110,13 +110,11 @@ const theme = {
     background: '#fff',
   },
   sidebar: {
-    width: 240,
+    width: 280,
     widthCollapsed: coreTheme.spacing(7),
     background: '#4a4d5a;',
     color: '#fff',
   },
-  sidebarWidth: 240,
-  sidebarWidthCollapsed: coreTheme.spacing(7),
 }
 
 export default theme

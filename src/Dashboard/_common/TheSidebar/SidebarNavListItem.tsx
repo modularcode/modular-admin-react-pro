@@ -28,6 +28,7 @@ export interface SidebarNavListItemProps {
   isCollapsed?: boolean
   isOpen?: boolean
   isNested?: boolean
+  nestingLevel?: number
   className?: string
   items?: SidebarNavListItemProps[]
   match?: object
@@ -82,6 +83,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     IconClassName = '',
     isCollapsed,
     isNested,
+    nestingLevel = 0,
     className,
     items = [],
   } = props
@@ -102,6 +104,8 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     (isCollapsed && <IconSpacer className={classes.iconSpacer} />) ||
     ''
 
+  const hasDisplayIcon = !!ListItemIconInner
+
   const ListItemElement = (
     <ListItemComponent
       link={link}
@@ -112,6 +116,10 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
         hasChildrenAndIsActive && 'active',
         className,
       )}
+      style={{
+        fontSize: `${1 - 0.1 * nestingLevel}em`,
+        paddingLeft: `${16 + nestingLevel * 20}px`,
+      }}
       isCollapsed={isCollapsed}
       onClick={handleClick}
     >
@@ -120,7 +128,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
           {ListItemIconInner}
         </ListItemIcon>
       )}
-      <ListItemText primary={name} />
+      <ListItemText primary={name} inset={!ListItemIconInner} disableTypography={true} />
       {hasChildren && !open && <IconExpandMore className={classes.iconToggle} />}
       {hasChildren && open && <IconExpandLess className={classes.iconToggle} />}
     </ListItemComponent>
@@ -148,6 +156,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
           <SidebarNavListItem
             {...item}
             isNested={true}
+            nestingLevel={nestingLevel + 1}
             isCollapsed={isCollapsed}
             key={item.name || item.link}
             isOpen={open}
