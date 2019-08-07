@@ -1,6 +1,6 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Switch, Route, RouteComponentProps } from 'react-router-dom'
+import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -10,22 +10,29 @@ import Hidden from '@material-ui/core/Hidden'
 import { Theme } from '_theme'
 import Header from './_common/TheHeader/Header'
 import Sidebar from './_common/TheSidebar/Sidebar'
-import Footer from './_common/TheFooter/Footer'
+import Footer from './_common/TheFooter'
 
-// App pages
-import Main from './Main/Main'
-import Orders from './Orders/Orders'
-import Customers from './Customers/Customers'
-import Reports from './Reports/Reports'
+// Import application core modules
+import Account from './Account'
+import Profile from './Profile'
+import Sales from './Sales'
+import Content from './Content'
+import Admin from './Admin'
+import NotFound from './NotFound'
+import Demo from './Demo'
+
+// import Orders from './Sales/Orders/Orders'
+// import Customers from './Sales/Customers/Customers'
+// import Reports from './Reports/Reports'
 
 // Demo pages
-import Components from './Demo/Components/Components'
-import Features from './Demo/Features/Features'
-import Docs from './Demo/Docs/Docs'
-import Supporters from './Demo/Supporters/Supporters'
-import Discuss from './Demo/Discuss/Discuss'
+// import Components from './Demo/Components/Components'
+// import Features from './Demo/Features/Features'
+// import Docs from './Demo/Docs/Docs'
+// import Supporters from './Demo/Supporters/Supporters'
+// import Discuss from './Demo/Discuss/Discuss'
 
-import NotFound from './NotFound'
+const loggedIn = true
 
 export interface DashboardProps extends RouteComponentProps {}
 
@@ -120,18 +127,33 @@ export default function Dashboard({ match }: DashboardProps) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         <Switch>
-          <Route path={`${match.url}/`} component={Main} />
+          <Route
+            exact
+            path="/"
+            render={() =>
+              loggedIn ? (
+                <Redirect to="/sales/dashboard" />
+              ) : (
+                <Redirect to="/auth/login" />
+              )
+            }
+          />
+          <Route path={`/sales`} component={Sales} />
+          <Route path={`/content`} component={Content} />
+          <Route path={`/admin`} component={Admin} />
+          <Route path={`/account`} component={Account} />
+          <Route path={`/profile`} component={Profile} />
+          <Route path={`/demo`} component={Demo} />
+          <Route component={NotFound} />
+
+          {/* <Route path={`${match.url}/`} component={Main} />
           <Route path={`${match.url}orders/`} component={Orders} />
           <Route path={`${match.url}customers/`} component={Customers} />
-          <Route path={`${match.url}reports/`} component={Reports} />
-          {/* Demo Pages */}
           <Route path={`${match.url}demo/components/`} component={Components} />
           <Route path={`${match.url}demo/features/`} component={Features} />
           <Route path={`${match.url}demo/docs/`} component={Docs} />
           <Route path={`${match.url}demo/supporters/`} component={Supporters} />
-          <Route path={`${match.url}demo/discuss/`} component={Discuss} />
-          {/* Not Found */}
-          <Route component={NotFound} />
+          <Route path={`${match.url}demo/discuss/`} component={Discuss} /> */}
         </Switch>
         <Footer />
       </main>

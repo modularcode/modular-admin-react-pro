@@ -3,19 +3,29 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
+import IconSales from '@material-ui/icons/MonetizationOn'
+import IconContent from '@material-ui/icons/ViewWeek'
+import IconProfile from '@material-ui/icons/AccountBox'
+import IconAccount from '@material-ui/icons/AccountBalance' //
+import IconAdmin from '@material-ui/icons/VpnKey'
+import IconMisc from '@material-ui/icons/MoreHoriz'
+
 import IconDashboard from '@material-ui/icons/Dashboard'
 import IconProducts from '@material-ui/icons/LocalMall'
 import IconOrders from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
-import IconBarChart from '@material-ui/icons/BarChart'
 import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
+import IconSettings from '@material-ui/icons/Settings'
+import IconGroup from '@material-ui/icons/Group'
+import IconInfo from '@material-ui/icons/Info' //
+import IconPreson from '@material-ui/icons/Person' //
 
 import { Theme } from '_theme'
-import SidebarNavListItems from './SidebarNavListItems'
+import SidebarNavItems from './SidebarNavItems'
 
 export interface SidebarNavProps {
   isCollapsed: boolean
@@ -25,10 +35,10 @@ const SidebarNav = (props: SidebarNavProps) => {
   const { isCollapsed } = props
   const classes = useStyles()
 
-  const sidebarNavListItemsMain = [
+  const itemsSales = [
     {
-      name: 'Dashboard',
-      link: '/',
+      name: 'Sales Dashboard',
+      link: '/sales/dashboard',
       Icon: IconDashboard,
     },
     {
@@ -37,74 +47,167 @@ const SidebarNav = (props: SidebarNavProps) => {
       items: [
         {
           name: 'All Products',
-          link: '/products',
+          link: '/sales/products',
         },
         {
           name: 'Add New',
-          link: '/products/new',
+          link: '/sales/products/new',
         },
         {
           name: 'Categories',
-          link: '/products/categories',
-        },
-        {
-          name: 'Tags',
-          link: '/products/tags',
+          link: '/sales/products/categories',
         },
       ],
     },
     {
       name: 'Orders',
-      link: '/orders',
+      link: '/sales/orders',
       Icon: IconOrders,
     },
     {
       name: 'Customers',
-      link: '/customers',
+      link: '/sales/customers',
       Icon: IconPeople,
-    },
-    {
-      name: 'Reports',
-      link: '/reports',
-      Icon: IconBarChart,
-    },
-    {
-      name: 'Other Pages',
-      Icon: IconLibraryBooks,
-      items: [
-        {
-          name: 'Profile',
-          link: '/profile',
-        },
-        {
-          name: 'Settings',
-          link: '/settings',
-        },
-        {
-          name: 'Login',
-          link: '/auth/login',
-        },
-        {
-          name: 'Signup',
-          link: '/auth/signup',
-        },
-        {
-          name: 'Recover',
-          link: '/auth/recover',
-        },
-        {
-          name: 'Reset',
-          link: '/auth/reset',
-        },
-        {
-          name: 'Search',
-          link: '/auth/search',
-        },
-      ],
     },
   ]
 
-  const sidebarNavListItemsUI = [
+  const itemsContent = [
+    {
+      name: 'All Items',
+      link: '/content/items',
+    },
+    {
+      name: 'Add New',
+      link: '/content/items/new',
+    },
+
+    {
+      name: 'Categories',
+      link: '/content/categories',
+    },
+  ]
+
+  const itemsProfile = [
+    {
+      name: 'My Profile',
+      link: '/profile',
+      Icon: IconInfo,
+    },
+    {
+      name: 'Profile Settings',
+      link: '/profile/settings',
+      Icon: IconSettings,
+    },
+  ]
+
+  const itemsAccount = [
+    {
+      name: 'My Account',
+      link: '/account',
+      Icon: IconInfo,
+    },
+    {
+      name: 'Account Settings',
+      link: '/account/settings',
+      Icon: IconSettings,
+    },
+    {
+      name: 'Team',
+      link: '/account/users',
+      Icon: IconGroup,
+    },
+  ]
+
+  const itemsAuth = [
+    {
+      name: 'Login',
+      link: '/auth/login',
+    },
+    {
+      name: 'Signup',
+      link: '/auth/signup',
+    },
+    {
+      name: 'Recover',
+      link: '/auth/recover',
+    },
+    {
+      name: 'Reset',
+      link: '/auth/reset',
+    },
+  ]
+
+  const itemsAdmin = [
+    {
+      name: 'Admin Dashboard',
+      link: '/admin/dashboard',
+      Icon: IconDashboard,
+    },
+    {
+      name: 'Accounts',
+      link: '/admin/accounts',
+      Icon: IconAccount,
+    },
+    {
+      name: 'Users',
+      link: '/admin/users',
+      Icon: IconGroup,
+    },
+  ]
+
+  const itemsMisc = [
+    {
+      name: 'Search',
+      link: '/search',
+    },
+    {
+      name: 'Not Found',
+      link: '/notfound',
+    },
+  ]
+
+  const itemsAppModules = [
+    {
+      name: 'Sales & Ecommerce',
+      items: itemsSales,
+      Icon: IconSales,
+    },
+    {
+      name: 'Content Management',
+      items: itemsContent,
+      Icon: IconContent,
+    },
+    {
+      name: 'Administration',
+      items: itemsAdmin,
+      Icon: IconAdmin,
+    },
+  ]
+
+  const itemsCoreModules = [
+    {
+      name: 'Profile',
+      items: itemsProfile,
+      Icon: IconProfile,
+    },
+    {
+      name: 'Account',
+      items: itemsAccount,
+      Icon: IconAccount,
+    },
+    {
+      name: 'Auth',
+      items: itemsAuth,
+      Icon: IconPreson,
+    },
+    {
+      name: 'Misc Pages',
+      items: itemsMisc,
+      Icon: IconMisc,
+    },
+  ]
+
+  const itemsUI = [
     {
       name: 'UI Components',
       link: '/demo/components',
@@ -112,7 +215,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const sidebarNavListItemsMisc = [
+  const itemsTheme = [
     {
       name: 'Why Modular?',
       link: '/demo/features',
@@ -143,28 +246,37 @@ const SidebarNav = (props: SidebarNavProps) => {
     <div>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
-            Main Modules
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
+            Applications
           </ListSubheader>
         )}
-
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMain} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsAppModules} />
       </List>
+
+      <List className={classes.navList} disablePadding>
+        {!isCollapsed && (
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
+            Basic Functionality
+          </ListSubheader>
+        )}
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsCoreModules} />
+      </List>
+
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
           <ListSubheader inset disableSticky={true}>
             UI & Utils
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsUI} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsUI} />
       </List>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
-          <ListSubheader inset disableSticky={true}>
+          <ListSubheader disableSticky={true} className={classes.navListHeader}>
             Misc
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={sidebarNavListItemsMisc} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsTheme} />
       </List>
     </div>
   )
@@ -174,6 +286,13 @@ const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     navList: {
       width: theme.sidebar.width,
+      fontSize: '1.1em',
+      fontWeight: 400,
+      lineHeight: 1.5,
+      letterSpacing: '0.00938em',
+    },
+    navListHeader: {
+      textAlign: 'center',
     },
     iconFeatures: {
       color: '#95de3c',

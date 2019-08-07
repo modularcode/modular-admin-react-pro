@@ -1,6 +1,6 @@
 import React from 'react'
 import { ThemeProvider } from '@material-ui/styles'
-import { BrowserRouter, Route } from 'react-router-dom'
+import { HashRouter, Route } from 'react-router-dom' // HashRouter
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import theme from './_theme/index'
@@ -12,10 +12,10 @@ const App = () => {
     <div className="App">
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <HashRouter>
           <Route path="/" component={Dashboard} />
           <Route path="/auth" component={Auth} />
-        </BrowserRouter>
+        </HashRouter>
       </ThemeProvider>
     </div>
   )

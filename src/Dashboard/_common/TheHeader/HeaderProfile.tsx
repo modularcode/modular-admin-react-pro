@@ -14,6 +14,7 @@ import Divider from '@material-ui/core/Divider'
 
 import IconArrowDropDown from '@material-ui/icons/ArrowDropDown'
 import IconProfile from '@material-ui/icons/AccountBox'
+import IconAccount from '@material-ui/icons/AccountBalance'
 import IconSettings from '@material-ui/icons/Settings'
 import IconLogout from '@material-ui/icons/ExitToApp'
 
@@ -68,7 +69,13 @@ const HeaderProfile = () => {
           <ListItemIcon>
             <IconProfile />
           </ListItemIcon>
-          <ListItemText primary="Profile" />
+          <ListItemText primary="My Profile" />
+        </MenuItem>
+        <MenuItem onClick={handleClose} component={Link} to="/account">
+          <ListItemIcon>
+            <IconAccount />
+          </ListItemIcon>
+          <ListItemText primary="My Accounts" />
         </MenuItem>
         <MenuItem onClick={handleClose} component={Link} to="/settings">
           <ListItemIcon>

@@ -60,6 +60,10 @@ https://material.io/resources/icons/
 #### Adding polls
 https://github.com/isaacs/github/issues/1533
 
+
+#### React
+https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/
+
 #### TypeScript
 
 Infering React properties TypeScript definition from React runtime PropTypes
