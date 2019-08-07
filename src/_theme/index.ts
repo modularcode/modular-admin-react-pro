@@ -110,7 +110,7 @@ const theme = {
     background: '#fff',
   },
   sidebar: {
-    width: 280,
+    width: 250,
     widthCollapsed: coreTheme.spacing(7),
     background: '#4a4d5a;',
     color: '#fff',

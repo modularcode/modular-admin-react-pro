@@ -3,11 +3,10 @@ import { makeStyles, createStyles } from '@material-ui/core/styles'
 import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
-import IconSales from '@material-ui/icons/AttachMoney'
-import IconContent from '@material-ui/icons/Create'
+import IconSales from '@material-ui/icons/MonetizationOn'
+import IconContent from '@material-ui/icons/ViewWeek'
 import IconProfile from '@material-ui/icons/AccountBox'
 import IconAccount from '@material-ui/icons/AccountBalance' //
-import IconAuthorization from '@material-ui/icons/HowToReg'
 import IconAdmin from '@material-ui/icons/DeviceHub'
 import IconMisc from '@material-ui/icons/MoreHoriz'
 
@@ -15,15 +14,15 @@ import IconDashboard from '@material-ui/icons/Dashboard'
 import IconProducts from '@material-ui/icons/LocalMall'
 import IconOrders from '@material-ui/icons/ShoppingCart'
 import IconPeople from '@material-ui/icons/People'
-import IconBarChart from '@material-ui/icons/BarChart'
 import IconPersonalVideo from '@material-ui/icons/PersonalVideo'
 import IconLibraryBooks from '@material-ui/icons/LibraryBooks'
 import IconQuestionAnswer from '@material-ui/icons/QuestionAnswer'
 import IconStars from '@material-ui/icons/Stars'
 import IconNewReleases from '@material-ui/icons/NewReleases'
-import IconFace from '@material-ui/icons/TagFaces'
 import IconSettings from '@material-ui/icons/Settings'
 import IconGroup from '@material-ui/icons/Group'
+import IconInfo from '@material-ui/icons/Info' //
+import IconPreson from '@material-ui/icons/Person' //
 
 import { Theme } from '_theme'
 import SidebarNavListItems from './SidebarNavListItems'
@@ -58,10 +57,6 @@ const SidebarNav = (props: SidebarNavProps) => {
           name: 'Categories',
           link: '/products/categories',
         },
-        {
-          name: 'Tags',
-          link: '/products/tags',
-        },
       ],
     },
     {
@@ -78,11 +73,11 @@ const SidebarNav = (props: SidebarNavProps) => {
 
   const sidebarNavListItemsContent = [
     {
-      name: 'Items',
+      name: 'All Items',
       link: '/content/items',
     },
     {
-      name: 'Items Editor',
+      name: 'Add New',
       link: '/content/items/new',
     },
 
@@ -90,17 +85,13 @@ const SidebarNav = (props: SidebarNavProps) => {
       name: 'Categories',
       link: '/content/categories',
     },
-    {
-      name: 'Categories Editor',
-      link: '/content/categories/new',
-    },
   ]
 
   const sidebarNavListItemsProfile = [
     {
-      name: 'Profile',
+      name: 'My Profile',
       link: '/profile',
-      Icon: IconProfile,
+      Icon: IconInfo,
     },
     {
       name: 'Profile Settings',
@@ -111,9 +102,9 @@ const SidebarNav = (props: SidebarNavProps) => {
 
   const sidebarNavListItemsAccount = [
     {
-      name: 'Account',
+      name: 'My Account',
       link: '/account',
-      Icon: IconAccount,
+      Icon: IconInfo,
     },
     {
       name: 'Account Settings',
@@ -121,8 +112,8 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconSettings,
     },
     {
-      name: 'Account Users',
-      link: '/account/settings',
+      name: 'Team',
+      link: '/account/users',
       Icon: IconGroup,
     },
   ]
@@ -179,7 +170,7 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconSales,
     },
     {
-      name: 'Content management',
+      name: 'Items Manager',
       items: sidebarNavListItemsContent,
       Icon: IconContent,
     },
@@ -194,14 +185,14 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconAccount,
     },
     {
-      name: 'Authenitcation',
-      items: sidebarNavListItemsAuth,
-      Icon: IconAuthorization,
-    },
-    {
       name: 'Administration',
       items: sidebarNavListItemsAdmin,
       Icon: IconAdmin,
+    },
+    {
+      name: 'Auth',
+      items: sidebarNavListItemsAuth,
+      Icon: IconPreson,
     },
     {
       name: 'Misc Pages',

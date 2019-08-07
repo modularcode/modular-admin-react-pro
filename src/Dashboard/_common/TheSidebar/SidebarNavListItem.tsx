@@ -29,6 +29,7 @@ export interface SidebarNavListItemProps {
   isOpen?: boolean
   isNested?: boolean
   nestingLevel?: number
+  nestingOffset?: number
   className?: string
   items?: SidebarNavListItemProps[]
   match?: object
@@ -84,6 +85,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     isCollapsed,
     isNested,
     nestingLevel = 0,
+    nestingOffset = 16,
     className,
     items = [],
   } = props
@@ -104,7 +106,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
     (isCollapsed && <IconSpacer className={classes.iconSpacer} />) ||
     ''
 
-  const hasDisplayIcon = !!ListItemIconInner
+  const nestingOffsetChildren = !isCollapsed ? nestingOffset + 16 : 16
 
   const ListItemElement = (
     <ListItemComponent
@@ -112,23 +114,26 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
       className={clsx(
         classes.navItem,
         isCollapsed && classes.navItemCollapsed,
-        isNested && !isCollapsed && classes.nested,
+        // isNested && !isCollapsed && classes.nested,
         hasChildrenAndIsActive && 'active',
         className,
       )}
       style={{
-        fontSize: `${1 - 0.1 * nestingLevel}em`,
-        paddingLeft: `${16 + nestingLevel * 20}px`,
+        fontSize: `${1 - 0.07 * nestingLevel}em`,
+        paddingLeft: `${!ListItemIconInner ? nestingOffset + 40 : nestingOffset}px`,
       }}
       isCollapsed={isCollapsed}
       onClick={handleClick}
     >
       {!!ListItemIconInner && (
-        <ListItemIcon style={IconStyles} className={IconClassName}>
+        <ListItemIcon
+          style={IconStyles}
+          className={clsx(classes.navItemIcon, IconClassName)}
+        >
           {ListItemIconInner}
         </ListItemIcon>
       )}
-      <ListItemText primary={name} inset={!ListItemIconInner} disableTypography={true} />
+      <ListItemText primary={name} disableTypography={true} />
       {hasChildren && !open && <IconExpandMore className={classes.iconToggle} />}
       {hasChildren && open && <IconExpandLess className={classes.iconToggle} />}
     </ListItemComponent>
@@ -160,6 +165,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
             isCollapsed={isCollapsed}
             key={item.name || item.link}
             isOpen={open}
+            nestingOffset={nestingOffsetChildren}
           />
         ))}
       </List>
@@ -176,9 +182,9 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
-    nested: {
-      paddingLeft: theme.spacing(10),
-    },
+    // nested: {
+    //   paddingLeft: theme.spacing(10),
+    // },
     navItem: {
       position: 'relative',
       '&.active': {
@@ -202,6 +208,9 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     navItemCollapsedWrapper: {
       width: theme.sidebar.widthCollapsed,
+    },
+    navItemIcon: {
+      minWidth: 40,
     },
     iconToggle: {},
     iconSpacer: {
