@@ -25,7 +25,7 @@ import IconInfo from '@material-ui/icons/Info' //
 import IconPreson from '@material-ui/icons/Person' //
 
 import { Theme } from '_theme'
-import SidebarNavListItems from './SidebarNavListItems'
+import SidebarNavItems from './SidebarNavItems'
 
 export interface SidebarNavProps {
   isCollapsed: boolean
@@ -250,7 +250,7 @@ const SidebarNav = (props: SidebarNavProps) => {
             Applications
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsAppModules} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsAppModules} />
       </List>
 
       <List className={classes.navList} disablePadding>
@@ -259,7 +259,7 @@ const SidebarNav = (props: SidebarNavProps) => {
             Basic Functionality
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsCoreModules} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsCoreModules} />
       </List>
 
       <List className={classes.navList} disablePadding>
@@ -268,7 +268,7 @@ const SidebarNav = (props: SidebarNavProps) => {
             UI & Utils
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsUI} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsUI} />
       </List>
       <List className={classes.navList} disablePadding>
         {!isCollapsed && (
@@ -276,7 +276,7 @@ const SidebarNav = (props: SidebarNavProps) => {
             Misc
           </ListSubheader>
         )}
-        <SidebarNavListItems isCollapsed={isCollapsed} items={itemsTheme} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsTheme} />
       </List>
     </div>
   )

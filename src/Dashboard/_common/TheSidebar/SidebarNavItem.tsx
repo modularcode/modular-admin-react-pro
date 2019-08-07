@@ -9,7 +9,6 @@ import ListItemIcon from '@material-ui/core/ListItemIcon'
 import ListItemText from '@material-ui/core/ListItemText'
 import Tooltip from '@material-ui/core/Tooltip'
 import Collapse from '@material-ui/core/Collapse'
-// import Divider from '@material-ui/core/Divider'
 
 import { SvgIconProps } from '@material-ui/core/SvgIcon'
 import IconExpandLess from '@material-ui/icons/ExpandLess'
@@ -18,7 +17,7 @@ import IconSpacer from '@material-ui/icons/FiberManualRecord'
 
 import { Theme } from '_theme'
 
-export interface SidebarNavListItemProps {
+export interface SidebarNavItemProps {
   name: string
   link?: string
   Icon?: React.ComponentType<SvgIconProps>
@@ -31,7 +30,7 @@ export interface SidebarNavListItemProps {
   nestingLevel?: number
   nestingOffset?: number
   className?: string
-  items?: SidebarNavListItemProps[]
+  items?: SidebarNavItemProps[]
   match?: object
 }
 
@@ -73,9 +72,7 @@ export const ListItemComponent: React.ExoticComponent<
   )
 })
 
-const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
-  props: SidebarNavListItemProps,
-) => {
+const SidebarNavItem: React.FC<SidebarNavItemProps> = (props: SidebarNavItemProps) => {
   const {
     name,
     link,
@@ -94,25 +91,22 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
   const hasChildren = items && items.length > 0
 
   // Flattened array of all children
-  function getItemsAll(items: SidebarNavListItemProps[]): SidebarNavListItemProps[] {
-    return items.reduce(
-      (allItems: SidebarNavListItemProps[], item: SidebarNavListItemProps) => {
-        // let res = allItems.concat([item])
+  function getItemsAll(items: SidebarNavItemProps[]): SidebarNavItemProps[] {
+    return items.reduce((allItems: SidebarNavItemProps[], item: SidebarNavItemProps) => {
+      // let res = allItems.concat([item])
 
-        if (item.items && item.items.length) {
-          return allItems.concat([item], getItemsAll(item.items))
-        } else {
-          return allItems.concat([item])
-        }
-      },
-      [],
-    )
+      if (item.items && item.items.length) {
+        return allItems.concat([item], getItemsAll(item.items))
+      } else {
+        return allItems.concat([item])
+      }
+    }, [])
   }
 
   const itemsAll = getItemsAll(items)
   const hasChildrenAndIsActive =
     hasChildren &&
-    itemsAll.filter(item => item.link === window.location.pathname).length > 0
+    itemsAll.filter(item => `#${item.link}` === window.location.hash).length > 0
   const isOpen = hasChildrenAndIsActive || false
   const [open, setOpen] = React.useState(isOpen)
 
@@ -178,7 +172,7 @@ const SidebarNavListItem: React.FC<SidebarNavListItemProps> = (
         {/* <Divider /> */}
         <List component="div" disablePadding>
           {items.map(item => (
-            <SidebarNavListItem
+            <SidebarNavItem
               {...item}
               isNested={true}
               nestingLevel={nestingLevel + 1}
@@ -268,4 +262,4 @@ const useStyles = makeStyles((theme: Theme) =>
   }),
 )
 
-export default SidebarNavListItem
+export default SidebarNavItem

@@ -51,7 +51,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "opencollective postinstall",
-    "deploy": "npm run build && echo material-admin-react.modularcode.io > ./build/CNAME  && gh-pages -d build --repo git@github.com:modularcode/material-admin-react.git --branch gh-pages"
+    "deploy": "npm run build && echo modular-material-admin-react.modularcode.io > ./build/CNAME  && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react.git --branch gh-pages"
   },
   "eslintConfig": {
     "extends": "react-app"

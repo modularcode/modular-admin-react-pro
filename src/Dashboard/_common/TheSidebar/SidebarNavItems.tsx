@@ -1,23 +1,21 @@
 import React from 'react'
 
-import SidebarNavListItem, { SidebarNavListItemProps } from './SidebarNavListItem'
+import SidebarNavItem, { SidebarNavItemProps } from './SidebarNavItem'
 
-export interface SidebarNavListItemsProps {
-  items: SidebarNavListItemProps[]
+export interface SidebarNavItemsProps {
+  items: SidebarNavItemProps[]
   isNested?: boolean
   isCollapsed?: boolean
 }
 
-const SidebarNavListItems: React.FC<SidebarNavListItemsProps> = (
-  props: SidebarNavListItemsProps,
-) => {
+const SidebarNavItems: React.FC<SidebarNavItemsProps> = (props: SidebarNavItemsProps) => {
   const { items = [], isCollapsed = false, isNested = false } = props
   // const classes = useStyles()
 
   return (
     <>
       {items.map((item, index) => (
-        <SidebarNavListItem
+        <SidebarNavItem
           {...item}
           isCollapsed={isCollapsed}
           isNested={isNested}
@@ -28,4 +26,4 @@ const SidebarNavListItems: React.FC<SidebarNavListItemsProps> = (
   )
 }
 
-export default SidebarNavListItems
+export default SidebarNavItems
