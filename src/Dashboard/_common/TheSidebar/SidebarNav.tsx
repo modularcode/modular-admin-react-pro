@@ -23,6 +23,10 @@ import IconSettings from '@material-ui/icons/Settings'
 import IconGroup from '@material-ui/icons/Group'
 import IconInfo from '@material-ui/icons/Info' //
 import IconPreson from '@material-ui/icons/Person' //
+import IconSync from '@material-ui/icons/Sync'
+import IconPhone from '@material-ui/icons/Phone'
+import IconStock from '@material-ui/icons/LocalShipping'
+import IconLocation from '@material-ui/icons/LocationOn'
 
 import { Theme } from '_theme'
 import SidebarNavItems from './SidebarNavItems'
@@ -40,6 +44,16 @@ const SidebarNav = (props: SidebarNavProps) => {
       name: 'Sales Dashboard',
       link: '/sales/dashboard',
       Icon: IconDashboard,
+    },
+    {
+      name: 'Orders',
+      link: '/sales/orders',
+      Icon: IconOrders,
+    },
+    {
+      name: 'Customers',
+      link: '/sales/customers',
+      Icon: IconPeople,
     },
     {
       name: 'Products',
@@ -60,14 +74,14 @@ const SidebarNav = (props: SidebarNavProps) => {
       ],
     },
     {
-      name: 'Orders',
-      link: '/sales/orders',
-      Icon: IconOrders,
+      name: 'Stock',
+      link: '/sales/stock',
+      Icon: IconStock,
     },
     {
-      name: 'Customers',
-      link: '/sales/customers',
-      Icon: IconPeople,
+      name: 'Locations',
+      link: '/sales/locations',
+      Icon: IconLocation,
     },
   ]
 
@@ -168,14 +182,22 @@ const SidebarNav = (props: SidebarNavProps) => {
 
   const itemsAppModules = [
     {
-      name: 'Sales & Ecommerce',
+      name: 'Sales Management',
       items: itemsSales,
       Icon: IconSales,
+    },
+    {
+      name: 'Customer Support',
+      Icon: IconPhone,
     },
     {
       name: 'Content Management',
       items: itemsContent,
       Icon: IconContent,
+    },
+    {
+      name: 'Services',
+      Icon: IconSync,
     },
     {
       name: 'Administration',
