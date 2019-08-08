@@ -8,7 +8,7 @@ It allows you to
 - See and manage the payments
 - See and manage the products and categories
 - See and manage the stock of products (for physical products)
-- See and manage your locations (stores, warehouses, shops, trading points, branches, etc)
+- See and manage your products locations (stores, warehouses, shops, trading points, branches, etc)
 
 Use cases
 

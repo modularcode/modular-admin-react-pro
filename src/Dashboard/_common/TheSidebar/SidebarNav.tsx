@@ -199,14 +199,14 @@ const SidebarNav = (props: SidebarNavProps) => {
       name: 'Services',
       Icon: IconSync,
     },
-    {
-      name: 'Administration',
-      items: itemsAdmin,
-      Icon: IconAdmin,
-    },
   ]
 
   const itemsCoreModules = [
+    {
+      name: 'Auth',
+      items: itemsAuth,
+      Icon: IconPreson,
+    },
     {
       name: 'Profile',
       items: itemsProfile,
@@ -218,9 +218,9 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconAccount,
     },
     {
-      name: 'Auth',
-      items: itemsAuth,
-      Icon: IconPreson,
+      name: 'Administration',
+      items: itemsAdmin,
+      Icon: IconAdmin,
     },
     {
       name: 'Misc Pages',
