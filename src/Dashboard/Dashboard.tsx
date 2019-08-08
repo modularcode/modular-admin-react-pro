@@ -13,11 +13,12 @@ import Sidebar from './_common/TheSidebar/Sidebar'
 import Footer from './_common/TheFooter'
 
 // Import application core modules
-import Account from './Account'
-import Profile from './Profile'
 import Sales from './Sales'
 import Content from './Content'
 import Admin from './Admin'
+
+import Profile from './Profile'
+import Organization from './Organization'
 import NotFound from './NotFound'
 import Demo from './Demo'
 
@@ -141,8 +142,8 @@ export default function Dashboard({ match }: DashboardProps) {
           <Route path={`/sales`} component={Sales} />
           <Route path={`/content`} component={Content} />
           <Route path={`/admin`} component={Admin} />
-          <Route path={`/account`} component={Account} />
           <Route path={`/profile`} component={Profile} />
+          <Route path={`/account`} component={Organization} />
           <Route path={`/demo`} component={Demo} />
           <Route component={NotFound} />
 

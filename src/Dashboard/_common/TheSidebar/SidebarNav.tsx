@@ -114,20 +114,20 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
-  const itemsAccount = [
+  const itemsOrganizations = [
     {
-      name: 'My Account',
-      link: '/account',
+      name: 'My Organizations',
+      link: '/organizations',
       Icon: IconInfo,
     },
     {
-      name: 'Account Settings',
-      link: '/account/settings',
+      name: 'Organization Settings',
+      link: '/organizations/settings',
       Icon: IconSettings,
     },
     {
       name: 'Team',
-      link: '/account/users',
+      link: '/organizations/users',
       Icon: IconGroup,
     },
   ]
@@ -158,12 +158,12 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconDashboard,
     },
     {
-      name: 'Accounts',
+      name: 'All Organizations',
       link: '/admin/accounts',
       Icon: IconAccount,
     },
     {
-      name: 'Users',
+      name: 'All Users',
       link: '/admin/users',
       Icon: IconGroup,
     },
@@ -213,8 +213,8 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconProfile,
     },
     {
-      name: 'Account',
-      items: itemsAccount,
+      name: 'Organizations',
+      items: itemsOrganizations,
       Icon: IconAccount,
     },
     {
