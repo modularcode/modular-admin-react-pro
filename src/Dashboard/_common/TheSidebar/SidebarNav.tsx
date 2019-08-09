@@ -183,20 +183,24 @@ const SidebarNav = (props: SidebarNavProps) => {
   const itemsAppModules = [
     {
       name: 'Sales Management',
-      items: itemsSales,
+      link: '/sales',
       Icon: IconSales,
+      items: itemsSales,
     },
     {
       name: 'Customer Support',
+      link: '/support',
       Icon: IconPhone,
     },
     {
       name: 'Content Management',
-      items: itemsContent,
+      link: '/content',
       Icon: IconContent,
+      items: itemsContent,
     },
     {
       name: 'Services',
+      link: '/services',
       Icon: IconSync,
     },
   ]
