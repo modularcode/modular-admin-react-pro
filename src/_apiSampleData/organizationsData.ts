@@ -1,6 +1,8 @@
 import Organization from '_types/Organization'
 import organizationsToUsersData from './organizationsToUsersData'
 
+console.log('organizationsToUsersData', organizationsToUsersData)
+
 const organizationsDataById: { [key: number]: Organization } = {
   1: {
     id: 1,
@@ -9,7 +11,7 @@ const organizationsDataById: { [key: number]: Organization } = {
       id: 'silver',
       name: 'Silver',
     },
-    organizationToUsers: organizationsToUsersData.byOrganizationId[1],
+    // organizationToUsers: organizationsToUsersData.byOrganizationId[1],
   },
   2: {
     id: 2,
@@ -18,7 +20,7 @@ const organizationsDataById: { [key: number]: Organization } = {
       id: 'gold',
       name: 'Gold',
     },
-    organizationToUsers: organizationsToUsersData.byOrganizationId[2],
+    // organizationToUsers: organizationsToUsersData.byOrganizationId[2],
   },
   3: {
     id: 3,
@@ -27,7 +29,7 @@ const organizationsDataById: { [key: number]: Organization } = {
       id: 'trial',
       name: 'Trial',
     },
-    organizationToUsers: organizationsToUsersData.byOrganizationId[3],
+    // organizationToUsers: organizationsToUsersData.byOrganizationId[3],
   },
 }
 

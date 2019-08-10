@@ -1,33 +1,40 @@
 import React from 'react'
+import { Provider, connect } from 'react-redux'
 import { ThemeProvider } from '@material-ui/styles'
 import { HashRouter, BrowserRouter, Route, RouteProps, Redirect } from 'react-router-dom' //
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import config from './config'
+import store from './_store'
+import api from './_api'
 import authService from './_services/authService'
-import theme from './_theme/index'
+import theme from './_theme'
 
 import Auth from './Auth/Auth'
 import { DashboardContainer } from './Dashboard'
 
-// Use different router type depending on configuration
-const Router: React.ComponentType<any> =
-  config.navigationType === 'history' ? BrowserRouter : HashRouter
+api.init()
 
 // Init the authentication service
 authService.init({
   useDemoToken: true,
 })
 
+// Use different router type depending on configuration
+const AppRouter: React.ComponentType<any> =
+  config.navigationType === 'history' ? BrowserRouter : HashRouter
+
 const App: React.FC = () => {
   return (
     <div className="App">
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <Router>
-          <Route path="/auth" component={Auth} />
-          <PrivateRoute path="/" component={DashboardContainer} />
-        </Router>
+        <Provider store={store}>
+          <AppRouter>
+            <Route path="/auth" component={Auth} />
+            <PrivateRoute path="/" component={DashboardContainer} />
+          </AppRouter>
+        </Provider>
       </ThemeProvider>
     </div>
   )

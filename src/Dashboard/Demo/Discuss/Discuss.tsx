@@ -12,9 +12,9 @@ const Discuss = () => {
 
   const disqusShortname = 'modularcode-material-admin-react'
   const disqusConfig = {
-    url: 'https://material-admin-react.modularcode.io',
+    url: 'https://modular-material-admin-react.modularcode.io',
     identifier: 'discussion',
-    title: 'Material Admin React: Discussion',
+    title: 'Modular Material Admin + React: Discussion',
   }
 
   return (

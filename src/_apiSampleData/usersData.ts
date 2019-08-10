@@ -1,8 +1,9 @@
+import _keyBy from 'lodash/keyBy'
 import User from '_types/User'
 import organizationsToUsersData from './organizationsToUsersData'
 
-const usersDataById: { [key: number]: User } = {
-  1: {
+const list: User[] = [
+  {
     id: 1,
     firstName: 'John',
     lastName: 'Doe',
@@ -12,7 +13,7 @@ const usersDataById: { [key: number]: User } = {
     userToOrganizations: organizationsToUsersData.byUserId[1],
     globalRole: 'admin',
   },
-  2: {
+  {
     id: 2,
     firstName: 'Jay',
     lastName: 'Nickolson',
@@ -22,7 +23,7 @@ const usersDataById: { [key: number]: User } = {
       'https://tinyfac.es/data/avatars/475605E3-69C5-4D2B-8727-61B7BB8C4699-500w.jpeg',
     userToOrganizations: organizationsToUsersData.byUserId[2],
   },
-  3: {
+  {
     id: 3,
     firstName: 'Ana',
     lastName: 'De Armas',
@@ -32,7 +33,7 @@ const usersDataById: { [key: number]: User } = {
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NjYzMzE1MV5BMl5BanBnXkFtZTgwNTA4NDY4OTE@._V1_UX172_CR0,0,172,256_AL_.jpg',
     userToOrganizations: organizationsToUsersData.byUserId[3],
   },
-  4: {
+  {
     id: 4,
     firstName: 'Armas',
     lastName: 'De Ana',
@@ -42,7 +43,7 @@ const usersDataById: { [key: number]: User } = {
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMjA3NjYzMzE1MV5BMl5BanBnXkFtZTgwNTA4NDY4OTE@._V1_UX172_CR0,0,172,256_AL_.jpg',
     userToOrganizations: organizationsToUsersData.byUserId[4],
   },
-  5: {
+  {
     id: 5,
     firstName: 'Sonequa',
     lastName: 'Martin-Green',
@@ -51,11 +52,14 @@ const usersDataById: { [key: number]: User } = {
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',
     userToOrganizations: organizationsToUsersData.byUserId[5],
   },
-}
+]
+
+const byId: { [key: number]: User } = _keyBy(list, 'id')
 
 const usersData = {
-  byId: usersDataById,
-  current: usersDataById[1],
+  list,
+  byId,
+  current: byId[1],
 }
 
 export default usersData

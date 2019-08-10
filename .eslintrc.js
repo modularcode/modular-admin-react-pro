@@ -30,6 +30,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': [0],
     '@typescript-eslint/explicit-member-accessibility': [0],
     '@typescript-eslint/no-explicit-any': [0],
+    'react/prop-types': [0],
     'react/display-name': [0],
     'no-console': [0],
   },
