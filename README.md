@@ -2,7 +2,7 @@
 
 <div align="center">
 
-Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **TypeScript** + **Redux**
+Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using **ReactJS** + **TypeScript** + **Redux** + **Rematch** + **React Hooks**
 
 **(in development)**
 
