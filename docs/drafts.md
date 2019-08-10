@@ -28,7 +28,7 @@ Modular Material Admin is a good fit for the more-advanced developers who want t
 
 #### How Modular Material Admin is different from hundreds of other admin templates out there?
 
-The most of the dashboard themes and templates are more focused on the UI components. This brings to the situation, that for the
+The most of the dashboard themes and templates are more focused on the UI components. This brings to the situation, that for the most dashboard you need to fully rewrite or reimplement things like authorization, state management and api entities services setup. Modular Material Admin aims to provide all the architecture setup out of the box
 
 
 #### Why do you call it modular?
