@@ -2,7 +2,7 @@ interface Config {
   navigationType: 'hash' | 'history'
 }
 
-const config = {
+const config: Config = {
   navigationType: 'hash',
 }
 

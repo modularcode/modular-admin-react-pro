@@ -33,11 +33,9 @@ import Demo from './Demo'
 // import Supporters from './Demo/Supporters/Supporters'
 // import Discuss from './Demo/Discuss/Discuss'
 
-const loggedIn = true
+export interface DashboardProps {}
 
-export interface DashboardProps extends RouteComponentProps {}
-
-export default function Dashboard({ match }: DashboardProps) {
+export default function Dashboard() {
   const classes = useStyles()
   const theme = useTheme()
   const isDesktop = useMediaQuery(theme.breakpoints.up('md'))
@@ -128,17 +126,7 @@ export default function Dashboard({ match }: DashboardProps) {
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
         <Switch>
-          <Route
-            exact
-            path="/"
-            render={() =>
-              loggedIn ? (
-                <Redirect to="/sales/dashboard" />
-              ) : (
-                <Redirect to="/auth/login" />
-              )
-            }
-          />
+          <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} />
           <Route path={`/sales`} component={Sales} />
           <Route path={`/content`} component={Content} />
           <Route path={`/admin`} component={Admin} />
