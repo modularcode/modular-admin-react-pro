@@ -3,17 +3,11 @@ import React from 'react'
 // import { makeStyles } from '@material-ui/core/styles'
 
 import Grid from '@material-ui/core/Grid'
-import Paper from '@material-ui/core/Paper'
-
-import Card from '@material-ui/core/Card'
-import CardContent from '@material-ui/core/CardContent'
-
 import PageContainer from '../../_common/BasePageContainer'
 import PageToolbar from '../../_common/BasePageToolbar'
 
 // Submodules
 import MainActions from './MainActions'
-import Deposits from './Deposits'
 import MainOrders from './MainOrders'
 import MainHistory from './MainHistory'
 

@@ -1,8 +1,8 @@
-import React, { useCallback, useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
-import chartjs, { Chart } from 'chart.js'
+import { Chart } from 'chart.js'
 
 import mainHistoryService from './MainHistoryService'
 
@@ -11,7 +11,7 @@ const MainHistory = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   // const canvasRef: React.RefObject<HTMLCanvasElement> = React.createRef()
   const classes = useStyles()
-  const [chartConfiguration, setChartConfiguration] = useState({})
+  // const [chartConfiguration, setChartConfiguration] = useState({})
 
   useEffect(() => {
     if (canvasRef.current === null) {
@@ -23,12 +23,10 @@ const MainHistory = () => {
         return
       }
 
-      const chartConfiguration = await mainHistoryService.getChartConfiguration()
+      const chartConfigurationRes = await mainHistoryService.getChartConfiguration()
 
-      console.log('chartConfiguration', chartConfiguration)
-
-      setChartConfiguration(chartConfiguration)
-      new Chart(canvasRefNode, chartConfiguration)
+      // setChartConfiguration(chartConfigurationRes)
+      new Chart(canvasRefNode, chartConfigurationRes)
     }
     requestChartData(canvasRef.current)
   }, [canvasRef])

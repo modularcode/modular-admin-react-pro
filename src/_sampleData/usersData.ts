@@ -4,7 +4,8 @@ import organizationsToUsersData from './organizationsToUsersData'
 const usersDataById: { [key: number]: User } = {
   1: {
     id: 1,
-    fullName: 'John Doe',
+    firstName: 'John',
+    lastName: 'Doe',
     username: 'johndoe1',
     email: 'john@doe.com',
     avatarUrl: 'https://avatars3.githubusercontent.com/u/3959008?v=3&s=40',
@@ -13,7 +14,8 @@ const usersDataById: { [key: number]: User } = {
   },
   2: {
     id: 2,
-    fullName: '2',
+    firstName: 'Jay',
+    lastName: 'Nickolson',
     username: null,
     email: 'example@gmail.com',
     avatarUrl:
@@ -22,7 +24,8 @@ const usersDataById: { [key: number]: User } = {
   },
   3: {
     id: 3,
-    fullName: 'Ana De Armas',
+    firstName: 'Ana',
+    lastName: 'De Armas',
     username: null,
     email: 'Ana+De+Armas@example.com',
     avatarUrl:
@@ -31,7 +34,8 @@ const usersDataById: { [key: number]: User } = {
   },
   4: {
     id: 4,
-    fullName: 'Ana De Armas',
+    firstName: 'Armas',
+    lastName: 'De Ana',
     username: null,
     email: 'Ana+De+Armas@example.com',
     avatarUrl:
@@ -40,7 +44,8 @@ const usersDataById: { [key: number]: User } = {
   },
   5: {
     id: 5,
-    fullName: 'Sonequa Martin-Green',
+    firstName: 'Sonequa',
+    lastName: 'Martin-Green',
     email: 'Sonequa+Martin+Green@example.com',
     avatarUrl:
       'https://images-na.ssl-images-amazon.com/images/M/MV5BMTgxMTc1MTYzM15BMl5BanBnXkFtZTgwNzI5NjMwOTE@._V1_UY256_CR16,0,172,256_AL_.jpg',

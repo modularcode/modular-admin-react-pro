@@ -12,17 +12,25 @@ const demoToken =
 
 export interface AuthService {
   token: string | null
-  init(): void
+  init(options?: AuthServiceInitOptions): void
   auth(token: string): void
   unauth(): void
   isAuthenticated(): boolean
   getToken(): string | null
 }
 
+interface AuthServiceInitOptions {
+  useDemoToken?: boolean
+}
+
 const authService: AuthService = {
   token: null,
-  init() {
-    this.token = store.get('token') || demoToken
+  init<AuthServiceInitOptions>({ useDemoToken = false } = {}) {
+    if (useDemoToken) {
+      this.token = demoToken
+    } else {
+      this.token = store.get('token') || null
+    }
   },
   auth(token) {
     store.set('token', token)

@@ -4,7 +4,6 @@ import List from '@material-ui/core/List'
 import ListSubheader from '@material-ui/core/ListSubheader'
 
 import IconSales from '@material-ui/icons/MonetizationOn'
-import IconContent from '@material-ui/icons/ViewWeek'
 import IconProfile from '@material-ui/icons/AccountBox'
 import IconAccount from '@material-ui/icons/AccountBalance' //
 import IconAdmin from '@material-ui/icons/VpnKey'
@@ -23,8 +22,8 @@ import IconSettings from '@material-ui/icons/Settings'
 import IconGroup from '@material-ui/icons/Group'
 import IconInfo from '@material-ui/icons/Info' //
 import IconPreson from '@material-ui/icons/Person' //
-import IconSync from '@material-ui/icons/Sync'
-import IconPhone from '@material-ui/icons/Phone'
+// import IconSync from '@material-ui/icons/Sync'
+// import IconPhone from '@material-ui/icons/Phone'
 import IconStock from '@material-ui/icons/LocalShipping'
 import IconLocation from '@material-ui/icons/LocationOn'
 
@@ -85,6 +84,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
+  // eslint-disable-next-line
   const itemsContent = [
     {
       name: 'All Items',
@@ -180,6 +180,7 @@ const SidebarNav = (props: SidebarNavProps) => {
     },
   ]
 
+  // eslint-disable-next-line
   const itemsAppModules = [
     {
       name: 'Sales Management',
@@ -187,22 +188,22 @@ const SidebarNav = (props: SidebarNavProps) => {
       Icon: IconSales,
       items: itemsSales,
     },
-    {
-      name: 'Customer Support',
-      link: '/support',
-      Icon: IconPhone,
-    },
-    {
-      name: 'Content Management',
-      link: '/content',
-      Icon: IconContent,
-      items: itemsContent,
-    },
-    {
-      name: 'Services',
-      link: '/services',
-      Icon: IconSync,
-    },
+    // {
+    //   name: 'Customer Support',
+    //   link: '/support',
+    //   Icon: IconPhone,
+    // },
+    // {
+    //   name: 'Content Management',
+    //   link: '/content',
+    //   Icon: IconContent,
+    //   items: itemsContent,
+    // },
+    // {
+    //   name: 'Services',
+    //   link: '/services',
+    //   Icon: IconSync,
+    // },
   ]
 
   const itemsCoreModules = [
@@ -276,7 +277,7 @@ const SidebarNav = (props: SidebarNavProps) => {
             Applications
           </ListSubheader>
         )}
-        <SidebarNavItems isCollapsed={isCollapsed} items={itemsAppModules} />
+        <SidebarNavItems isCollapsed={isCollapsed} items={itemsSales} />
       </List>
 
       <List className={classes.navList} disablePadding>

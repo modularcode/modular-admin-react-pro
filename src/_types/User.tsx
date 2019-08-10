@@ -9,7 +9,9 @@ export type UserGlobalRole = 'admin' | 'support' | 'member'
 
 export default interface User {
   id: UserId
-  fullName?: string
+  firstName?: string
+  lastName?: string
+  displayName?: string
   username?: string | null
   email: string
   password?: string

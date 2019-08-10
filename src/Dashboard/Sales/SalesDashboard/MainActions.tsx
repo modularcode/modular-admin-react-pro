@@ -2,12 +2,10 @@ import React from 'react'
 
 import { makeStyles } from '@material-ui/core/styles'
 import Button from '@material-ui/core/Button'
-import ButtonGroup from '@material-ui/core/ButtonGroup'
 import Tooltip from '@material-ui/core/Tooltip'
 import IconMore from '@material-ui/icons/MoreVert'
 import IconFilter from '@material-ui/icons/Tune'
 import IconDropDown from '@material-ui/icons/ArrowDropDown'
-import IconShare from '@material-ui/icons/Share'
 import IconNew from '@material-ui/icons/Add'
 
 import { Theme } from '../../../_theme'

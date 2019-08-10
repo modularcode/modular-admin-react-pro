@@ -46,7 +46,7 @@ const HeaderProfile = () => {
           alt="John Doe"
           src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=40"
         />
-        <span className={classes.profileName}>John Doe</span>
+        <span className={classes.profileName}>Gevorg</span>
         <IconArrowDropDown />
       </IconButton>
       <Menu
