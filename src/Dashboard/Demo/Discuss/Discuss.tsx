@@ -19,10 +19,11 @@ const Discuss = () => {
 
   return (
     <PageContainer>
+      <h1>Let&apos;s discuss this!</h1>
       <Paper className={classes.content}>
-        <Typography variant="h4" component="h1">
+        {/* <Typography variant="h4" component="h1">
           Discuss
-        </Typography>
+        </Typography> */}
         <Disqus.DiscussionEmbed shortname={disqusShortname} config={disqusConfig} />
       </Paper>
     </PageContainer>
