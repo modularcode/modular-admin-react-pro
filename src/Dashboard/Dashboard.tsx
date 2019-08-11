@@ -1,6 +1,5 @@
 import React from 'react'
 import clsx from 'clsx'
-import { Switch, Route, Redirect, RouteComponentProps } from 'react-router-dom'
 
 import { makeStyles, useTheme } from '@material-ui/core/styles'
 import useMediaQuery from '@material-ui/core/useMediaQuery'
@@ -12,26 +11,7 @@ import Header from './_common/TheHeader/Header'
 import Sidebar from './_common/TheSidebar/Sidebar'
 import Footer from './_common/TheFooter'
 
-// Import application core modules
-import Sales from './Sales'
-import Content from './Content'
-import Admin from './Admin'
-
-import Profile from './Profile'
-import Organization from './Organization'
-import NotFound from './NotFound'
-import Demo from './Demo'
-
-// import Orders from './Sales/Orders/Orders'
-// import Customers from './Sales/Customers/Customers'
-// import Reports from './Reports/Reports'
-
-// Demo pages
-// import Components from './Demo/Components/Components'
-// import Features from './Demo/Features/Features'
-// import Docs from './Demo/Docs/Docs'
-// import Supporters from './Demo/Supporters/Supporters'
-// import Discuss from './Demo/Discuss/Discuss'
+import DashboardRouter from './DashboardRouter'
 
 export interface DashboardProps {}
 
@@ -125,25 +105,7 @@ export default function Dashboard() {
       </div>
       <main className={classes.content}>
         <div className={classes.headerSpacer} />
-        <Switch>
-          <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} />
-          <Route path={`/sales`} component={Sales} />
-          <Route path={`/content`} component={Content} />
-          <Route path={`/admin`} component={Admin} />
-          <Route path={`/profile`} component={Profile} />
-          <Route path={`/account`} component={Organization} />
-          <Route path={`/demo`} component={Demo} />
-          <Route component={NotFound} />
-
-          {/* <Route path={`${match.url}/`} component={Main} />
-          <Route path={`${match.url}orders/`} component={Orders} />
-          <Route path={`${match.url}customers/`} component={Customers} />
-          <Route path={`${match.url}demo/components/`} component={Components} />
-          <Route path={`${match.url}demo/features/`} component={Features} />
-          <Route path={`${match.url}demo/docs/`} component={Docs} />
-          <Route path={`${match.url}demo/supporters/`} component={Supporters} />
-          <Route path={`${match.url}demo/discuss/`} component={Discuss} /> */}
-        </Switch>
+        <DashboardRouter />
         <Footer />
       </main>
     </div>
