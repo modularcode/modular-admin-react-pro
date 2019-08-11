@@ -1,6 +1,6 @@
 import axios from 'axios'
-import config from '../config'
-import authService from '../_services/authService'
+import config from '../../config'
+import authService from '../../_services/authService'
 
 const apiService = axios.create({
   baseURL: config.api.baseUrl,

@@ -4,6 +4,14 @@ interface Config {
     baseUrl: string
     useSampleData?: boolean
   }
+  apiRest?: {
+    baseUrl: string
+    useSampleData?: boolean
+  }
+  apiQL?: {
+    baseUrl: string
+    useSampleData?: boolean
+  }
 }
 
 const config: Config = {

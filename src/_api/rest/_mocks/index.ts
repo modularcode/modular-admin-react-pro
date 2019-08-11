@@ -1,10 +1,8 @@
 import { AxiosInstance } from 'axios'
 import MockAdapter from 'axios-mock-adapter'
-import usersData from './usersData'
+import usersData from '../../_data/usersData'
 
 const init = (instance: AxiosInstance) => {
-  console.log('should mock!')
-
   const mock = new MockAdapter(instance, { delayResponse: 200 })
 
   mock.onGet('/users/profile').reply(200, {

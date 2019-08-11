@@ -1,5 +1,4 @@
-import apiSampleData from '../_apiSampleData'
-import config from '../config'
+import config from '../../config'
 
 import instance from './apiService'
 import accounts from './accountsService'
@@ -8,9 +7,9 @@ import users from './usersService'
 const init = () => {
   // Respond with a sample data
   if (config.api.useSampleData) {
-    console.log('should mock!')
+    console.log('should mock rest api!')
 
-    apiSampleData.init(instance)
+    // apiSampleData.init(instance)
   }
 }
 

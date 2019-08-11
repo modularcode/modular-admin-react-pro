@@ -1,6 +1,6 @@
 import { createModel, RematchDispatch } from '@rematch/core'
 import User from '_types/User'
-import usersService from '_api/usersService'
+import usersService from '_api/rest/usersService'
 
 export interface UserState extends User {}
 
