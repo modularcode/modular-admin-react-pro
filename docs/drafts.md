@@ -11,7 +11,7 @@ The points below are still in progress
 - Typed data entities
 - Not just a dummy template
 - Uses react hooks
-- State management with Redux + Rematch for reducing Redux code boilerplate
+- Simpler state management with Redux + Rematch for reducing Redux code boilerplate
 - Material UI kit
 - Smart basic applications with real-world usage
 - Users/Organizations roles with many-to-many relations

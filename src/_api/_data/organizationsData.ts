@@ -1,8 +1,6 @@
 import Organization from '_types/Organization'
 import organizationsToUsersData from './organizationsToUsersData'
 
-console.log('organizationsToUsersData', organizationsToUsersData)
-
 const organizationsDataById: { [key: number]: Organization } = {
   1: {
     id: 1,

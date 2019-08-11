@@ -1,20 +1,23 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import LinearProgress from '@material-ui/core/LinearProgress'
 
-import { useDashboardData } from './DashboardData'
+import { useDashboardState, useDashboardEffects } from './_state'
 
 import Dashboard from './Dashboard'
 
 // Before showing the dashboard we need to be sure that the
 // User data is propperly requested
 const DashboardContainer: React.FC = props => {
-  const state = useDashboardData()
+  const { loading, error } = useDashboardState()
+  const effects = useDashboardEffects()
 
-  // if (loading) return <LinearProgress />
-  // if (error) {
-  //   console.log(error)
-  //   return <p>Error :(</p>
-  // }
+  useEffect(() => {
+    effects.request()
+  }, [effects])
+
+  if (loading) return <LinearProgress />
+  if (error) return <p>Error :(</p>
+
   return <Dashboard />
 }
 

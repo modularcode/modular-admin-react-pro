@@ -58,8 +58,6 @@ const list: OrganizationToUser[] = [
 const byUserId = _groupBy(list, 'userId')
 const byOrganizationId = _groupBy(list, 'organizationId')
 
-console.log('byOrganizationId', byOrganizationId)
-
 export default {
   list,
   byUserId,
