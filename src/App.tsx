@@ -1,34 +1,31 @@
 import React from 'react'
 import { Provider } from 'react-redux'
 import { ThemeProvider } from '@material-ui/styles'
-import { ApolloProvider } from '@apollo/react-hooks'
 
 import CssBaseline from '@material-ui/core/CssBaseline'
 
 import config from './config'
 import authService from './_services/authService'
 
-import apiRest from './_api/rest'
-import apiApollo from './_api/apollo'
-import storeRedux from './_store/redux'
+import api from './_api'
+import apiMocks from './_api/_mocks'
+
+import store from './_store'
 import theme from './_theme'
 
 import AppRouter from './AppRouter'
 
-// Init the authentication service
+// Init the API service
 authService.init({
   useSampleData: config.useSampleData,
 })
 
 // Init rest API client
-apiRest.init({
-  useSampleData: config.useSampleData,
-})
+const apiClient = api.init()
 
-// Init apollo client
-const apiApolloClient = apiApollo.init({
-  useSampleData: config.useSampleData,
-})
+if (config.useSampleData) {
+  apiMocks.init(apiClient)
+}
 
 const App: React.FC = () => {
   return (
@@ -38,13 +35,10 @@ const App: React.FC = () => {
     </div>
   )
 }
-
 export default () => (
   <ThemeProvider theme={theme}>
-    <ApolloProvider client={apiApolloClient}>
-      <Provider store={storeRedux}>
-        <App />
-      </Provider>
-    </ApolloProvider>
+    <Provider store={store}>
+      <App />
+    </Provider>
   </ThemeProvider>
 )

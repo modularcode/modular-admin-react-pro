@@ -4,19 +4,13 @@ interface Config {
   api: {
     baseUrl: string
   }
-  apiRest?: {
-    baseUrl: string
-  }
-  apiQL?: {
-    baseUrl: string
-  }
 }
 
 const config: Config = {
   navigationType: 'hash',
   useSampleData: true,
   api: {
-    baseUrl: '',
+    baseUrl: 'http://localhost:4000/api',
   },
 }
 

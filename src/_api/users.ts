@@ -1,6 +1,6 @@
 import { AxiosResponse } from 'axios'
 import User, { UserId } from '_types/User'
-import apiService from './apiService'
+import apiClient from './client'
 
 export interface UsersService {
   getProfile(): Promise<User>
@@ -9,10 +9,10 @@ export interface UsersService {
 
 const usersService: UsersService = {
   getProfile() {
-    return apiService.get('/users/profile').then((res: AxiosResponse<User>) => res.data)
+    return apiClient.get('/users/profile').then((res: AxiosResponse<User>) => res.data)
   },
   getOne(userId) {
-    return apiService.get(`/users/${userId}`).then((res: AxiosResponse<User>) => res.data)
+    return apiClient.get(`/users/${userId}`).then((res: AxiosResponse<User>) => res.data)
   },
 }
 
