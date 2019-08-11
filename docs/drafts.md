@@ -45,11 +45,19 @@ It improves the code quality, helps to avoid of lot's of runtime errors, during 
 
 Although I'm not a big fan of material design, but the MaterialUI gives a huge solid fundation for building user interfaces. I never enjoyed using any UI framework that much as I did with MaterialUI. Big appreciation and my credits to the MaterialUI team.
 
+#### Why do you use two different approaches for state management?
+
+Initially I was thinking about using Redux only as a state management with GraphQL Apollo Client as well, but it turns out that Appolo Client is also prefered way to manage the UI state.
+
+More info available here
+https://github.com/rematch/rematch/issues/366
+https://www.apollographql.com/docs/react/essentials/local-state/
+
 
 #### So REST or GraphQL?
 
-I'm trying to build the Modular Material Admin in a way that you would be able to use your desired approach. Each component that needs an ASYNC data, has it's own {ComponentName}Service.tsx file, in which the ASYNC data can be obtained both from REST or GraphQL and resolved to the component. So it should be easy to pick the solution which fits better.
-
+I'm trying to build the Modular Material Admin in a way that you would be able to use your desired approach. Each component that needs an ASYNC data, has it's own data usage custom hook, which can be Redux state or Appolo state.
+The custom hook of the component abstracts away the state management implementation under the hood, so we can use the preferred method for the state management: Apollo GraphQL or Redux + Rematch
 
 #### Why Redux + Rematch for the state management?
 
