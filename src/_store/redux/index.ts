@@ -1,9 +1,9 @@
 import { init, RematchRootState, RematchDispatch } from '@rematch/core'
 
-import user from './userStore'
+import dashboard from 'Dashboard/_store/redux/dashboardStore'
 
 const models = {
-  user,
+  dashboard,
 }
 
 export const store = init({

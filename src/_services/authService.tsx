@@ -7,7 +7,7 @@ import store from 'store'
 
 // import config from '../config'
 
-const demoToken =
+const sampleToken =
   'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.Db8fjZU7MkBZoJDjmjuvv2EeDgG9RSaZ1xKm__qHelw'
 
 export interface AuthService {
@@ -20,14 +20,14 @@ export interface AuthService {
 }
 
 interface AuthServiceInitOptions {
-  useDemoToken?: boolean
+  useSampleData?: boolean
 }
 
 const authService: AuthService = {
   token: null,
-  init<AuthServiceInitOptions>({ useDemoToken = false } = {}) {
-    if (useDemoToken) {
-      this.token = demoToken
+  init<AuthServiceInitOptions>({ useSampleData = false } = {}) {
+    if (useSampleData) {
+      this.token = sampleToken
     } else {
       this.token = store.get('token') || null
     }

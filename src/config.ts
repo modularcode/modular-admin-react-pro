@@ -1,24 +1,22 @@
 interface Config {
   navigationType: 'hash' | 'history'
+  useSampleData?: boolean
   api: {
     baseUrl: string
-    useSampleData?: boolean
   }
   apiRest?: {
     baseUrl: string
-    useSampleData?: boolean
   }
   apiQL?: {
     baseUrl: string
-    useSampleData?: boolean
   }
 }
 
 const config: Config = {
   navigationType: 'hash',
+  useSampleData: true,
   api: {
     baseUrl: '',
-    useSampleData: true,
   },
 }
 
