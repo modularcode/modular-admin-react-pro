@@ -19,6 +19,11 @@ The points below are still in progress
 - and more...
 
 
+### State management
+
+
+
+
 ## FAQ
 
 #### Who is Modular Material Admin for?
@@ -46,8 +51,18 @@ Although I'm not a big fan of material design, but the MaterialUI gives a huge s
 
 #### Why Redux + Rematch for the state management?
 
-Redux has became de-facto standart solution for the React state management. Unfortunately you need to write lot's of boilerplate code by default. Rematch solves that issue
+Redux has became de-facto standart solution for the React state management. Unfortunately you need to write lot's of boilerplate code by default. Rematch is a framework build on top of Redux which simplifies working with redux and eliminates lot's of boilerplate code.
 
+
+#### Can I use Apollo and GraphQL instead of Redux?
+
+The state shape withing the `_state` directories is designed in a way to be simillar to Appolo Client state provided by It's useState, useMutation hooks.
+
+To abstract away from the app state management solution implementation  the Modular Material Admin components use custom hooks (e.g. useDashboardState, useDashboardEffects).
+
+So if you want to use Apollo Client with it's recommended way of state management instead of Redux, you should be able to use `useQuery` and `useMutation` hooks instead or inside `useDashboardState` and `useDashboardEffects` without any dramatical changes in UI
+
+The GraphQL + Apollo learning curve was too steep, that's why I decided to exclude it from the initial version of Modular Material Admin.
 
 -----
 
