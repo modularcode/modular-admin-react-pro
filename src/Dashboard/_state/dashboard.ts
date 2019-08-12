@@ -38,6 +38,7 @@ const model = createModel({
   },
   // dispatch: RematchDispatch
   effects: () => ({
+    // payload, rootState
     async request() {
       this.setStatus({
         loading: true,
