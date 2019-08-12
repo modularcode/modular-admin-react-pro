@@ -11,15 +11,17 @@ export interface DashboardStateData {
   user?: User
 }
 export interface DashboardState extends DashboardStateStatus {
-  data?: DashboardStateData
+  data: DashboardStateData
+}
+
+const initialState: DashboardState = {
+  loading: false,
+  error: undefined,
+  data: {},
 }
 
 const model = createModel({
-  state: {
-    loading: false,
-    error: null,
-    data: null,
-  },
+  state: initialState,
   reducers: {
     setStatus: (
       state: DashboardState,

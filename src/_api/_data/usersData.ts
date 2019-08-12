@@ -5,8 +5,8 @@ import organizationsToUsersData from './organizationsToUsersData'
 const list: User[] = [
   {
     id: 1,
-    firstName: 'John',
-    lastName: 'Doe',
+    firstName: 'Gevorg',
+    lastName: 'H',
     username: 'johndoe1',
     email: 'john@doe.com',
     avatarUrl: 'https://avatars3.githubusercontent.com/u/3959008?v=3&s=40',

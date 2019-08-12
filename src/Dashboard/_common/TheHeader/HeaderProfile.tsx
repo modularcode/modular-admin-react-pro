@@ -18,9 +18,16 @@ import IconAccount from '@material-ui/icons/AccountBalance'
 import IconSettings from '@material-ui/icons/Settings'
 import IconLogout from '@material-ui/icons/ExitToApp'
 
+import { useDashboardData } from '../../_state'
+
 const HeaderProfile = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
+  const { user } = useDashboardData()
+
+  if (!user) {
+    return <div className={clsx('headerProfile', classes.headerProfile)} />
+  }
 
   function handleClick(event: React.MouseEvent<HTMLButtonElement>) {
     setAnchorEl(event.currentTarget)
@@ -43,10 +50,10 @@ const HeaderProfile = () => {
       >
         <Avatar
           className={classes.profileAvatar}
-          alt="John Doe"
+          alt={user.firstName}
           src="https://avatars3.githubusercontent.com/u/3959008?v=3&s=40"
         />
-        <span className={classes.profileName}>Gevorg</span>
+        <span className={classes.profileName}>{user.firstName}</span>
         <IconArrowDropDown />
       </IconButton>
       <Menu
