@@ -1,17 +1,17 @@
+import _keyBy from 'lodash/keyBy'
 import Organization from '_types/Organization'
 import organizationsToUsersData from './organizationsToUsersData'
 
-const organizationsDataById: { [key: number]: Organization } = {
-  1: {
+const list: Organization[] = [
+  {
     id: 1,
     name: 'ModularCode',
     plan: {
       id: 'silver',
       name: 'Silver',
     },
-    // organizationToUsers: organizationsToUsersData.byOrganizationId[1],
   },
-  2: {
+  {
     id: 2,
     name: 'Cool LLC',
     plan: {
@@ -20,7 +20,7 @@ const organizationsDataById: { [key: number]: Organization } = {
     },
     // organizationToUsers: organizationsToUsersData.byOrganizationId[2],
   },
-  3: {
+  {
     id: 3,
     name: 'Other LLC',
     plan: {
@@ -29,10 +29,13 @@ const organizationsDataById: { [key: number]: Organization } = {
     },
     // organizationToUsers: organizationsToUsersData.byOrganizationId[3],
   },
-}
+]
+
+const byId: { [key: number]: Organization } = _keyBy(list, 'id')
 
 const organizationsData = {
-  byId: organizationsDataById,
+  list,
+  byId,
 }
 
 export default organizationsData
