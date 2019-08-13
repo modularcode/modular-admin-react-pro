@@ -7,8 +7,7 @@ export type UserId = number
 // Each user can have only one global role
 export type UserGlobalRole = 'admin' | 'support' | 'member'
 
-export default interface User {
-  id: UserId
+export interface UserSubmissionData {
   firstName?: string
   lastName?: string
   displayName?: string
@@ -17,6 +16,10 @@ export default interface User {
   password?: string
   avatarUrl?: string
   globalRole?: UserGlobalRole
+}
+
+export default interface User extends UserSubmissionData {
+  id: UserId
   organizations?: Organization[]
   userToOrganizations?: OrganizationToUser[]
 }

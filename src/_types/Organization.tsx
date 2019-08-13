@@ -8,10 +8,13 @@ export interface OrganizationPlan {
   features?: {}
 }
 
-export default interface Organization {
-  id: OrganizationId
+export interface OrganizationSubmissionData {
   name: string
-  username?: string | null
+  username?: string
+}
+
+export default interface Organization extends OrganizationSubmissionData {
+  id: OrganizationId
   plan: OrganizationPlan
   users?: User[]
   organizationToUsers?: OrganizationToUser[]
