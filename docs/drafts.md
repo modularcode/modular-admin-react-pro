@@ -7,13 +7,13 @@ The points below are still in progress
 
 - Static typecheckign with TypeScript for large scale projects
 - Modular and scalable architecture
-- Built in JWT authentication
+- Function ready with pre-set REST API entities, sample data and a state management
+- Built in authentication with JWT
 - Typed data entities
-- Not just a dummy template
 - Uses react hooks
-- Simpler state management with Redux + Rematch for reducing Redux code boilerplate
+- Simpler state management with Redux + Rematch + Immer for reducing Redux code boilerplate
 - Material UI kit
-- Smart basic applications with real-world usage
+- Smart base applications with real-world usage (sales management, content management)
 - Users/Organizations roles with many-to-many relations
 - Designed in SAAS setup in mind, with subscription planes and global system roles
 - and more...
