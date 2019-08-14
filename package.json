@@ -52,7 +52,8 @@
     "reselect": "^4.0.0",
     "store": "^2.0.12",
     "typeface-roboto": "0.0.75",
-    "typescript": "3.5.2"
+    "typescript": "3.5.2",
+    "uuid": "^3.3.2"
   },
   "scripts": {
     "start": "cross-env TSC_WATCHFILE=UseFsEventsWithFallbackDynamicPolling react-scripts start",

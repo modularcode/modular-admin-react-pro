@@ -1,7 +1,9 @@
+import EntityOwned, { EntitiyOwnedId } from './EntityOwned'
+
 import { PaymentId } from './Payment'
 import { ProductId } from './Product'
 
-export type OrderId = number | string
+export type OrderId = EntitiyOwnedId
 export type OrderStatus =
   | 'received'
   | 'preparing'
@@ -15,7 +17,8 @@ export interface OrderSubmissionData {
   customerNotes?: string
 }
 
-export default interface Order {
+// Order can be owned by a single account or user
+export default interface Order extends EntityOwned {
   id?: OrderId
   name?: string
   status: OrderStatus

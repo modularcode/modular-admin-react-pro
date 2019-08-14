@@ -1,4 +1,6 @@
-export type PaymentId = number | string
+import { EntityId } from '_types/Entity'
+
+export type PaymentId = EntityId
 
 export default interface Payment {
   id?: PaymentId

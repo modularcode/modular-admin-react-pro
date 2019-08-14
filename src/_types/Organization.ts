@@ -1,7 +1,8 @@
+import Entity, { EntityId } from '_types/Entity'
 import User from './User'
 import OrganizationToUser from './OrganizationToUser'
 
-export type OrganizationId = number | string
+export type OrganizationId = EntityId
 export interface OrganizationPlan {
   id: number | string
   name: string
@@ -13,7 +14,7 @@ export interface OrganizationSubmissionData {
   username?: string
 }
 
-export default interface Organization extends OrganizationSubmissionData {
+export default interface Organization extends OrganizationSubmissionData, Entity {
   id: OrganizationId
   plan: OrganizationPlan
   users?: User[]
