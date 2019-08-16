@@ -14,18 +14,18 @@ import authService from './_services/authService'
 import { useAppState, useAppStateMethods } from './_state/appState'
 
 // Import application modules
-import Sales from './Sales'
-import Content from './Content'
-import Admin from './Administration'
+import Sales from './SalesModule'
+import Content from './ContentModule'
+import Admin from './AdministrationModule'
 
 // Import core modules
-import Auth from './Auth/Auth'
-import Profile from './Profile'
-import Organization from './Organization'
-import NotFound from './Misc/NotFound'
+import Auth from './AuthModule/Auth'
+import Profile from './ProfileModule'
+import Organization from './OrganizationModule'
+import NotFound from './MiscModule/NotFound'
 
 // Theme demo module
-import Demo from './Demo'
+import Demo from './DemoModule'
 
 const LoggedInRouter = () => {
   const { loading, error } = useAppState()
