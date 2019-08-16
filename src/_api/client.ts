@@ -1,5 +1,5 @@
 import axios from 'axios'
-import config from '../config'
+import config from '../_config'
 import authService from '../_services/authService'
 
 const apiService = axios.create({

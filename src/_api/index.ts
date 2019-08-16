@@ -4,7 +4,7 @@ import organizations from './organizations'
 import users from './users'
 
 // Submodules
-import apiSales from '../Dashboard/Sales/_api'
+import apiSales from '../Sales/_api'
 
 export interface ApiInitOptions {
   useSampleData?: boolean

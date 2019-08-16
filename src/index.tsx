@@ -5,6 +5,20 @@ import ReactDOM from 'react-dom'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
+import config from './_config'
+import authService from './_services/authService'
+import api from './_api'
+
+// Init the API service
+authService.init({
+  useSampleData: config.useSampleData,
+})
+
+// Init rest API client
+api.init({
+  useSampleData: config.useSampleData,
+})
+
 ReactDOM.render(<App />, document.getElementById('root'))
 
 // If you want your app to work offline and load faster, you can change
