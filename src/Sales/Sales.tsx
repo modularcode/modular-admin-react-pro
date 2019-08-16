@@ -1,17 +1,18 @@
 import React from 'react'
 import { Switch, Route, RouteComponentProps } from 'react-router-dom'
 
-import SalesDashboard from './SalesDashboard'
+import DashboardLayout from '_layouts/DashboardLayout'
+import Overview from './Overview'
 
 export interface SalesProps extends RouteComponentProps {}
 
 const Sales = ({ match }: SalesProps) => {
   return (
-    <div>
+    <DashboardLayout>
       <Switch>
-        <Route path={`${match.url}/dashboard`} component={SalesDashboard} />
+        <Route path={`${match.url}/dashboard`} component={Overview} />
       </Switch>
-    </div>
+    </DashboardLayout>
   )
 }
 

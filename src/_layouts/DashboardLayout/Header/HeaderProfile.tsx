@@ -18,12 +18,12 @@ import IconAccount from '@material-ui/icons/AccountBalance'
 import IconSettings from '@material-ui/icons/Settings'
 import IconLogout from '@material-ui/icons/ExitToApp'
 
-import { useAppData } from '../../../_state/appState'
+import { useAppStateData } from '../../../_state/appState'
 
 const HeaderProfile = () => {
   const classes = useStyles()
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null)
-  const { user } = useAppData()
+  const { user } = useAppStateData()
 
   if (!user) {
     return <div className={clsx('headerProfile', classes.headerProfile)} />

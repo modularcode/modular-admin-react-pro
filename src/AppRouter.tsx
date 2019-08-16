@@ -11,7 +11,7 @@ import LinearProgress from '@material-ui/core/LinearProgress'
 
 import config from './_config'
 import authService from './_services/authService'
-import { useAppState, useAppEffects } from './_state/appState'
+import { useAppState, useAppStateMethods } from './_state/appState'
 
 // Import application modules
 import Sales from './Sales'
@@ -29,11 +29,11 @@ import Demo from './Demo'
 
 const LoggedInRouter = () => {
   const { loading, error } = useAppState()
-  const effects = useAppEffects()
+  const appStateMethods = useAppStateMethods()
 
   useEffect(() => {
-    effects.request()
-  }, [effects])
+    appStateMethods.request()
+  }, [appStateMethods])
 
   if (loading) return <LinearProgress />
   if (error) return <p>Error :(</p>

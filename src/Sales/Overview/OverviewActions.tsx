@@ -9,7 +9,7 @@ import IconDropDown from '@material-ui/icons/ArrowDropDown'
 import IconNew from '@material-ui/icons/Add'
 
 import { Theme } from '../../_theme'
-import salesDashboardContext from './salesDashboardContext'
+import salesDashboardContext from './overviewContext'
 
 const MainActions: React.FC<any> = () => {
   const classes = useStyles()

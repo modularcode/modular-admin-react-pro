@@ -8,9 +8,9 @@ import Grid from '@material-ui/core/Grid'
 import PageContainer from '../../_common/PageContainer'
 import PageToolbar from '../../_common/PageToolbar'
 
-import { SalesDashboardProvider } from './salesDashboardContext'
+import { SalesDashboardProvider } from './overviewContext'
 
-import SalesDashboardActions from './SalesDashboardActions'
+import SalesDashboardActions from './OverviewActions'
 import OrdersHistory from './OrdersHistory'
 import OrdersLatest from './OrdersLatest'
 

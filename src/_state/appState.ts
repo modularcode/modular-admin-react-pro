@@ -7,13 +7,13 @@ export function useAppState() {
   return useSelector((state: RootState) => state.dashboard)
 }
 
-export function useAppData(): AppStateData {
+export function useAppStateData(): AppStateData {
   const { data } = useAppState()
 
   return data
 }
 
-export function useAppEffects() {
+export function useAppStateMethods() {
   const dispatch = useDispatch<RootDispatch>()
   return dispatch.dashboard
 }
