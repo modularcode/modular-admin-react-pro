@@ -15,7 +15,7 @@ export interface DashboardState extends DashboardStateStatus {
 }
 
 const initialState: DashboardState = {
-  loading: false,
+  loading: true,
   error: undefined,
   data: {},
 }
