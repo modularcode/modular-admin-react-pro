@@ -9,9 +9,7 @@ import mainHistoryService from './ordersHistoryService'
 // ref: https://www.robinwieruch.de/react-hooks-fetch-data/
 const MainHistory = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
-  // const canvasRef: React.RefObject<HTMLCanvasElement> = React.createRef()
   const classes = useStyles()
-  // const [chartConfiguration, setChartConfiguration] = useState({})
 
   useEffect(() => {
     if (canvasRef.current === null) {
@@ -25,31 +23,10 @@ const MainHistory = () => {
 
       const chartConfigurationRes = await mainHistoryService.getChartConfiguration()
 
-      // setChartConfiguration(chartConfigurationRes)
       new Chart(canvasRefNode, chartConfigurationRes)
     }
     requestChartData(canvasRef.current)
   }, [canvasRef])
-
-  // const canvasRef = useCallback(node => {
-  //   if (node !== null) {
-  //     console.log(node)
-  //   }
-  // }, [])
-
-  // const [chartConfiguration, setChartConfiguration] = useState({})
-
-  // useEffect(() => {
-  //   async function requestChartData() {
-  //     console.log('requestChartData')
-
-  //     const chartConfiguration = await mainHistoryService.getChartConfiguration()
-  //     setChartConfiguration(chartConfiguration)
-
-  //     console.log(canvasRef.current)
-  //   }
-  //   requestChartData()
-  // }, [])
 
   return (
     <Card>

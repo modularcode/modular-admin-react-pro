@@ -35,13 +35,6 @@ const baseTheme = createMuiTheme({
     MuiButton: {
       root: {
         minWidth: 0,
-        '&$hover': {
-          backgroundColor: 'rgba(0, 0, 0, 0.08)',
-        },
-        '&$focusVisible': {
-          boxShadow: 'none',
-          backgroundColor: 'rgba(0, 0, 0, 0.06)',
-        },
       },
       contained: {
         boxShadow: 'none',
