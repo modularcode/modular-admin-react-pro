@@ -1,25 +1,32 @@
-# App module
+# App
 
 This is the application entry component. It handles the main routing and authentication redirects.
-Sub modules
+The App consists from nested modules, each of them has it's own purpose.
 
-### Account
-single account management module
-
-### Admin
+### Administration Module
 all accounts and users management module (convenient for superusers, can be extended)
 
-### Content
+### Auth Module
+user authentication: login, logout, signup, recover
+
+### Content Module
 content management module (useful for creating various entities like books, articles, posts, pages, etc)
 
-### Demo
+### Demo Module
 theme demo pages
 
-### NotFound
-Fallback page, if route doesn't match any module
+### Misc Module
+misc pages like not found page
 
-### Profile
-logged-in user profile management module
+### Organization Module
+manage user organizations and organization teams
 
-### Sales
+### Profile Module
+manage user profile
+
+### Sales Module
 can be used for managing sales/orders
+
+### Service Module
+
+The services module allows to manage different institutions provided services
