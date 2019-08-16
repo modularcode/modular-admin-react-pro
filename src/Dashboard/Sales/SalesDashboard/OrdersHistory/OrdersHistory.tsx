@@ -1,10 +1,10 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react' //useState
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import { Chart } from 'chart.js'
 
-import mainHistoryService from './MainHistoryService'
+import mainHistoryService from './ordersHistoryService'
 
 // ref: https://www.robinwieruch.de/react-hooks-fetch-data/
 const MainHistory = () => {

@@ -36,7 +36,7 @@ const list: Product[] = [
         url: 'https://images-na.ssl-images-amazon.com/images/I/610d8E4usyL._SL1000_.jpg',
       },
     ],
-    price: 99.99,
+    price: 49.99,
   },
 ]
 

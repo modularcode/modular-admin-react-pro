@@ -5,10 +5,12 @@ import usersMocks from './usersMocks'
 import organizationsMocks from './organizationsMocks'
 
 const init = (instance: AxiosInstance) => {
-  const mock = new MockAdapter(instance, { delayResponse: 200 })
+  const mockAdapter = new MockAdapter(instance, { delayResponse: 200 })
 
-  usersMocks.init(mock)
-  organizationsMocks.init(mock)
+  usersMocks.init(mockAdapter)
+  organizationsMocks.init(mockAdapter)
+
+  return mockAdapter
 }
 
 export default {

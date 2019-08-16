@@ -1,7 +1,7 @@
 import React from 'react'
 import { makeStyles, createStyles } from '@material-ui/core/styles'
 import Disqus from 'disqus-react'
-import Typography from '@material-ui/core/Typography'
+// import Typography from '@material-ui/core/Typography'
 import Paper from '@material-ui/core/Paper'
 
 import { Theme } from '_theme'

@@ -51,7 +51,7 @@ export default {
     })
 
     mock.onDelete(/\/users\/\d+/).reply((config: any) => {
-      return [200, { message: 'User deleted' }]
+      return [200, { message: 'User removed' }]
     })
   },
 }

@@ -12,6 +12,12 @@ export type OrderStatus =
   | 'rejected'
   | 'refunded'
 
+export interface OrderProduct {
+  id?: ProductId
+  price?: number
+  quantity?: number
+}
+
 export interface OrderSubmissionData {
   products?: any[]
   customerNotes?: string
@@ -26,4 +32,5 @@ export default interface Order extends EntityOwned {
   staffNotes?: string
   paymentId?: PaymentId
   products?: any[]
+  sum: number
 }

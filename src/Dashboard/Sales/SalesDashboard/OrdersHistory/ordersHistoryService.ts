@@ -1,15 +1,22 @@
-// import rand from 'lodash/random'
+import { Chart } from 'chart.js'
 import { random } from 'lodash'
 import moment from 'moment'
+
+// import ordersData from '../../_api/_data/ordersData'
+import api from '../../_api'
 
 export default {
   getRandomNumber(min = 0, max = 1): number {
     return random(min, max)
   },
-  getChartData(): Chart.ChartData {
+  async getChartData(): Promise<Chart.ChartData> {
     interface ChartDataSet extends Chart.ChartDataSets {
       data: number[]
     }
+
+    const orders = await api.orders.getList()
+
+    console.log('orders', orders)
 
     const timeFormat = 'MM/DD/YYYY'
 
@@ -112,11 +119,11 @@ export default {
     }
   },
   // In real life this would be an http call
-  getChartConfiguration(): Promise<Chart.ChartConfiguration> {
+  async getChartConfiguration(): Promise<Chart.ChartConfiguration> {
     const configuration = {
       type: 'bar',
       options: this.getChartOptions(),
-      data: this.getChartData(),
+      data: await this.getChartData(),
     }
 
     return new Promise(resolve => setTimeout(() => resolve(configuration), 300))

@@ -7,9 +7,9 @@ import PageContainer from '../../_common/BasePageContainer'
 import PageToolbar from '../../_common/BasePageToolbar'
 
 // Submodules
-import MainActions from './MainActions'
-import MainOrders from './MainOrders'
-import MainHistory from './MainHistory'
+import SailsDashboardActions from './SalesDashboardActions'
+import OrdersHistory from './OrdersHistory'
+import OrdersLatest from './OrdersLatest'
 
 export default function Overview() {
   // const classes = useStyles()
@@ -18,12 +18,15 @@ export default function Overview() {
 
   return (
     <PageContainer>
-      <PageToolbar title={PageTitle} actionsComponent={MainActions}></PageToolbar>
+      <PageToolbar
+        title={PageTitle}
+        actionsComponent={SailsDashboardActions}
+      ></PageToolbar>
 
       <Grid container spacing={3}>
         {/* Chart */}
         <Grid item xs={12} md={12} lg={12}>
-          <MainHistory />
+          <OrdersHistory />
         </Grid>
         {/* Recent Deposits */}
         {/* <Grid item xs={12} md={4} lg={4}>
@@ -33,7 +36,7 @@ export default function Overview() {
         </Grid> */}
         {/* Recent Orders */}
         <Grid item xs={12}>
-          <MainOrders />
+          <OrdersLatest />
         </Grid>
       </Grid>
     </PageContainer>

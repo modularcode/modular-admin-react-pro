@@ -5,9 +5,9 @@ The points below are still in progress
 
 ### Features
 
-- Static typecheckign with TypeScript for large scale projects
 - Modular and scalable architecture
-- Function ready with pre-set REST API entities, sample data and a state management
+- Data driven and function ready with pre-set REST API entities, sample data and state management system
+- Static typechecking with TypeScript for large scale projects
 - Built in authentication with JWT
 - Typed data entities
 - Uses react hooks

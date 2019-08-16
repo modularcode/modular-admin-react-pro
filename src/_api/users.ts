@@ -5,7 +5,7 @@ import apiClient from './client'
 export interface UsersService {
   getProfile(): Promise<User>
   getOne(userId: UserId): Promise<User>
-  getList(params: any): Promise<UsersListResponse>
+  getList(params?: any): Promise<UsersListResponse>
   create(user: UserSubmissionData): Promise<User>
   update(userId: UserId, user: UserSubmissionData): Promise<User>
   remove(userId: UserId): Promise<any>

@@ -80,7 +80,7 @@ const SidebarNavItem: React.FC<SidebarNavItemProps> = (props: SidebarNavItemProp
     IconStyles = {},
     IconClassName = '',
     isCollapsed,
-    isNested,
+    // isNested,
     nestingLevel = 0,
     nestingOffset = 16,
     className,
