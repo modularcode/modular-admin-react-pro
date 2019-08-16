@@ -14,6 +14,9 @@ https://www.robinwieruch.de/react-state-usereducer-usestate-usecontext/
 React with Redux and hooks
 https://medium.com/@koss_lebedev/rematch-with-hooks-50a8380c46e4
 
+Context API vs Redux
+https://daveceddia.com/context-api-vs-redux/
+
 #### TypeScript
 
 Typescript Book:
