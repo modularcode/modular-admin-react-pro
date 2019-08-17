@@ -43,13 +43,21 @@ const LoggedInRouter = () => {
   return (
     <Switch>
       <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} />
-      <AppRoute path={`/sales`} component={Sales} layout={DashboardLayout} />
-      <AppRoute path={`/content`} component={Content} layout={DashboardLayout} />
-      <AppRoute path={`/admin`} component={Administration} layout={DashboardLayout} />
-      <AppRoute path={`/profile`} component={Profile} layout={DashboardLayout} />
-      <AppRoute path={`/account`} component={Organization} layout={DashboardLayout} />
-      <AppRoute path={`/demo`} component={Demo} layout={DashboardLayout} />
-      <AppRoute component={NotFound} layout={DashboardLayout} />
+      <RouteWithLayout path={`/sales`} component={Sales} layout={DashboardLayout} />
+      <RouteWithLayout path={`/content`} component={Content} layout={DashboardLayout} />
+      <RouteWithLayout
+        path={`/admin`}
+        component={Administration}
+        layout={DashboardLayout}
+      />
+      <RouteWithLayout path={`/profile`} component={Profile} layout={DashboardLayout} />
+      <RouteWithLayout
+        path={`/account`}
+        component={Organization}
+        layout={DashboardLayout}
+      />
+      <RouteWithLayout path={`/demo`} component={Demo} layout={DashboardLayout} />
+      <RouteWithLayout component={NotFound} layout={DashboardLayout} />
     </Switch>
   )
 }
@@ -62,12 +70,12 @@ const AppRouter: React.FC = () => (
   <AppRouterComponent>
     <Switch>
       <Route path="/auth" component={Auth} />
-      <PrivateRoute path="/" component={LoggedInRouter} />
+      <RoutePrivate path="/" component={LoggedInRouter} />
     </Switch>
   </AppRouterComponent>
 )
 
-const AppRoute = ({ component: Component, layout: Layout, ...rest }: any) => (
+const RouteWithLayout = ({ component: Component, layout: Layout, ...rest }: any) => (
   <Route
     {...rest}
     render={props => {
@@ -85,7 +93,7 @@ const AppRoute = ({ component: Component, layout: Layout, ...rest }: any) => (
 )
 
 // See https://reacttraining.com/react-router/web/example/auth-workflow
-const PrivateRoute: React.FC<RouteProps> = ({
+const RoutePrivate: React.FC<RouteProps> = ({
   component: Component,
   ...rest
 }: RouteProps) => {
