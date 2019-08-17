@@ -5,6 +5,7 @@ import moment from 'moment'
 
 import Grid from '@material-ui/core/Grid'
 
+// import { withDashboardLayout } from '_layouts'
 import PageContainer from '../../_common/PageContainer'
 import PageToolbar from '../../_common/PageToolbar'
 
@@ -14,7 +15,7 @@ import SalesDashboardActions from './OverviewActions'
 import OrdersHistory from './OrdersHistory'
 import OrdersLatest from './OrdersLatest'
 
-export default function SalesDashboard() {
+const SalesDashboard = () => {
   const [filter, setFilter] = useState({
     dateFrom: moment()
       .subtract(14, 'day')
@@ -59,3 +60,5 @@ export default function SalesDashboard() {
 //     paddingBottom: theme.spacing(4),
 //   },
 // }))
+
+export default SalesDashboard

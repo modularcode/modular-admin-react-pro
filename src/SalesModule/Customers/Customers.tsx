@@ -2,14 +2,14 @@ import React from 'react'
 // import clsx from 'clsx'
 import { makeStyles } from '@material-ui/core/styles'
 
+// import DashboardLayout from '_layouts/DashboardLayout'
+// import { withDashboardLayout } from '_layouts'
 import PageContainer from '../../_common/PageContainer'
-
-// import Grid from '@material-ui/core/Grid'
 import Paper from '@material-ui/core/Paper'
 
 import { Theme } from '_theme'
 
-export default function Customers() {
+const Customers = () => {
   const classes = useStyles()
 
   return (
@@ -20,3 +20,5 @@ export default function Customers() {
 }
 
 const useStyles = makeStyles((theme: Theme) => ({}))
+
+export default Customers

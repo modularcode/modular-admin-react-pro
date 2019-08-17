@@ -1,6 +1,7 @@
 import React from 'react'
 import { Switch, Route, RouteComponentProps } from 'react-router-dom'
 
+import AppRoute from 'AppRoute'
 import DashboardLayout from '_layouts/DashboardLayout'
 
 import Features from './Features'
@@ -12,14 +13,12 @@ export interface DemoProps extends RouteComponentProps {}
 
 const Demo: React.FC<DemoProps> = ({ match }) => {
   return (
-    <DashboardLayout>
-      <Switch>
-        <Route path={`${match.url}/features`} component={Features} />
-        <Route path={`${match.url}/docs`} component={Docs} />
-        <Route path={`${match.url}/supporters`} component={Supporters} />
-        <Route path={`${match.url}/discuss`} component={Discuss} />
-      </Switch>
-    </DashboardLayout>
+    <Switch>
+      <AppRoute path={`${match.url}/features`} component={Features} />
+      <AppRoute path={`${match.url}/docs`} component={Docs} />
+      <AppRoute path={`${match.url}/supporters`} component={Supporters} />
+      <AppRoute path={`${match.url}/discuss`} component={Discuss} />
+    </Switch>
   )
 }
 

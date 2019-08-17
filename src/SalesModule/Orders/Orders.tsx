@@ -6,6 +6,8 @@ import Button from '@material-ui/core/Button'
 
 // import { Theme } from '_theme'
 
+// import DashboardLayout from '_layouts/DashboardLayout'
+// import { withDashboardLayout } from '_layouts'
 import PageContainer from '../../_common/PageContainer'
 import PageToolbar from '../../_common/PageToolbar'
 
