@@ -18,6 +18,10 @@ Layouts
 https://stackoverflow.com/questions/33996484/using-multiple-layouts-for-react-router-components
 https://gist.github.com/avinmathew/e82fe7e757b20cb337d5219e0ab8dc2c
 
+Context API vs Redux
+https://daveceddia.com/context-api-vs-redux/
+
+
 #### TypeScript
 
 Typescript Book:
