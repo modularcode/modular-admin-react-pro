@@ -28,12 +28,46 @@ The points below are still in progress
 
 #### Who is Modular Material Admin for?
 
-Modular Material Admin is a good fit for the more-advanced developers who want to build a large-scale dashboard application with a good coding practicies.
+Modular Material Admin is a good fit for advanced developers who want to build a large-scale dashboard application with a good coding practicies.
 
 #### How Modular Material Admin is different from hundreds of other admin templates out there?
 
-The most of the dashboard themes and templates are more focused on the UI components. This brings to the situation, that for the most dashboard you need to fully rewrite or reimplement things like authorization, state management and api entities services setup. Modular Material Admin aims to provide all the architecture setup out of the box
+The most of the dashboard themes and templates are more focused on the UI components. This brings to the situation, that for the most dashboard you need to fully rewrite or reimplement things like authorization, state management and api entities services setup. Modular Material Admin aims to provide that basic architecture setup out of the box
 
+
+#### How Modular Material Admin is different from other Admin UI ready CMS systems like Keystonejs, Strapi, WordPress, etc?
+
+Even though there are similarities and can be similar use cases there are major differences between ready-made CMS systems and Modular Material Admin
+
+CMS systems usually adopt the configuration over coding principle which means that in order to extend the existing functionality you need to make lot's of configurations and extend the functionality by the CMS plugins API. Another thing is that the Admin UI layout, style and design is usually predefined without the ability to customize it.
+
+On the controversary the Modular Material Admin + React is a **starter project template** which is meant to be a solid foundation to **build your own** admin system with the best React + TypeScript + MaterialUI coding practices.
+
+So the AdminUI ready CMS systems are really a good fit if
+
+- Your primary objective is content management
+- You want to prototype something quickly
+- You're fine with extending the AdminUI via CMS plugins API
+- You don't need to customize the AdminUI layout
+- You don't need to add a lot's of custom business logic which isn't supported via the CMS
+
+Modular Material Admin + React is a good fit if
+
+- You want to write your AdminUI code and business logic
+- You want to use React, React Hooks and TypeScript for your project
+- You want to extend the existing functionality via your own code
+- You don't want to depend on the CMS ecosystem
+
+
+#### Summing up: what is the Modular Material Admin + React usage niche?
+
+
+Modular Material Admin + React stand beetween a basic React Admin UI templates and a Admin UI ready CMS systems.
+
+| ```diff # Basic Admin Template ``` |   |   | ```diff + Modular Material Admin ``` |   |   | ```diff  # AdminUI Ready CMS  ``` |
+|------------------------------------|---|---|:------------------------------------:|---|---|----------------------------------:|
+| Less features                      |   |   |           Moderate features          |   |   |                     More Features |
+| High customizability               |   |   |       Moderate customizability       |   |   |               Low customizability |
 
 #### Why do you call it modular?
 
