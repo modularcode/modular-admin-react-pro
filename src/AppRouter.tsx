@@ -13,13 +13,12 @@ import config from './_config'
 import authService from './_services/authService'
 import { useAppState, useAppStateMethods } from './_state/appState'
 
-import AppRoute from './AppRoute'
 import DashboardLayout from '_layouts/DashboardLayout'
 
 // Import application modules
 import Sales from './SalesModule'
 import Content from './ContentModule'
-import Admin from './AdministrationModule'
+import Administration from './AdministrationModule'
 
 // Import core modules
 import Auth from './AuthModule/Auth'
@@ -46,7 +45,7 @@ const LoggedInRouter = () => {
       <Route exact path="/" render={() => <Redirect to="/sales/dashboard" />} />
       <AppRoute path={`/sales`} component={Sales} layout={DashboardLayout} />
       <AppRoute path={`/content`} component={Content} layout={DashboardLayout} />
-      <AppRoute path={`/admin`} component={Admin} layout={DashboardLayout} />
+      <AppRoute path={`/admin`} component={Administration} layout={DashboardLayout} />
       <AppRoute path={`/profile`} component={Profile} layout={DashboardLayout} />
       <AppRoute path={`/account`} component={Organization} layout={DashboardLayout} />
       <AppRoute path={`/demo`} component={Demo} layout={DashboardLayout} />
@@ -66,6 +65,23 @@ const AppRouter: React.FC = () => (
       <PrivateRoute path="/" component={LoggedInRouter} />
     </Switch>
   </AppRouterComponent>
+)
+
+const AppRoute = ({ component: Component, layout: Layout, ...rest }: any) => (
+  <Route
+    {...rest}
+    render={props => {
+      if (Layout) {
+        return (
+          <Layout>
+            <Component {...props} />
+          </Layout>
+        )
+      } else {
+        return <Component {...props} />
+      }
+    }}
+  />
 )
 
 // See https://reacttraining.com/react-router/web/example/auth-workflow
