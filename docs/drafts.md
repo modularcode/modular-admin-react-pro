@@ -64,10 +64,10 @@ Modular Material Admin + React is a good fit if
 
 Modular Material Admin + React stand beetween a basic React Admin UI templates and a Admin UI ready CMS systems.
 
-| ```diff # Basic Admin Template ``` |   |   | ```diff + Modular Material Admin ``` |   |   | ```diff  # AdminUI Ready CMS  ``` |
-|------------------------------------|---|---|:------------------------------------:|---|---|----------------------------------:|
-| Less features                      |   |   |           Moderate features          |   |   |                     More Features |
-| High customizability               |   |   |       Moderate customizability       |   |   |               Low customizability |
+| Basic Admin Template |   |   |  Modular Material Admin  |   |   |   AdminUI Ready CMS |
+|----------------------|---|---|:------------------------:|---|---|--------------------:|
+| Less features        |   |   |     Moderate features    |   |   |       More Features |
+| High customizability |   |   | Moderate customizability |   |   | Low customizability |
 
 #### Why do you call it modular?
 
