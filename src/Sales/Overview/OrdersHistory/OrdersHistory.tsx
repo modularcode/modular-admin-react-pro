@@ -1,13 +1,15 @@
-import React, { useEffect, useRef } from 'react' //useState
+import React, { useEffect, useRef, useContext } from 'react' //useState
 import { makeStyles } from '@material-ui/core/styles'
 import Card from '@material-ui/core/Card'
 import CardContent from '@material-ui/core/CardContent'
 import { Chart } from 'chart.js'
 
+import overviewContext from '../overviewContext'
 import mainHistoryService from './ordersHistoryService'
 
 // ref: https://www.robinwieruch.de/react-hooks-fetch-data/
 const MainHistory = () => {
+  const { filter } = useContext(overviewContext)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const classes = useStyles()
 
@@ -16,17 +18,22 @@ const MainHistory = () => {
       return
     }
 
-    async function requestChartData(canvasRefNode: HTMLCanvasElement) {
-      if (!canvasRef) {
+    async function renderChart(canvasRefNode: HTMLCanvasElement) {
+      if (!canvasRef || !filter) {
         return
       }
 
-      const chartConfigurationRes = await mainHistoryService.getChartConfiguration()
+      // console.log('filter', filter)
+
+      const chartConfigurationRes = await mainHistoryService.getChartConfiguration({
+        filter,
+      })
 
       new Chart(canvasRefNode, chartConfigurationRes)
     }
-    requestChartData(canvasRef.current)
-  }, [canvasRef])
+
+    renderChart(canvasRef.current)
+  }, [canvasRef, filter])
 
   return (
     <Card>

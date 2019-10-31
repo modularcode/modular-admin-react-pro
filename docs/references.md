@@ -35,3 +35,20 @@ https://dev.to/benweiser/how-to-set-up-eslint-typescript-prettier-with-create-re
 https://medium.com/@dors718/linting-your-react-typescript-project-with-eslint-and-prettier-2423170c3d42
 https://medium.com/quick-code/how-to-integrate-eslint-prettier-in-react-6efbd206d5c4
 https://dev.to/robertcoopercode/using-eslint-and-prettier-in-a-typescript-project-53jb
+
+
+#### REST api
+
+Query interface
+https://www.odata.org/
+https://swagger.io/
+https://swagger.io/resources/open-api/
+https://swagger.io/tools/swaggerhub/
+https://www.npmjs.com/package/typeorm-express-query-builder
+https://www.npmjs.com/package/odata-v4-typeorm
+https://www.odata.org/documentation/odata-version-2-0/uri-conventions/
+
+
+#### Misc
+
+https://archfirst.org/domain-driven-design/
