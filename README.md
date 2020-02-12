@@ -1,4 +1,4 @@
-<h1 align="center">Modular Material Admin + React</h1>
+<h1 align="center">Modular Material Admin + React | pro version</h1>
 
 <div align="center">
 
@@ -12,7 +12,7 @@ Free [MaterialUI](https://material-ui.com/) dashboard theme implemented by using
 
 <p align="center">
   <strong>
-    <a href="https://modular-material-admin-react.modularcode.io/" target="_blank">View Demo</a>
+    <a href="https://modular-material-admin-react-pro.modularcode.io/" target="_blank">View Demo</a>
   </strong>
 </p>
 

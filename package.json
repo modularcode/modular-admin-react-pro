@@ -11,7 +11,7 @@
   "bugs": {
     "url": "https://github.com/modularcode/modular-material-admin-react/issues"
   },
-  "homepage": "http://modular-material-admin-react.modularcode.io",
+  "homepage": "http://modular-material-admin-react-pro.modularcode.io",
   "dependencies": {
     "@material-ui/core": "^4.5.2",
     "@material-ui/icons": "^4.5.1",
@@ -62,7 +62,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "postinstall": "opencollective postinstall",
-    "deploy": "npm run build && echo modular-material-admin-react.modularcode.io > ./build/CNAME  && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react.git --branch gh-pages"
+    "deploy": "npm run build && echo modular-material-admin-react-pro.modularcode.io > ./build/CNAME  && gh-pages -d build --repo git@github.com:modularcode/modular-material-admin-react-pro.git --branch gh-pages"
   },
   "eslintConfig": {
     "extends": "react-app"
