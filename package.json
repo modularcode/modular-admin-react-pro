@@ -39,7 +39,7 @@
     "graphql": "^14.5.8",
     "lodash": "^4.17.15",
     "moment": "^2.24.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^7.0.0",
     "opencollective": "^1.0.3",
     "react": "^16.11.0",
     "react-chartist": "^0.13.3",
